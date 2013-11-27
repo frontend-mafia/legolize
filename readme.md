@@ -1,7 +1,7 @@
 # Meniga's Legolize Less/Css framework (working title)
 
 ### SUIT defaults
-[https://github.com/suitcss/suit/tree/master/doc](SUIT on GitHub)
+[SUIT on GitHub](https://github.com/suitcss/suit/tree/master/doc)
 
 	u-utilityName
 	ComponentName
