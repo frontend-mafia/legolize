@@ -70,6 +70,26 @@ _Q: When do we want to use fn- vs ui-?_
 
 ---
 
+### Random thoughts
+
+_Q: Where do we want to write page specific overrides for Lego's whether it's a modifier, descendant or whatever, in the customized lego css file itself or in a page css or where?_
+
+
+###### Example:
+
+	// Standard
+	.ListGroup-item{
+		border: 1px solid #000;
+	}
+
+	// Budget page
+	.ListGroup-item{
+		border: none;
+	}
+
+
+---
+
 ### Brainstorm from the Mooverang project
 
 _Before:_
