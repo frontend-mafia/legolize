@@ -1,0 +1,51 @@
+@import "../core.less";
+@import "alert.variables.less";
+/********************************************
+	Alert Lego
+********************************************/
+
+// When writing Lego's we use BEM naming conventions like the SUIT project
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+// ComponentName
+// ComponentName--modifierName
+// ComponentName-descendantName
+// ComponentName.is-stateOfComponent
+
+// -------------------- Core LEGO --------------------
+
+.Alert {
+	.border-radius(@alertBorderRadius);
+	padding: @alertPadding;
+	margin: @alertMargin;
+}
+
+
+// -------------------- Modifiers --------------------
+
+// Simple (no border radius)
+.Alert--simple{
+	.border-radius(0);
+}
+
+// Call to action
+.Alert--cta{
+	color: @alertConfirmTextColor;
+	background-color: @alertConfirmBgColor;
+
+	// Nested alerts a little darker
+	.Alert--cta {
+		background-color: darken(@alertConfirmBgColor, 10%);
+	}
+}
+
+
+// -------------------- Descendants --------------------
+.Alert-buttonArea{
+
+}
+
+
+
+// -------------------- States --------------------
