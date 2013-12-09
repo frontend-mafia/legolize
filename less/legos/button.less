@@ -1,5 +1,6 @@
 @import "../core";
 @import "button.variables.less";
+@import "button.mixins.less";
 /********************************************
 	Buttons
 ********************************************/
@@ -22,6 +23,7 @@
 	white-space: nowrap;
 	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
 	border: 1px solid transparent;
+	padding: 0;
 	.border-radius(@buttonBorderRadius);
 
 	&:focus {
@@ -51,9 +53,13 @@
 	width: 100%;
 }
 
+.Button--default {
+	.buttonVariant(@buttonDefaultTextColor, @buttonDefaultBgColor, @buttonDefaultBorderColor);
+}
+
 // example: next buttons
 .Button--primary {
-
+	.buttonVariant(@buttonPrimaryTextColor, @buttonPrimaryBgColor, @buttonPrimaryBorderColor);
 }
 
 // example: back buttons
