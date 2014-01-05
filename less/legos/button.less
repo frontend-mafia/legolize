@@ -64,12 +64,17 @@
 
 // example: back buttons
 .Button--secondary {
-
+	.buttonVariant(@buttonSecondaryTextColor, @buttonSecondaryBgColor, @buttonSecondaryBorderColor);
 }
 
 // example: save or final submit button
 .Button--success {
 	.buttonVariant(@buttonSuccessTextColor, @buttonSuccessBgColor, @buttonSuccessBorderColor);
+}
+
+// example: delete button
+.Button--danger {
+	.buttonVariant(@buttonDangerTextColor, @buttonDangerBgColor, @buttonDangerBorderColor);
 }
 
 // Call to action example: confirm buttons
