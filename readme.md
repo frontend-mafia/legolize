@@ -1,7 +1,11 @@
-# Meniga's Legolize Less/Css framework (working title)
+# Meniga's Legolize Less/Css framework
+
+_Q: What is Legolize?_
+
+--- Legolize is a LESS framework built up on BEM methodology inspired by the SUIT framework.
+
 
 ### SUIT defaults
-[SUIT on GitHub](https://github.com/suitcss/suit/tree/master/doc)
 
 	u-utilityName
 	ComponentName
@@ -10,39 +14,31 @@
 	ComponentName.is-stateOfComponent
 	v1-*
 	js-someName
-		
-_Q: What defines a utility?_
+
+[SUIT on GitHub](https://github.com/suitcss/suit/tree/master/doc)
 
 ---
 
-# Meniga add-ons to SUIT
+# Legolize improvements on SUIT
 
-Here are some thoughts on these add-ons
+#### Layout classes
+	ui-Section
+	ui-Section-content
 
-#### General layout classes
 	ui-LayoutArea
 	ui-layoutArea
 
-_Q: Lowercase or uppercase?_
+	For page layout classes
+	ui-Page
+	ui-PageHeader
+	ui-PageNav
+	ui-PageFooter
 
 _Q: What defines a layout class (ui-)?_
 
-_Q: Is a layout a component or is it like a utility? (PascalCase vs camelCase)_
+It's a class used for commonly used layout classes.
 
 ###### Example:
-
-	Here it's like a layout component
-	ui-pageNav
-		ui-pageNav--someModifier
-
-	ui-pageNav-descendantName
-
-	ui-pageNav.is-stateOf
-
-	And here it's like a utility
-
-	ui-contentContainer
-
 
 #### For functionality specific classes (describes functionality)
 
