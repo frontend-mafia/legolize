@@ -5,6 +5,15 @@ _Q: What is Legolize?_
 Legolize is a LESS framework built up on BEM methodology inspired by the SUIT framework.
 
 
+## Quick start
+
+Two quick start options are available:
+
+- Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
+- Install with [Bower](http://bower.io): `bower install legolize`. (not implemented yet)
+
+
+
 ### SUIT defaults
 
 	u-utilityName
