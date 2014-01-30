@@ -29,17 +29,16 @@ We have defined the following types for improvements
 
 
 #### Layout classes
-	ui-Section
-	ui-Section-content
 
-	ui-LayoutArea
-	ui-layoutArea
-
-	For page layout classes
 	ui-Page
 	ui-PageHeader
 	ui-PageNav
 	ui-PageFooter
+
+	ui-Section
+	ui-Section-content
+	ui-Section-container
+
 
 _Q: What defines a layout class (ui-)?_
 
@@ -66,3 +65,21 @@ It's a class used for commonly used layout classes.
 	dir-CategoryTree
 
 ---
+
+#### Choosing names for classes
+
+_Q: What do I have to think about when writing class names?_
+
+* All LEGO's should be named singular?
+
+Example:
+	Correct: .Button
+	Wrong: .Buttons
+
+* We should try to name the class to describe the visual reference to the object but not it's functionality
+
+Example:
+	Correct: .Button--panel
+	Wrong: Button--save
+
+
