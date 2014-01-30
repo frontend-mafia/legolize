@@ -44,8 +44,6 @@ _Q: What defines a layout class (ui-)?_
 
 It's a class used for commonly used layout classes.
 
-###### Example:
-
 #### Functionality specific classes
 
 	fn-MyFunction
@@ -66,14 +64,14 @@ It's a class used for commonly used layout classes.
 
 _Q: What do I have to think about when writing class names?_
 
-* All LEGO's should be named singular?
+###### All LEGO's should be named singular.
 
 Example:
 
 	Correct: .Button
-	Wrong: .Buttons
+	Wrong:   .Buttons
 
-* We should try to name the class to describe the visual reference to the object but not it's functionality
+###### Try to name the class to describe the visual reference to the object but not it's functionality
 
 Example:
 
