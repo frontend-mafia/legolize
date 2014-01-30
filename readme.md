@@ -49,20 +49,16 @@ It's a class used for commonly used layout classes.
 #### Functionality specific classes
 
 	fn-MyFunction
-
-###### Example:
-
 	fn-TransactionTable
+	fn-SearchForm
 
 ---
 
-#### For angular specific classes (directives)
+#### For AngularJs directives
 
-	dir-MyDirective
-
-###### Example:
-
+	dir-SomeDirective
 	dir-CategoryTree
+	dir-TransactionRow
 
 ---
 
@@ -73,12 +69,14 @@ _Q: What do I have to think about when writing class names?_
 * All LEGO's should be named singular?
 
 Example:
+
 	Correct: .Button
 	Wrong: .Buttons
 
 * We should try to name the class to describe the visual reference to the object but not it's functionality
 
 Example:
+
 	Correct: .Button--panel
 	Wrong: Button--save
 
