@@ -21,6 +21,13 @@ Legolize is a LESS framework built up on BEM methodology inspired by the SUIT fr
 
 # Legolize improvements on SUIT
 
+We have defined the following types for improvements
+
+* Layout classes
+* Function classes
+* Angular directives classes
+
+
 #### Layout classes
 	ui-Section
 	ui-Section-content
