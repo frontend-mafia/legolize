@@ -1,0 +1,24 @@
+// -------------------- Buttons mixins --------------------
+
+// Button variants
+// -------------------------
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+.buttonVariant(@textColor; @backgroundColor; @borderColor) {
+	color: @textColor;
+	background-color: @backgroundColor;
+	border-color: @borderColor;
+
+	&:hover,
+	&:focus,
+	&:active
+	{
+		color: @textColor;
+		background-color: darken(@backgroundColor, 8%);
+		border-color: darken(@borderColor, 8%);
+	}
+
+	&:active{
+		background-image: none;
+	}
+}

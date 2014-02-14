@@ -1,0 +1,94 @@
+@import "../core";
+@import "list-group.variables";
+/********************************************
+	ListGroup Lego
+********************************************/
+
+// When writing Lego's we use BEM naming conventions like the SUIT project
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+// ComponentName
+// ComponentName--modifierName
+// ComponentName-descendantName
+// ComponentName.is-stateOfComponent
+
+// -------------------- Core LEGO --------------------
+.ListGroup{
+	padding-left: 0; // reset padding because ul and ol
+}
+
+// -------------------- Modifiers --------------------
+
+// Simple version of ListGroup = without rounded corners
+.ListGroup--simple{
+	.ListGroup-item{
+		// Remove rounded for simple
+		&:first-child {
+			.border-top-radius(0);
+		}
+		&:last-child {
+			.border-bottom-radius(0);
+		}
+	}
+}
+
+// -------------------- Descendants --------------------
+.ListGroup-item {
+	position: relative;
+	display: block;
+	color: @listGroupColor;
+
+	// Place the border on the list items and negative margin up for better styling
+	margin-bottom: -1px;
+	background-color: @listGroupBgColor;
+	border: 1px solid @listGroupBorderColor;
+
+	// Round the first and last items
+	&:first-child {
+		.border-top-radius(@listGroupBorderRadius);
+	}
+	&:last-child {
+		.border-bottom-radius(@listGroupBorderRadius);
+	}
+
+	// Hover state
+	&:hover,
+	&:focus
+	{
+		cursor: pointer;
+		background-color: @listGroupBgColorHover;
+	}
+}
+
+// The Heading itself (like h4.ListGroup-itemHeading)
+.ListGroup-itemHeading{
+	color: @listGroupHeadingColor;
+}
+
+// Text element
+.ListGroup-itemText{
+
+}
+
+// -------------------- State classes --------------------
+.ListGroup-item{
+	// Active class on item itself, not parent
+	&.is-active,
+	&.is-active:hover,
+	&.is-active:focus
+	{
+		//z-index: 2; // Place active items above their siblings for proper border styling
+		color: @listGroupColorActive;
+		background-color: @listGroupBgColorActive;
+		border-color: @listGroupBorderColorActive;
+
+		.ListGroup-itemHeading{
+			color: inherit; // Force color to inherit for custom content
+		}
+
+		.ListGroup-itemText{
+
+		}
+	}
+}

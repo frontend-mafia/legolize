@@ -1,0 +1,116 @@
+@import "../mixins";
+@import "button.variables";
+@import "button.mixins";
+/********************************************
+	Buttons
+********************************************/
+
+// When writing Lego's we use BEM naming conventions like the SUIT project
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+// ComponentName
+// ComponentName--modifierName
+// ComponentName-descendantName
+// ComponentName.is-stateOfComponent
+
+// -------------------- Core LEGO --------------------
+.Button() {
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	white-space: nowrap;
+	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+	border: 1px solid transparent;
+	padding: 0;
+	.border-radius(@buttonBorderRadius);
+
+	&:focus {
+		.tab-focus();
+	}
+
+	&:active,
+	&.active {
+		outline: 0;
+		background-image: none;
+		.box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+	}
+
+	&[disabled],
+	fieldset[disabled] &
+	{
+		cursor: not-allowed;
+		pointer-events: none; // Future-proof disabling of clicks
+		.opacity(.65);
+		.box-shadow(none);
+	}
+}
+
+// -------------------- Modifiers --------------------
+.Button--block() {
+	display: block;
+	width: 100%;
+}
+
+.Button--default() {
+	.buttonVariant(@buttonDefaultTextColor, @buttonDefaultBgColor, @buttonDefaultBorderColor);
+}
+
+// example: next buttons
+.Button--primary() {
+	.buttonVariant(@buttonPrimaryTextColor, @buttonPrimaryBgColor, @buttonPrimaryBorderColor);
+}
+
+// example: back buttons
+.Button--secondary() {
+	.buttonVariant(@buttonSecondaryTextColor, @buttonSecondaryBgColor, @buttonSecondaryBorderColor);
+}
+
+// example: save or final submit button
+.Button--success() {
+	.buttonVariant(@buttonSuccessTextColor, @buttonSuccessBgColor, @buttonSuccessBorderColor);
+}
+
+// example: delete button
+.Button--danger() {
+	.buttonVariant(@buttonDangerTextColor, @buttonDangerBgColor, @buttonDangerBorderColor);
+}
+
+// Call to action example: confirm buttons
+.Button--cta() {
+
+}
+
+// -------------------- Size Modifiers --------------------
+.Button--xs() {
+
+}
+
+.Button--sm() {
+
+}
+
+.Button--md() {
+
+}
+
+.Button--lg() {
+
+}
+
+.Button--xl() {
+
+}
+
+.Button--huge() {
+
+}
+
+// -------------------- Descendants --------------------
+
+
+
+
+
+// -------------------- States --------------------
