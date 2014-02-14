@@ -1,5 +1,16 @@
 // -------------------- Buttons mixins --------------------
 
+
+
+// WebKit-style focus
+.buttonFocus() {
+	// Default
+	outline: thin dotted #333;
+	// WebKit
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
 // Button variants
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
