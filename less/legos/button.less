@@ -1,6 +1,6 @@
-@import "../core";
-@import "button.variables.less";
-@import "button.mixins.less";
+@import "../mixins";
+@import "button.variables";
+@import "button.mixins";
 /********************************************
 	Buttons
 ********************************************/
@@ -15,7 +15,7 @@
 // ComponentName.is-stateOfComponent
 
 // -------------------- Core LEGO --------------------
-.Button {
+.Button() {
 	display: inline-block;
 	text-align: center;
 	vertical-align: middle;
@@ -48,62 +48,62 @@
 }
 
 // -------------------- Modifiers --------------------
-.Button--block {
+.Button--block() {
 	display: block;
 	width: 100%;
 }
 
-.Button--default {
+.Button--default() {
 	.buttonVariant(@buttonDefaultTextColor, @buttonDefaultBgColor, @buttonDefaultBorderColor);
 }
 
 // example: next buttons
-.Button--primary {
+.Button--primary() {
 	.buttonVariant(@buttonPrimaryTextColor, @buttonPrimaryBgColor, @buttonPrimaryBorderColor);
 }
 
 // example: back buttons
-.Button--secondary {
+.Button--secondary() {
 	.buttonVariant(@buttonSecondaryTextColor, @buttonSecondaryBgColor, @buttonSecondaryBorderColor);
 }
 
 // example: save or final submit button
-.Button--success {
+.Button--success() {
 	.buttonVariant(@buttonSuccessTextColor, @buttonSuccessBgColor, @buttonSuccessBorderColor);
 }
 
 // example: delete button
-.Button--danger {
+.Button--danger() {
 	.buttonVariant(@buttonDangerTextColor, @buttonDangerBgColor, @buttonDangerBorderColor);
 }
 
 // Call to action example: confirm buttons
-.Button--cta {
+.Button--cta() {
 
 }
 
 // -------------------- Size Modifiers --------------------
-.Button--xs {
+.Button--xs() {
 
 }
 
-.Button--sm {
+.Button--sm() {
 
 }
 
-.Button--md {
+.Button--md() {
 
 }
 
-.Button--lg {
+.Button--lg() {
 
 }
 
-.Button--xl {
+.Button--xl() {
 
 }
 
-.Button--huge {
+.Button--huge() {
 
 }
 
