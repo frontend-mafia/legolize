@@ -1,0 +1,148 @@
+//********************************************
+//	Legolize baseline - mixins
+//********************************************/
+
+// -------------------- Font --------------------
+
+.line-height(@lineheightUnits) {
+	line-height: (@baseline * @lineheightUnits);
+}
+
+.line-height-calculated(@fontSize, @baseline: @baseline, @increaseUnitsBy: 1) {
+	line-height: @baseline * (ceil(@fontSize / @baseline) + @increaseUnitsBy);
+}
+
+.font-size(@fontSizeUnits) {
+	font-size: (@baseline * @fontSizeUnits);
+}
+
+.make-text-size(@fontSize) {
+	font-size: @fontSize;
+	.line-height-calculated(@fontSize);
+}
+
+// -------------------- Dimensions --------------------
+.height(@baselineUnits) {
+	height: @baseline * @baselineUnits;
+}
+
+.min-height(@baselineUnits) {
+	min-height: @baseline * @baselineUnits;
+}
+
+.width(@baselineUnits) {
+	width: @baseline * @baselineUnits;
+}
+
+.max-height(@baselineUnits) {
+	max-height: @baseline * @baselineUnits;
+}
+
+// -------------------- Margin --------------------
+.margin(@baselineUnits) {
+	margin: @baseline * @baselineUnits;
+}
+
+.margin-top(@baselineUnits) {
+	margin-top: @baseline * @baselineUnits;
+}
+
+.margin-bottom(@baselineUnits) {
+	margin-bottom: @baseline * @baselineUnits;
+}
+
+// -------------------- Padding --------------------
+.padding(@baselineUnits) {
+	padding: @baseline * @baselineUnits;
+}
+
+.padding-top(@baselineUnits) {
+	padding-top: @baseline * @baselineUnits;
+}
+
+.padding-bottom(@baselineUnits) {
+	padding-bottom: @baseline * @baselineUnits;
+}
+
+.padding-left(@baselineUnits) {
+	padding-left: @baseline * @baselineUnits;
+}
+
+.padding-right(@baselineUnits) {
+	padding-right: @baseline * @baselineUnits;
+}
+
+// -------------------- Position --------------------
+.top(@baselineUnits) {
+	.top(@baselineUnits, 0);
+}
+
+.top(@baselineUnits, @addOn) {
+	top: (@baseline * @baselineUnits) + @addOn;
+}
+
+.bottom(@baselineUnits) {
+	bottom: @baseline * @baselineUnits;
+}
+
+.baseline(@units) {
+	#baseline > .core > .baseline(@units);
+}
+
+.baselineTop(@units) {
+	#baseline > .core > .baselineTop(@units);
+}
+
+.baselineBottom(@units) {
+	#baseline > .core > .baselineBottom(@units);
+}
+
+.baselineHeight(@units) {
+	#baseline > .core > .baselineHeight(@units);
+}
+
+#baseline {
+	.core (@units) {
+
+		.baselineX (@index) when (@index > 0) {
+			.baseline-@{index} {
+				.baseline(@index);
+			}
+			.baseline-t-@{index} {
+				.baselineTop(@index);
+			}
+			.baseline-b-@{index} {
+				.baselineBottom(@index);
+			}
+			.baseline-h-@{index} {
+				.baselineHeight(@index);
+			}
+			.lines-@{index} {
+				.lines(@index);
+			}
+			.baselineX(@index - 1);
+		}
+		.baselineX (0) {
+		}
+
+		.baseline (@nr) {
+			.margin-top(@nr);
+			.margin-bottom(@nr);
+		}
+		.baselineTop (@nr) {
+			.margin-top(@nr);
+		}
+		.baselineBottom (@nr) {
+			.margin-bottom(@nr);
+		}
+		.baselineHeight (@nr) {
+			.height(@nr);
+		}
+		.lines (@nr) {
+			.min-height(@nr);
+		}
+
+		// generate .spanX and .offsetX
+		.baselineX (@units);
+	}
+}
