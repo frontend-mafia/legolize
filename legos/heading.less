@@ -1,0 +1,62 @@
+@import "../core.less";
+
+//********************************************
+//	Headings Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions like the SUIT project
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+// ComponentName
+// ComponentName--modifierName
+// ComponentName-descendantName
+// ComponentName.is-stateOfComponent
+
+// -------------------- Variables --------------------
+@headingSizeOne: 32px;
+@headingSizeTwo: 30px;
+@headingSizeThree: 24px;
+@headingSizeFour: 21px;
+@headingSizeFive: 18px;
+@headingSizeSix: 16px;
+
+// -------------------- Core LEGO --------------------
+.Heading () {
+
+}
+
+// -------------------- Modifiers --------------------
+.Heading--one () {
+	font-size: @headingSizeOne;
+	.line-height-calculated(@headingSizeOne);
+}
+
+.Heading--two () {
+	font-size: @headingSizeTwo;
+	.line-height-calculated(@headingSizeTwo);
+}
+
+.Heading--three () {
+	font-size: @headingSizeThree;
+	.line-height-calculated(@headingSizeThree);
+}
+
+.Heading--four () {
+	font-size: @headingSizeFour;
+	.line-height-calculated(@headingSizeFour);
+}
+
+.Heading--five () {
+	font-size: @headingSizeFive;
+	.line-height-calculated(@headingSizeFive);
+}
+
+.Heading--six () {
+	font-size: @headingSizeSix;
+	.line-height-calculated(@headingSizeSix);
+}
+
+// -------------------- Helper mixins --------------------
+
+
