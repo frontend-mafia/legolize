@@ -8,7 +8,7 @@
 	line-height: (@baseline * @lineheightUnits);
 }
 
-.line-height-calculated(@fontSize, @baseline: @baseline, @increaseUnitsBy: 1) {
+.lineHeight-calculated(@fontSize, @baseline: @baseline, @increaseUnitsBy: 0) {
 	line-height: @baseline * (ceil(@fontSize / @baseline) + @increaseUnitsBy);
 }
 
@@ -16,9 +16,9 @@
 	font-size: (@baseline * @fontSizeUnits);
 }
 
-.make-text-size(@fontSize) {
+.make-textSize(@fontSize) {
 	font-size: @fontSize;
-	.line-height-calculated(@fontSize);
+	.lineHeight-calculated(@fontSize);
 }
 
 // -------------------- Dimensions --------------------

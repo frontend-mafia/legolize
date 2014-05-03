@@ -1,5 +1,4 @@
 @import "../core.less";
-@import "list-group.variables.less";
 
 /********************************************
 	ListGroup Lego
@@ -9,65 +8,74 @@
 // Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the Lego unless it's configurable
 // The purpose of these Lego's is to have them as trimmed as possible and themed later
 
+// Naming conventions:
 // ComponentName
 // ComponentName--modifierName
 // ComponentName-descendantName
 // ComponentName.is-stateOfComponent
+// Variable names:
+// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
 // Default link color
-@listGroupColor: inherit;
-@listGroupColorActive: blue;
+@listGroup-fontColor: inherit;
+@listGroup-fontColorActive: blue;
+
+// Margin / Padding
+@listGroup-padding: 0;
 
 // Used when header and text are together
-@listGroupHeadingColor: #333;
-@listGroupTextColor: #333;
+@listGroup-itemHeading-fontColor: #333;
+@listGroup-fontColor: #333;
 
 // Background on items
-@listGroupBgColor: #fff;
-@listGroupBgColorHover: #f5f5f5;
-@listGroupBgColorActive: #f5f5f5;
+@listGroupItem-bgColor: #fff;
+@listGroupItem-bgColorHover: #f5f5f5;
+@listGroupItem-bgColorActive: #f5f5f5;
 
 // Borders
-@listGroupBorderColor: #ddd;
-@listGroupBorderColorActive: #ddd;
-@listGroupBorderRadius: 5px;
+@listGroupItem-borderWidth: 1px;
+@listGroupItem-borderStyle: solid;
+@listGroupItem-borderColor: #ddd;
+@listGroupItem-borderColorActive: #ddd;
+@listGroupItem-borderRadius: 5px;
 
 // -------------------- Core LEGO --------------------
 .ListGroup () {
-	padding-left: 0; // reset padding because ul and ol
+	padding: @listGroup-padding;
 }
 
 // -------------------- Core descendants --------------------
 .ListGroup-item () {
 	position: relative;
 	display: block;
-	color: @listGroupColor;
+	color: @listGroup-fontColor;
+	background-color: @listGroupItem-bgColor;
 
 	// Place the border on the list items and negative margin up for better styling
-	margin-bottom: -1px;
-	background-color: @listGroupBgColor;
-	border: 1px solid @listGroupBorderColor;
+	margin-bottom: -@listGroupItem-borderWidth;
+	border: @listGroupItem-borderWidth @listGroupItem-borderStyle @listGroupItem-borderColor;
 
 	// Round the first and last items
 	&:first-child {
-		.border-top-radius(@listGroupBorderRadius);
+		.borderTop-radius(@listGroupItem-borderRadius);
 	}
 	&:last-child {
-		.border-bottom-radius(@listGroupBorderRadius);
+		.borderBottom-radius(@listGroupItem-borderRadius);
 	}
 
 	// Hover state
 	&:hover,
 	&:focus {
 		cursor: pointer;
-		background-color: @listGroupBgColorHover;
+		background-color: @listGroupItem-bgColorHover;
 	}
 }
 
 // The Heading itself (like h4.ListGroup-itemHeading)
 .ListGroup-itemHeading () {
-	color: @listGroupHeadingColor;
+	color: @listGroup-itemHeading-fontColor;
 }
 
 // Text element
@@ -82,9 +90,9 @@
 	&.is-active:hover,
 	&.is-active:focus {
 		//z-index: 2; // Place active items above their siblings for proper border styling
-		color: @listGroupColorActive;
-		background-color: @listGroupBgColorActive;
-		border-color: @listGroupBorderColorActive;
+		color: @listGroup-fontColorActive;
+		background-color: @listGroupItem-bgColorActive;
+		border-color: @listGroupItem-borderColorActive;
 
 		.ListGroup-itemHeading {
 			color: inherit; // Force color to inherit for custom content
@@ -103,10 +111,10 @@
 	.ListGroup-item {
 		// Remove rounded for simple
 		&:first-child {
-			.border-top-radius(0);
+			.borderTop-radius(0);
 		}
 		&:last-child {
-			.border-bottom-radius(0);
+			.borderBottom-radius(0);
 		}
 	}
 }

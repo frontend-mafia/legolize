@@ -14,73 +14,89 @@ Two quick start options are available:
 - Clone the repo: 
 
     	via https    
-      	$ git clone https://YOUR-USERNAME@bitbucket.org/meniga/legolize.git    
+        	$ git clone https://YOUR-USERNAME@bitbucket.org/meniga/legolize.git
+        	     
+        via ssh    
+        	$ git clone git@bitbucket.org:meniga/legolize.git
     
-      	or
-    
-      	via ssh    
-      	$ git clone git@bitbucket.org:meniga/legolize.git
-
-   	
+  	
 - Install with [Bower](http://bower.io): 
     
         $ bower install legolize. (not implemented yet)
 
 
-### Naming convention
-
-	u-utilityName
-	ComponentName
-	ComponentName--modifierName
-	ComponentName-descendantName
-	ComponentName.is-stateOfComponent
-	v1-*
-	js-someName
-	ui-LayoutComponentName
-	fn-FunctionalComponentName
-	
-
-
-#### Layout classes
-
-	ui-Page
-	ui-PageHeader
-	ui-PageNav
-	ui-PageFooter
-
-	ui-Section
-	ui-Section-content
-	ui-Section-container
-
-
-_Q: What defines a layout class (ui-)?_
-
-It's a class used for commonly used layout classes.
-
-#### Functionality specific classes
-
-	fn-MyFunction
-	fn-TransactionTable
-	fn-SearchForm
-
 ---
 
-#### Choosing names for classes
+## Naming convention
+
+### Class names
+
+	LegoName
+	LegoName--modifierName
+	LegoName-descendantName
+	LegoName.is-stateOfLego
+	v1-*
+	js-someName
+	ui-LayoutLegoName
+	fn-FunctionalLegoName
+	u-utilityName
+
+
+### Variable names
+
+    @legoModifier-descendand-property 
+	
+example:
+
+    @buttonPrimary-borderColor: #333;
+    @listGroup-itemHeading-fontSize
+
+
+---
+	
+## Examples
+
+### Lego
+
+    .Heading
+    .Heading--one 
+    
+    .ListGroup-itemHeader
+    .ListGroup-item.is-active
+
+
+### Layout classes
+
+Layout classes are different from standard Lego's, they are primary used to descibe a specific layout unit.
+There are no Layout classes in this core project since they are not supposed to be used here.
+
+This is just to demonstrate naming conventions.
+
+	.ui-Page
+	.ui-PageHeader
+	.ui-PageNav
+	.ui-PageFooter
+
+	.ui-Section
+	.ui-Section-content
+	.ui-Section-container
+
+
+### Choosing names for classes
 
 _Q: What do I have to think about when writing class names?_
 
-###### All LEGO's should be named singular.
+#### All LEGO's should be named in a singular fashion:
+
+	.Button		= Correct
+	.Buttons	= Wrong
+
+
+It's also a good idea to name the classes by describing the visual reference to the object but not it's functionality since you might want to use the Lego's elsewhere where it doesn't make sense to have the functionality name.
 
 Example:
 
-	Correct: .Button
-	Wrong:   .Buttons
-
-###### It might be a good idea to name the classes to describe the visual reference to the object but not it's functionality
-
-Example:
-
-	Correct: .Button--panel
-	Wrong: Button--save
+	.Button--primary 	= Correct
+	.Button--search 	= Wrong
 
 

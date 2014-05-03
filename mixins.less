@@ -1,5 +1,6 @@
-// Utilities
-// -------------------------
+//********************************************
+//	Global mixins
+//********************************************/
 
 // Clearfix
 // Source: http://nicolasgallagher.com/micro-clearfix-hack/
@@ -11,7 +12,7 @@
 //    that are clearfixed.
 // 2. The use of `table` rather than `block` is only necessary if using
 //    `:before` to contain the top-margins of child elements.
-.clearfix() {
+.clearfix () {
 	&:before,
 	&:after {
 		content: " "; /* 1 */
@@ -22,49 +23,12 @@
 	}
 }
 
-// WebKit-style focus
-.tab-focus() {
-	// Default
-	outline: thin dotted #333;
-	// WebKit
-	outline: 5px auto -webkit-focus-ring-color;
-	outline-offset: -2px;
-}
-
-// CSS3 PROPERTIES
-// --------------------------------------------------
-
-.border-radius(@radius) {
-	border-radius: @radius;
-}
-
-// Single side border-radius
-.border-top-radius(@radius) {
-	border-top-right-radius: @radius;
-	border-top-left-radius: @radius;
-}
-
-.border-right-radius(@radius) {
-	border-bottom-right-radius: @radius;
-	border-top-right-radius: @radius;
-}
-
-.border-bottom-radius(@radius) {
-	border-bottom-right-radius: @radius;
-	border-bottom-left-radius: @radius;
-}
-
 // Opacity
-.opacity(@opacity) {
+.opacity (@opacity) {
 	opacity: @opacity;
 	// IE8 filter
 	@opacity-ie: (@opacity * 100);
 	filter: ~"alpha(opacity=@{opacity-ie})";
 }
 
-// Drop shadows
-.box-shadow(@shadow) {
-	-webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
-	box-shadow: @shadow;
-}
 

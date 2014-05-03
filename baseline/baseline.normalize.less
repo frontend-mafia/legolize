@@ -1,6 +1,6 @@
 @import (less) "../vendor/normalize-css/normalize.css";
 @import "baseline.variables.less";
-
+@import "baseline.mixins.less";
 /********************************************
 	Legolize baseline - normalize
 	Aligning elements to vertical baseline
@@ -23,6 +23,37 @@ body {
 	}
 }
 
+/******************** Set initial font sizes ********************/
+h1 {
+	font-size: @baselineHeadingOne-fontSize;
+	.lineHeight-calculated(@baselineHeadingOne-fontSize);
+}
+
+h2 {
+	font-size: @baselineHeadingTwo-fontSize;
+	.lineHeight-calculated(@baselineHeadingTwo-fontSize);
+}
+
+h3 {
+	font-size: @baselineHeadingThree-fontSize;
+	.lineHeight-calculated(@baselineHeadingThree-fontSize);
+}
+
+h4 {
+	font-size: @baselineHeadingFour-fontSize;
+	.lineHeight-calculated(@baselineHeadingFour-fontSize);
+}
+
+h5 {
+	font-size: @baselineHeadingFive-fontSize;
+	.lineHeight-calculated(@baselineHeadingFive-fontSize);
+}
+
+h6 {
+	font-size: @baselineHeadingSix-fontSize;
+	.lineHeight-calculated(@baselineHeadingSix-fontSize);
+}
+
 /******************** Common objects ********************/
 p,
 pre,
@@ -34,7 +65,7 @@ dl,
 dialog,
 time {
 	position: relative;
-	top: @baselineOffset;
+	top: @baseline-topOffset;
 	font-size: inherit; // do we really want to set this here?
 	line-height: inherit;
 	margin: 0;
@@ -43,12 +74,12 @@ time {
 }
 
 small {
-	font-size: @baseFontSize - 2;
+	font-size: @baseline-fontSize - 2;
 }
 
 abbr, code, kbd,
 samp, small, var {
-	line-height: @baseLineHeight;
+	line-height: @baseline-lineHeight;
 }
 
 li ul,
@@ -69,23 +100,23 @@ li {
 form,
 legend,
 label {
-	font-size: @baseFontSize;
-	line-height: @baseLineHeight;
+	font-size: @baseline-fontSize;
+	line-height: @baseline-lineHeight;
 }
 
 legend {
 	position: relative;
-	top: @baselineOffset;
+	top: @baseline-topOffset;
 }
 
 table {
-	font-size: @baseFontSize;
+	font-size: @baseline-fontSize;
 }
 
 caption {
 	position: relative;
-	font-size: @baseFontSize;
-	line-height: @baseLineHeight;
+	font-size: @baseline-fontSize;
+	line-height: @baseline-lineHeight;
 }
 
 hr {

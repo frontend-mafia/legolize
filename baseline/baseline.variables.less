@@ -2,8 +2,23 @@
 //	Legolize baseline - variables
 //********************************************/
 
-@baseline: 6px; // the baseline unit
-@baselineOffset: 3px; // default offset for 14/24px font-size/line-height
+// Naming conventions:
+// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
-@baseFontSize: 14px;
-@baseLineHeight: 24px;
+
+@baseline: 6px; // the baseline unit
+@baseline-topOffset: 3px; // default offset for 14/24px font-size/line-height
+
+@baseline-fontSize: 14px;
+@baseline-lineHeight: 24px;
+
+// -------------------- Variables --------------------
+// Just basic sizes used initially so baseline works out of the box
+// these will probably be overwritten somewhere else
+@baselineHeadingOne-fontSize: 32px;
+@baselineHeadingTwo-fontSize: 30px;
+@baselineHeadingThree-fontSize: 24px;
+@baselineHeadingFour-fontSize: 21px;
+@baselineHeadingFive-fontSize: 18px;
+@baselineHeadingSix-fontSize: 16px;

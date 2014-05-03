@@ -7,18 +7,22 @@
 // Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
 // The purpose of these Lego's is to have them as trimmed as possible and themed later
 
+// Naming conventions:
 // ComponentName
 // ComponentName--modifierName
 // ComponentName-descendantName
 // ComponentName.is-stateOfComponent
+// Variable names:
+// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@headingSizeOne: 32px;
-@headingSizeTwo: 30px;
-@headingSizeThree: 24px;
-@headingSizeFour: 21px;
-@headingSizeFive: 18px;
-@headingSizeSix: 16px;
+@headingOne-fontSize: 32px;
+@headingTwo-fontSize: 30px;
+@headingThree-fontSize: 24px;
+@headingFour-fontSize: 21px;
+@headingFive-fontSize: 18px;
+@headingSix-fontSize: 16px;
 
 // -------------------- Core LEGO --------------------
 .Heading () {
@@ -27,33 +31,33 @@
 
 // -------------------- Modifiers --------------------
 .Heading--one () {
-	font-size: @headingSizeOne;
-	.line-height-calculated(@headingSizeOne);
+	font-size: @headingOne-fontSize;
+	.lineHeight-calculated(@headingOne-fontSize);
 }
 
 .Heading--two () {
-	font-size: @headingSizeTwo;
-	.line-height-calculated(@headingSizeTwo);
+	font-size: @headingTwo-fontSize;
+	.lineHeight-calculated(@headingTwo-fontSize);
 }
 
 .Heading--three () {
-	font-size: @headingSizeThree;
-	.line-height-calculated(@headingSizeThree);
+	font-size: @headingThree-fontSize;
+	.lineHeight-calculated(@headingThree-fontSize);
 }
 
 .Heading--four () {
-	font-size: @headingSizeFour;
-	.line-height-calculated(@headingSizeFour);
+	font-size: @headingFour-fontSize;
+	.lineHeight-calculated(@headingFour-fontSize);
 }
 
 .Heading--five () {
-	font-size: @headingSizeFive;
-	.line-height-calculated(@headingSizeFive);
+	font-size: @headingFive-fontSize;
+	.lineHeight-calculated(@headingFive-fontSize);
 }
 
 .Heading--six () {
-	font-size: @headingSizeSix;
-	.line-height-calculated(@headingSizeSix);
+	font-size: @headingSix-fontSize;
+	.lineHeight-calculated(@headingSix-fontSize);
 }
 
 // -------------------- Helper mixins --------------------
