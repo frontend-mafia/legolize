@@ -1,8 +1,9 @@
+@import "../core.less";
 @import "button.variables.less";
 @import "button.mixins.less";
-/********************************************
-	Buttons
-********************************************/
+//********************************************
+//	Buttons
+//********************************************/
 
 // When writing Lego's we use BEM naming conventions like the SUIT project
 // Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
@@ -21,8 +22,8 @@
 	cursor: pointer;
 	white-space: nowrap;
 	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-	border: 1px solid transparent;
-	padding: 0;
+	border: @buttonBorderWidth @buttonBorderStyle @buttonBorderColor;
+	padding: @buttonPadding;
 	.border-radius(@buttonBorderRadius);
 
 	&:focus,
@@ -110,9 +111,5 @@
 }
 
 // -------------------- Descendants --------------------
-
-
-
-
 
 // -------------------- States --------------------
