@@ -19,7 +19,7 @@ Two quick start options are available:
       	or
     
       	via ssh    
-      	$ git clone https://YOUR-USERNAME@bitbucket.org/meniga/legolize.git
+      	$ git clone git@bitbucket.org:meniga/legolize.git
 
    	
 - Install with [Bower](http://bower.io): 
