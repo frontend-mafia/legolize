@@ -1,19 +1,33 @@
-# Meniga's Legolize Less/Css framework
+# Legolize LESS framework
 
-_Q: What is Legolize?_
+Legolize is a LESS framework built up on BEM methodology inspired by the [SUIT Framework](https://github.com/suitcss/suit/).
 
-Legolize is a LESS framework built up on BEM methodology inspired by the SUIT framework.
+This is the core project where all default Lego's are defined.
+
+To get a scaffolding project that uses this, go to [legolize-base](https://bitbucket.org/meniga/legolize-base) and [legolize-legos](https://bitbucket.org/meniga/legolize-legos)
 
 
 ## Quick start
 
 Two quick start options are available:
 
-- Clone the repo: `git clone https://haukurmar@bitbucket.org/meniga/legolize.git`.
-- Install with [Bower](http://bower.io): `bower install legolize`. (not implemented yet)
+- Clone the repo: 
+
+    	via https    
+      	$ git clone https://YOUR-USERNAME@bitbucket.org/meniga/legolize.git    
+    
+      	or
+    
+      	via ssh    
+      	$ git clone https://YOUR-USERNAME@bitbucket.org/meniga/legolize.git
+
+   	
+- Install with [Bower](http://bower.io): 
+    
+        $ bower install legolize. (not implemented yet)
 
 
-### SUIT defaults
+### Naming convention
 
 	u-utilityName
 	ComponentName
@@ -22,18 +36,9 @@ Two quick start options are available:
 	ComponentName.is-stateOfComponent
 	v1-*
 	js-someName
-
-[SUIT on GitHub](https://github.com/suitcss/suit/tree/master/doc)
-
----
-
-# Legolize improvements on SUIT
-
-We have defined the following types for improvements
-
-* Layout classes
-* Function classes
-* Angular directives classes
+	ui-LayoutComponentName
+	fn-FunctionalComponentName
+	
 
 
 #### Layout classes
@@ -60,14 +65,6 @@ It's a class used for commonly used layout classes.
 
 ---
 
-#### For AngularJs directives
-
-	dir-SomeDirective
-	dir-CategoryTree
-	dir-TransactionRow
-
----
-
 #### Choosing names for classes
 
 _Q: What do I have to think about when writing class names?_
@@ -79,7 +76,7 @@ Example:
 	Correct: .Button
 	Wrong:   .Buttons
 
-###### Try to name the class to describe the visual reference to the object but not it's functionality
+###### It might be a good idea to name the classes to describe the visual reference to the object but not it's functionality
 
 Example:
 
