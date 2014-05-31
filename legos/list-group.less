@@ -59,10 +59,10 @@
 
 	// Round the first and last items
 	&:first-child {
-		.borderTop-radius(@listGroupItem-borderRadius);
+		.borderRadius--top(@listGroupItem-borderRadius);
 	}
 	&:last-child {
-		.borderBottom-radius(@listGroupItem-borderRadius);
+		.borderRadius--bottom(@listGroupItem-borderRadius);
 	}
 
 	// Hover state
@@ -111,10 +111,10 @@
 	.ListGroup-item {
 		// Remove rounded for simple
 		&:first-child {
-			.borderTop-radius(0);
+			.borderRadius--top(0);
 		}
 		&:last-child {
-			.borderBottom-radius(0);
+			.borderRadius--bottom(0);
 		}
 	}
 }
