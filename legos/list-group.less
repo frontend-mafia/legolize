@@ -71,20 +71,8 @@
 		cursor: pointer;
 		background-color: @listGroupItem-bgColorHover;
 	}
-}
 
-// The Heading itself (like h4.ListGroup-itemHeading)
-.ListGroup-itemHeading () {
-	color: @listGroup-itemHeading-fontColor;
-}
-
-// Text element
-.ListGroup-itemText () {
-
-}
-
-// -------------------- Core state classes --------------------
-.ListGroup-item () {
+	// ---------- State classes ----------
 	// Active class on item itself, not parent
 	&.is-active,
 	&.is-active:hover,
@@ -102,6 +90,16 @@
 
 		}
 	}
+}
+
+// The Heading itself (like h4.ListGroup-itemHeading)
+.ListGroup-itemHeading () {
+	color: @listGroup-itemHeading-fontColor;
+}
+
+// Text element
+.ListGroup-itemText () {
+
 }
 
 // -------------------- Modifiers --------------------
