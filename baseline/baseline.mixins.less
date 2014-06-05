@@ -3,146 +3,145 @@
 //********************************************/
 
 // -------------------- Font --------------------
-
-.line-height(@lineheightUnits) {
-	line-height: (@baseline * @lineheightUnits);
+.line-height(@units) when not (ispixel(@units)) {
+	line-height: @baseline * @units;
 }
 
+.line-height(@units) when (ispixel(@units)) {
+	line-height: @baseline * (round(@units / @baseline));
+}
+
+.font-size(@units) when not (ispixel(@units)) {
+	font-size: @baseline * @units;
+}
+
+.font-size(@units) when (ispixel(@units)) {
+	font-size: @baseline * (round(@units / @baseline));
+}
+
+// Deprecated
 .lineHeight-calculated(@fontSize, @baseline: @baseline, @increaseUnitsBy: 0) {
 	line-height: @baseline * (ceil(@fontSize / @baseline) + @increaseUnitsBy);
 }
 
-.font-size(@fontSizeUnits) {
-	font-size: (@baseline * @fontSizeUnits);
-}
-
+// Deprecated
 .make-textSize(@fontSize) {
 	font-size: @fontSize;
 	.lineHeight-calculated(@fontSize);
 }
 
 // -------------------- Dimensions --------------------
-.height(@baselineUnits) {
-	height: @baseline * @baselineUnits;
+.height(@units) when not (ispixel(@units)) {
+	height: @baseline * @units;
 }
 
-.min-height(@baselineUnits) {
-	min-height: @baseline * @baselineUnits;
+.height(@units) when (ispixel(@units)) {
+	height: @baseline * (round(@units / @baseline));
 }
 
-.width(@baselineUnits) {
-	width: @baseline * @baselineUnits;
+.min-height(@units) when not (ispixel(@units)) {
+	min-height: @baseline * @units;
 }
 
-.max-height(@baselineUnits) {
-	max-height: @baseline * @baselineUnits;
+.min-height(@units) when (ispixel(@units)) {
+	min-height: @baseline * (round(@units / @baseline));
+}
+
+.max-height(@units) when not (ispixel(@units)) {
+	max-height: @baseline * @units;
+}
+
+.max-height(@units) when (ispixel(@units)) {
+	max-height: @baseline * (round(@units / @baseline));
+}
+
+.width(@units) when not (ispixel(@units)) {
+	width: @baseline * @units;
+}
+
+.width(@units) when (ispixel(@units)) {
+	width: @baseline * (round(@units / @baseline));
 }
 
 // -------------------- Margin --------------------
-.margin(@baselineUnits) {
-	margin: @baseline * @baselineUnits;
+.margin(@units) when not (ispixel(@units)) {
+	margin: @baseline * @units;
 }
 
-.margin-top(@baselineUnits) {
-	margin-top: @baseline * @baselineUnits;
+.margin(@units) when (ispixel(@units)) {
+	margin: @baseline * (round(@units / @baseline));
 }
 
-.margin-bottom(@baselineUnits) {
-	margin-bottom: @baseline * @baselineUnits;
+.margin-top(@units) when not (ispixel(@units)) {
+	margin-top: @baseline * @units;
+}
+
+.margin-top(@units) when (ispixel(@units)) {
+	margin-top: @baseline * (round(@units / @baseline));
+}
+
+.margin-bottom(@units) when not (ispixel(@units)) {
+	margin-bottom: @baseline * @units;
+}
+
+.margin-bottom(@units) when (ispixel(@units)) {
+	margin-bottom: @baseline * (round(@units / @baseline));
 }
 
 // -------------------- Padding --------------------
-.padding(@baselineUnits) {
-	padding: @baseline * @baselineUnits;
+.padding(@units) when not (ispixel(@units)) {
+	padding: @baseline * @units;
 }
 
-.padding-top(@baselineUnits) {
-	padding-top: @baseline * @baselineUnits;
+.padding(@units) when (ispixel(@units)) {
+	padding: @baseline * (round(@units / @baseline));
 }
 
-.padding-bottom(@baselineUnits) {
-	padding-bottom: @baseline * @baselineUnits;
+.padding-top(@units) when not (ispixel(@units)) {
+	padding-top: @baseline * @units;
 }
 
-.padding-left(@baselineUnits) {
-	padding-left: @baseline * @baselineUnits;
+.padding-top(@units) when (ispixel(@units)) {
+	padding-top: @baseline * (round(@units / @baseline));
 }
 
-.padding-right(@baselineUnits) {
-	padding-right: @baseline * @baselineUnits;
+.padding-bottom(@units) when not (ispixel(@units)) {
+	padding-bottom: @baseline * @units;
+}
+
+.padding-bottom(@units) when (ispixel(@units)) {
+	padding-bottom: @baseline * (round(@units / @baseline));
+}
+
+.padding-left(@units) when not (ispixel(@units)) {
+	padding-left: @baseline * @units;
+}
+
+.padding-left(@units) when (ispixel(@units)) {
+	padding-left: @baseline * (round(@units / @baseline));
+}
+
+.padding-right(@units) when not (ispixel(@units)) {
+	padding-right: @baseline * @units;
+}
+
+.padding-right(@units) when (ispixel(@units)) {
+	padding-right: @baseline * (round(@units / @baseline));
 }
 
 // -------------------- Position --------------------
-.top(@baselineUnits) {
-	.top(@baselineUnits, 0);
+.top(@units) when not (ispixel(@units)) {
+	top: (@baseline * @units);
 }
 
-.top(@baselineUnits, @addOn) {
-	top: (@baseline * @baselineUnits) + @addOn;
+.top(@units) when (ispixel(@units)) {
+	top: @baseline * (round(@units / @baseline));
 }
 
-.bottom(@baselineUnits) {
-	bottom: @baseline * @baselineUnits;
+.bottom(@units) when not (ispixel(@units)) {
+	bottom: (@baseline * @units);
 }
 
-.baseline(@units) {
-	#baseline > .core > .baseline(@units);
-}
-
-.baselineTop(@units) {
-	#baseline > .core > .baselineTop(@units);
-}
-
-.baselineBottom(@units) {
-	#baseline > .core > .baselineBottom(@units);
-}
-
-.baselineHeight(@units) {
-	#baseline > .core > .baselineHeight(@units);
-}
-
-#baseline {
-	.core (@units) {
-
-		.baselineX (@index) when (@index > 0) {
-			.baseline-@{index} {
-				.baseline(@index);
-			}
-			.baseline-t-@{index} {
-				.baselineTop(@index);
-			}
-			.baseline-b-@{index} {
-				.baselineBottom(@index);
-			}
-			.baseline-h-@{index} {
-				.baselineHeight(@index);
-			}
-			.lines-@{index} {
-				.lines(@index);
-			}
-			.baselineX(@index - 1);
-		}
-		.baselineX (0) {
-		}
-
-		.baseline (@nr) {
-			.margin-top(@nr);
-			.margin-bottom(@nr);
-		}
-		.baselineTop (@nr) {
-			.margin-top(@nr);
-		}
-		.baselineBottom (@nr) {
-			.margin-bottom(@nr);
-		}
-		.baselineHeight (@nr) {
-			.height(@nr);
-		}
-		.lines (@nr) {
-			.min-height(@nr);
-		}
-
-		// generate .spanX and .offsetX
-		.baselineX (@units);
-	}
+.bottom(@units) when (ispixel(@units)) {
+	bottom: @baseline * (round(@units / @baseline));
 }
