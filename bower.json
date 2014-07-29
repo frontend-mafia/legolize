@@ -4,6 +4,7 @@
 	"authors": [
 		"Haukur Már Böðvarsson <haukur@meniga.is>"
 	],
+	"main": "legolize.less",
 	"description": "Legolize is a LESS mixin framework built up on BEM methodology",
 	"keywords": [
 		"LESS",
