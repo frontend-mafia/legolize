@@ -44,11 +44,11 @@ Two quick start options are available:
 
 ### Variable names
 
-    @legoModifier-descendand-property 
+    @lego--modifier-descendand-property 
 	
 example:
 
-    @buttonPrimary-borderColor: #333;
+    @button--primary-borderColor: #333;
     @listGroup-itemHeading-fontSize
 
 
