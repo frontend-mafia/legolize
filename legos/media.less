@@ -31,22 +31,23 @@
 
 	// Object containers
 	.Media-object--left {
+		&:extend(#Media > .Media-object);
 		float: left;
 		//.margin-right-col(1);
 	}
 
 	.Media-object--right {
+		&:extend(#Media > .Media-object);
 		float: right;
 		//.margin-left-col(1);
 	}
 
 	// -------------------- Body --------------------
-	.Media-body {
-		display: block;
-	}
-
 	.Media-heading {
 
 	}
 
+	.Media-body {
+		display: block;
+	}
 }

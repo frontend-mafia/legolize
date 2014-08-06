@@ -1,8 +1,7 @@
 @import "../core.less";
-@import "button.variables.less";
-@import "button.mixins.less";
+
 //********************************************
-//	Button
+//	Button Core
 //********************************************/
 
 // When writing Lego's we use BEM naming conventions.
@@ -18,6 +17,46 @@
 // @legoModifier-property ex: @buttonPrimary-borderColor
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
+// -------------------- Variables --------------------
+@button-borderRadius: 5px;
+@button-borderWidth: 1px;
+@button-borderStyle: solid;
+@button-borderColor: transparent;
+@button-padding: 0 10px;
+@button-minHeightBaselineUnits: 6;
+
+// -------------------- Mixins --------------------
+
+// WebKit-style focus
+.buttonFocus() {
+	// Default
+	outline: thin dotted #333;
+	// WebKit
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+// Button variants
+// -------------------------
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+.buttonVariant(@textColor; @backgroundColor; @borderColor) {
+	color: @textColor;
+	background-color: @backgroundColor;
+	border-color: @borderColor;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: @textColor;
+		background-color: darken(@backgroundColor, 8%);
+		border-color: darken(@borderColor, 8%);
+	}
+
+	&:active {
+		background-image: none;
+	}
+}
 
 // -------------------- Core LEGO --------------------
 .Button() {
@@ -33,8 +72,7 @@
 	.min-height(@button-minHeightBaselineUnits);
 
 	&:focus,
-	&.is-focus
-	{
+	&.is-focus {
 		.buttonFocus();
 	}
 
@@ -42,80 +80,15 @@
 	&.is-active {
 		outline: 0;
 		background-image: none;
-		box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+		box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 	}
 
 	// Should this be in the core?
 	&[disabled],
-	fieldset[disabled] &
-	{
+	fieldset[disabled] & {
 		cursor: not-allowed;
 		pointer-events: none; // Future-proof disabling of clicks
 		.opacity(.65);
 		box-shadow: none;
 	}
 }
-
-// -------------------- Modifiers --------------------
-.Button--block() {
-	display: block;
-	width: 100%;
-}
-
-.Button--default() {
-	.buttonVariant(@buttonDefault-fontColor, @buttonDefault-bgColor, @buttonDefault-borderColor);
-}
-
-// example: next buttons
-.Button--primary() {
-	.buttonVariant(@buttonPrimary-fontColor, @buttonPrimary-bgColor, @buttonPrimary-borderColor);
-}
-
-// example: back buttons
-.Button--secondary() {
-	.buttonVariant(@buttonSecondary-fontColor, @buttonSecondary-bgColor, @buttonSecondary-borderColor);
-}
-
-// example: save or final submit button
-.Button--success() {
-	.buttonVariant(@buttonSuccess-fontColor, @buttonSuccess-bgColor, @buttonSuccess-borderColor);
-}
-
-// example: delete button
-.Button--danger() {
-	.buttonVariant(@buttonDanger-fontColor, @buttonDanger-bgColor, @buttonDanger-borderColor);
-}
-
-// Call to action example: confirm buttons
-.Button--cta() {
-
-}
-
-// -------------------- Size Modifiers --------------------
-.Button--xs() {
-
-}
-
-.Button--sm() {
-
-}
-
-.Button--md() {
-
-}
-
-.Button--lg() {
-
-}
-
-.Button--xl() {
-
-}
-
-.Button--huge() {
-
-}
-
-// -------------------- Descendants --------------------
-
-// -------------------- States --------------------
