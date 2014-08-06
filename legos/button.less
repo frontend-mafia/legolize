@@ -25,39 +25,6 @@
 @button-padding: 0 10px;
 @button-minHeightBaselineUnits: 6;
 
-// -------------------- Mixins --------------------
-
-// WebKit-style focus
-.buttonFocus() {
-	// Default
-	outline: thin dotted #333;
-	// WebKit
-	outline: 5px auto -webkit-focus-ring-color;
-	outline-offset: -2px;
-}
-
-// Button variants
-// -------------------------
-// Easily pump out default styles, as well as :hover, :focus, :active,
-// and disabled options for all buttons
-.buttonVariant(@textColor; @backgroundColor; @borderColor) {
-	color: @textColor;
-	background-color: @backgroundColor;
-	border-color: @borderColor;
-
-	&:hover,
-	&:focus,
-	&:active {
-		color: @textColor;
-		background-color: darken(@backgroundColor, 8%);
-		border-color: darken(@borderColor, 8%);
-	}
-
-	&:active {
-		background-image: none;
-	}
-}
-
 // -------------------- Core LEGO --------------------
 .Button() {
 	display: inline-block;
@@ -90,5 +57,38 @@
 		pointer-events: none; // Future-proof disabling of clicks
 		.opacity(.65);
 		box-shadow: none;
+	}
+}
+
+// -------------------- Mixins --------------------
+
+// WebKit-style focus
+.buttonFocus() {
+	// Default
+	outline: thin dotted #333;
+	// WebKit
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+// Button variants
+// -------------------------
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+.buttonVariant(@textColor; @backgroundColor; @borderColor) {
+	color: @textColor;
+	background-color: @backgroundColor;
+	border-color: @borderColor;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: @textColor;
+		background-color: darken(@backgroundColor, 8%);
+		border-color: darken(@borderColor, 8%);
+	}
+
+	&:active {
+		background-image: none;
 	}
 }
