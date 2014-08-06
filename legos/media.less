@@ -1,0 +1,52 @@
+//********************************************
+//	Media Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+#Media {
+
+	// Clear the floats
+	.Media,
+	.Media-body {
+		overflow: hidden;
+		zoom: 1;
+	}
+
+	// -------------------- The media object --------------------
+	.Media-object {
+		display: block;
+	}
+
+	// Object containers
+	.Media-object--left {
+		float: left;
+		//.margin-right-col(1);
+	}
+
+	.Media-object--right {
+		float: right;
+		//.margin-left-col(1);
+	}
+
+	// -------------------- Body --------------------
+	.Media-body {
+		display: block;
+	}
+
+	.Media-heading {
+
+	}
+
+}
