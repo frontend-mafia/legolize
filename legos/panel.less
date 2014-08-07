@@ -15,7 +15,6 @@
 // @lego--modifier-property ex: @button--warning-borderColor
 // @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
-
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 @panel-marginTop: 2;
@@ -35,31 +34,6 @@
 @panel-border: 1px solid darken(@panel-bgColor, 20%);
 @panel-header-bgColor: darken(@panel-bgColor, 10%);
 @panel-heading-color: inherit;
-
-// --- Modifiers ---
-@panel--warning-color: #fff;
-@panel--warning-bgColor: #ffae00;
-@panel--warning-border: 1px solid darken(@panel--warning-bgColor, 20%);
-@panel--warning-header-bgColor: darken(@panel--warning-bgColor, 10%);
-@panel--warning-heading-color: inherit;
-
-@panel--info-color: #fff;
-@panel--info-bgColor: #06a3d5;
-@panel--info-border: 1px solid darken(@panel--info-bgColor, 20%);
-@panel--info-header-bgColor: darken(@panel--info-bgColor, 10%);
-@panel--info-heading-color: inherit;
-
-@panel--success-color: #fff;
-@panel--success-bgColor: #57a62f;
-@panel--success-border: 1px solid darken(@panel--success-bgColor, 20%);
-@panel--success-header-bgColor: darken(@panel--success-bgColor, 10%);
-@panel--success-heading-color: inherit;
-
-@panel--danger-color: #fff;
-@panel--danger-bgColor: #d42020;
-@panel--danger-border: 1px solid darken(@panel--danger-bgColor, 20%);
-@panel--danger-header-bgColor: darken(@panel--danger-bgColor, 10%);
-@panel--danger-heading-color: inherit;
 
 // -------------------- Core LEGO --------------------
 .Panel() {
@@ -112,6 +86,8 @@
 
 // -------------------- Modifiers --------------------
 
+// -------------------- Mixins --------------------
+
 // Create the descendands that should be in all modifiers
 .createPanelModifier(@color, @bgColor, @border, @header-bgColor, @heading-color) {
 	color: @color;
@@ -125,24 +101,4 @@
 	.Panel-heading {
 		color: @heading-color;
 	}
-}
-
-.Panel--simple() {
-	border-radius: 0;
-}
-
-.Panel--warning() {
-	.createPanelModifier(@panel--warning-color, @panel--warning-bgColor, @panel--warning-border, @panel--warning-header-bgColor, @panel--warning-heading-color);
-}
-
-.Panel--info() {
-	.createPanelModifier(@panel--info-color, @panel--info-bgColor, @panel--info-border, @panel--info-header-bgColor, @panel--info-heading-color);
-}
-
-.Panel--danger() {
-	.createPanelModifier(@panel--danger-color, @panel--danger-bgColor, @panel--danger-border, @panel--danger-header-bgColor, @panel--danger-heading-color);
-}
-
-.Panel--success() {
-	.createPanelModifier(@panel--success-color, @panel--success-bgColor, @panel--success-border, @panel--success-header-bgColor, @panel--success-heading-color);
 }
