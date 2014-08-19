@@ -1,0 +1,91 @@
+//********************************************
+//	ProgressBar Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
+@progress-bgColor: #B3B3B3;
+@progress-height: 30px;
+@progress-bar-minWidth: 30px;
+@progress-bar-color: #fff;
+@progress-bar-bgColor: #808080; //What color should be by default?
+@progress-currentMark-bgColor: #fff;
+@progress-currentMark-opacity: 0.5;
+@progress-currentMark-width: 1px;
+
+// --- Default modifier ---
+
+// -------------------- Core LEGO --------------------
+.Progress() {
+	height: @progress-height;
+	line-height: @progress-height;
+	background-color: @progress-bgColor;
+	position: relative;
+	margin-bottom: 5px;
+	
+	~ .Progress-statusMark {
+		margin-right: 30px;
+	}
+}
+
+// -------------------- Descendands --------------------
+.Progress-bar() {
+	height: inherit;
+	float: left;
+	color: @progress-bar-color;
+	background-color: @progress-bar-bgColor;
+	padding: 0 1%;
+	min-width: @progress-bar-minWidth;
+}
+
+.Progress-currentMark() {
+	height: inherit;
+	font-size: 0px;
+	top: 0px;
+	z-index: 0;
+	position: absolute;
+	width: @progress-currentMark-width;
+	background: @progress-currentMark-bgColor;
+	opacity: @progress-currentMark-opacity;
+}
+
+.Progress-statusMark {
+	overflow: hidden;
+	width: 24px;
+	height: 24px;
+	background: red;
+	position: absolute;
+	top: 0;
+	right: -30px;
+	border-radius: 13px;
+	text-align: center;
+	color: #fff;
+	line-height: 24px;
+	vertical-align: bottom;
+	margin-top: 2px;
+}
+
+// -------------------- Modifiers --------------------
+
+
+// -------------------- Mixins --------------------
+
+// Create the descendands that should be in all modifiers
+// -------------------------
+.createProgressModifier(@progress-bar-color, @progress-bar-bgColor) {
+	background-color: @progress-bar-bgColor;
+	color: @progress-bar-color;	
+}
