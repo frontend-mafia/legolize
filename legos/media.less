@@ -15,39 +15,42 @@
 // @lego--modifier-property ex: @button--warning-borderColor
 // @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
-#Media {
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
 
-	// Clear the floats
-	.Media,
-	.Media-body {
-		overflow: hidden;
-		zoom: 1;
+
+// --- Default modifier ---
+
+// -------------------- Core LEGO --------------------
+.Media() {
+	overflow: hidden;
+	zoom: 1;
+}
+
+// -------------------- Descendands --------------------
+.Media-object() {
+	display: block;
+}
+
+.Media-body() {
+	.Media();
+	display: block;
+
+	.Media-heading() {
 	}
+}
 
-	// -------------------- The media object --------------------
-	.Media-object {
-		display: block;
-	}
+// -------------------- Modifiers --------------------
+.Media-object--left(@marginTop, @marginLeft) {
+	.Media-object();
+	float: left;
+	margin-top: @marginTop;
+	margin-right: @marginLeft;
+}
 
-	// Object containers
-	.Media-object--left {
-		&:extend(#Media > .Media-object);
-		float: left;
-		//.margin-right-col(1);
-	}
-
-	.Media-object--right {
-		&:extend(#Media > .Media-object);
-		float: right;
-		//.margin-left-col(1);
-	}
-
-	// -------------------- Body --------------------
-	.Media-heading {
-
-	}
-
-	.Media-body {
-		display: block;
-	}
+.Media-object--right(@marginTop, @marginRight) {
+	&:extend(.Media > .Media-object);
+	float: right;
+	margin-top: @marginTop;
+	margin-right: @marginRight;
 }
