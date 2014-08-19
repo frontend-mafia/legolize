@@ -42,14 +42,12 @@
 
 // -------------------- Modifiers --------------------
 .Media-object--left(@marginTop, @marginLeft) {
-	.Media-object();
 	float: left;
 	margin-top: @marginTop;
 	margin-right: @marginLeft;
 }
 
 .Media-object--right(@marginTop, @marginRight) {
-	&:extend(.Media > .Media-object);
 	float: right;
 	margin-top: @marginTop;
 	margin-right: @marginRight;
