@@ -17,7 +17,7 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-@icon-fontSize: 25px;
+
 
 // --- Default modifier ---
 @icon-content: "";
@@ -36,11 +36,13 @@
 // -------------------- Core LEGO --------------------
 .Icon() {
 	color: inherit;
+	font-size: inherit;
+
 	&::before {
 		font-family: Menicon;
 		font-weight: normal;
 		content: @icon-content;
-		font-size: @icon-fontSize;
+		font-size: inherit;
 		color: inherit;
 	}
 }

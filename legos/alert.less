@@ -21,6 +21,8 @@
 @alert-marginTop: 20px;
 @alert-marginBottom: 10px;
 @alert-borderRadius: 3px;
+@alert-icon-marginLeft: 10px;
+@alert-icon-marginRight: 10px;
 
 // --- Default modifier ---
 @alert-border: 1px solid #d8d8d8;
@@ -33,31 +35,39 @@
 	border: @alert-border;
 	border-radius: @alert-borderRadius;
 	background: @alert-bgColor;
-
-	:before {
-		display: none;
-	}
 }
 
 // -------------------- Descendands --------------------
+.Alert-icon() {
 
+}
 
 // -------------------- Modifiers --------------------
-.Alert--withIcon() {
-	padding-left: @alert-padding + 30;
+.Alert-icon--left() {
+	> .Icon {
+		float: left;
+		margin-right: @alert-icon-marginRight;
+	}
+}
 
-	:before {
-		display: block;
+.Alert-icon--right() {
+	> .Icon {
+		float: right;
+		margin-left: @alert-icon-marginLeft;
 	}
 }
 
 // Alert variants
 // -------------------------
-.alertVariant(@border, @backgroundColor) {
+.alertVariant(@border, @backgroundColor, @iconColor) {
 	border: @border;
 	background-color: @backgroundColor;
 
 	a:link, a:visited {
 		color: darken(@backgroundColor, 8%);
+	}
+
+	> .Icon {
+		color: @iconColor;
 	}
 }
