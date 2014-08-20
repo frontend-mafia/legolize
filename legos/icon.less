@@ -1,0 +1,51 @@
+//********************************************
+//	Icon Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
+@icon-fontSize: 25px;
+
+// --- Default modifier ---
+@icon-content: "";
+
+@font-face {
+	font-family: 'Menicon';
+	src: url('../fonts/font-webfont.eot');
+	src: url('../fonts/font-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/font-webfont.woff') format('woff'),
+		 url('../fonts/font-webfont.ttf') format('truetype'),
+		 url('../fonts/font-webfont.svg#meniconregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+// -------------------- Core LEGO --------------------
+.Icon() {
+	color: inherit;
+	&::before {
+		font-family: Menicon;
+		font-weight: normal;
+		content: @icon-content;
+		font-size: @icon-fontSize;
+		color: inherit;
+	}
+}
+
+// -------------------- Descendands --------------------
+
+
+// -------------------- Modifiers --------------------

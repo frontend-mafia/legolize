@@ -25,6 +25,7 @@
 @progress-currentMark-bgColor: #fff;
 @progress-currentMark-opacity: 0.5;
 @progress-currentMark-width: 1px;
+@progress-marginRight: 30px;
 
 // --- Default modifier ---
 
@@ -35,7 +36,7 @@
 	background-color: @progress-bgColor;
 	position: relative;
 	margin-bottom: 5px;
-	margin-right: 30px;
+	margin-right: @progress-marginRight;
 }
 
 // -------------------- Descendands --------------------
@@ -59,20 +60,16 @@
 	opacity: @progress-currentMark-opacity;
 }
 
-.Progress-statusMark {
-	overflow: hidden;
-	width: 24px;
-	height: 24px;
-	background: red;
-	position: absolute;
+.Progress-statusMark() {
 	top: 0;
-	right: -30px;
-	border-radius: 13px;
-	text-align: center;
-	color: #fff;
-	line-height: 24px;
-	vertical-align: bottom;
-	margin-top: 2px;
+	right: -(@progress-marginRight + 5);
+	position: absolute;
+
+	&::after {
+		font-family: Menicon;
+		position: absolute;
+		font-weight: normal;
+	}
 }
 
 // -------------------- Modifiers --------------------
@@ -84,5 +81,10 @@
 // -------------------------
 .createProgressModifier(@progress-bar-color, @progress-bar-bgColor) {
 	background-color: @progress-bar-bgColor;
-	color: @progress-bar-color;	
+	color: @progress-bar-color;
+}
+
+.createStatusMarkModifier(@statusMark-color, @statusMark-fontSize) {
+	color: @statusMark-color;
+	font-size: @statusMark-fontSize;
 }
