@@ -36,6 +36,9 @@
 	border: @button-borderWidth @button-borderStyle @button-borderColor;
 	padding: @button-padding;
 	border-radius: @button-borderRadius;
+	//.box-sizing(border-box);
+	//.user-select(none);
+
 	.min-height(@button-minHeightBaselineUnits);
 
 	&:focus,
@@ -59,6 +62,12 @@
 		box-shadow: none;
 	}
 }
+
+// -------------------- Descendands --------------------
+
+
+// -------------------- Modifiers --------------------
+
 
 // -------------------- Mixins --------------------
 
@@ -91,4 +100,9 @@
 	&:active {
 		background-image: none;
 	}
+}
+
+.buttonSize(@button-padding-vertical; @button-padding-horizontal; @button-fontSize; @button-borderRadius);
+	font-size: @fontSize;
+	padding: @padding;
 }
