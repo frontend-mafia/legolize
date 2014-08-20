@@ -1,0 +1,63 @@
+//********************************************
+//	Alert Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
+@alert-padding: 10px;
+@alert-marginTop: 20px;
+@alert-marginBottom: 10px;
+@alert-borderRadius: 3px;
+
+// --- Default modifier ---
+@alert-border: 1px solid #d8d8d8;
+@alert-bgColor: #faf9f9;
+
+// -------------------- Core LEGO --------------------
+.Alert() {
+	padding: @alert-padding;
+	margin: @alert-marginTop 0 @alert-marginBottom 0;
+	border: @alert-border;
+	border-radius: @alert-borderRadius;
+	background: @alert-bgColor;
+
+	:before {
+		display: none;
+	}
+}
+
+// -------------------- Descendands --------------------
+
+
+// -------------------- Modifiers --------------------
+.Alert--withIcon() {
+	padding-left: @alert-padding + 30;
+
+	:before {
+		display: block;
+	}
+}
+
+// Alert variants
+// -------------------------
+.alertVariant(@border, @backgroundColor) {
+	border: @border;
+	background-color: @backgroundColor;
+
+	a:link, a:visited {
+		color: darken(@backgroundColor, 8%);
+	}
+}
