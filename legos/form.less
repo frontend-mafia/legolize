@@ -1,0 +1,128 @@
+//********************************************
+//	Field Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
+@form-fontSize: 14px;
+
+// --- Default modifier ---
+
+
+// -------------------- Core LEGO --------------------
+.Form() {
+	position: relative;
+	max-width: 100%;
+
+	&:first-child {
+		margin-top: 0px;
+	}
+	&:last-child {
+		margin-bottom: 0px;
+	}
+}
+
+// -------------------- Descendands --------------------
+
+//this will be each line in the form
+//can contain multiple Form-groups
+.Form-control() {
+	display: block;
+}
+
+//Contains a label and an input
+.Field() {
+	clear: both;
+	margin: 0em 0em 1em;
+
+	label {
+		margin: 0em 0em 0.3em;
+		display: block;
+		color: #555555;
+		font-size: 0.875em;
+	}
+
+	textarea,
+	input[type="text"],
+	input[type="email"],
+	input[type="date"],
+	input[type="password"],
+	input[type="number"],
+	input[type="url"],
+	input[type="tel"] {
+		width: 100%;
+		.box-sizing(border-box);
+	}
+
+	textarea {
+		line-height: 1.33;
+		min-height: 8em;
+		height: 12em;
+		max-height: 24em;
+		resize: vertical;
+	}
+
+	textarea,
+	input[type="checkbox"] {
+		vertical-align: top;
+	}
+
+	/*.Divider {
+		clear: both;
+		margin: 1em 0em;
+	}*/
+
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="date"]:focus,
+	input[type="password"]:focus,
+	input[type="number"]:focus,
+	input[type="url"]:focus,
+	input[type="tel"]:focus,
+	textarea:focus{
+		color: rgba(0, 0, 0, 0.85);
+		border-color: rgba(0, 0, 0, 0.2);
+		-webkit-appearance: none;
+		.box-shadow("0.3em 0em 0em 0em rgba(0, 0, 0, 0.2) inset");
+	}
+}
+
+
+.Form-label() {
+	display: inline-block;
+	max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
+	margin-bottom: @label-marginBottom;
+	font-weight: bold;
+}
+
+.Form-input() {
+
+}
+
+// -------------------- Modifiers --------------------
+.Field--disabled {
+	label {
+		opacity: 0.5;
+	}
+	textarea,
+	input {
+		opacity: 0.5;
+	}
+}
+
+
+// Alert variants
+// -------------------------
