@@ -18,28 +18,38 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@button-borderRadius: 5px;
+@button-borderRadius: 4px;
 @button-borderWidth: 1px;
 @button-borderStyle: solid;
 @button-borderColor: transparent;
-@button-padding: 0 10px;
+@button-padding: 7px 7px;
 @button-minHeightBaselineUnits: 6;
+@button-minWidth: 40px;
+@button-fontSize: 13px;
+@button-fontWeight: bold;
+
 
 // -------------------- Core LEGO --------------------
 .Button() {
 	display: inline-block;
 	text-align: center;
+	font-size: @button-fontSize;
+	font-weight: @button-fontWeight;
 	vertical-align: middle;
 	cursor: pointer;
 	white-space: nowrap;
 	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+	width: auto;
+	white-space: nowrap;
+	overflow: visible;
+	min-width: @button-minWidth;
 	border: @button-borderWidth @button-borderStyle @button-borderColor;
 	padding: @button-padding;
 	border-radius: @button-borderRadius;
-	//.box-sizing(border-box);
-	//.user-select(none);
+	.box-sizing(border-box);
+	.user-select(none);
 
-	.min-height(@button-minHeightBaselineUnits);
+	//.min-height(@button-minHeightBaselineUnits);
 
 	&:focus,
 	&.is-focus {
@@ -53,13 +63,8 @@
 		box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 	}
 
-	// Should this be in the core?
-	&[disabled],
-	fieldset[disabled] & {
-		cursor: not-allowed;
-		pointer-events: none; // Future-proof disabling of clicks
-		.opacity(.65);
-		box-shadow: none;
+	&[disabled] {
+		.makeDisabled();
 	}
 }
 
@@ -68,6 +73,11 @@
 
 // -------------------- Modifiers --------------------
 
+
+// -------------------- States --------------------
+.Button--disabled() {
+	.makeDisabled();
+}
 
 // -------------------- Mixins --------------------
 
@@ -80,10 +90,9 @@
 	outline-offset: -2px;
 }
 
-// Button variants
+// Type variants
 // -------------------------
-// Easily pump out default styles, as well as :hover, :focus, :active,
-// and disabled options for all buttons
+// Change background, border-color and text color
 .buttonVariant(@textColor; @backgroundColor; @borderColor) {
 	color: @textColor;
 	background-color: @backgroundColor;
@@ -92,7 +101,6 @@
 	&:hover,
 	&:focus,
 	&:active {
-		color: @textColor;
 		background-color: darken(@backgroundColor, 8%);
 		border-color: darken(@borderColor, 8%);
 	}
@@ -102,7 +110,46 @@
 	}
 }
 
-.buttonSize(@button-padding-vertical; @button-padding-horizontal; @button-fontSize; @button-borderRadius);
+// Size variants
+// -------------------------
+// Change padding, font-size, line-height and border-radius
+.buttonSize(@paddingVertical; @paddingHorizontal; @fontSize; @lineHeight; @borderRadius) {
 	font-size: @fontSize;
-	padding: @padding;
+	padding: @paddingVertical @paddingHorizontal;
+	line-height: @lineHeight;
+	.borderRadius(@borderRadius);
+}
+
+// Link variants
+// -------------------------
+//Allow us to combine custom link style to a type modifier
+//Example: danger + link
+.linkVariant(@linkColor) {
+	background-color: transparent;
+	color: @linkColor;
+	font-weight: bold;
+	&:hover,
+	&:focus {
+		color: darken(@linkColor, 10%);
+	}
+}
+
+//apply active state to buttons with type modifiers only
+.makeActive(@backgroundColor, @borderColor) {
+	background-color: darken(@backgroundColor, 8%);
+	border-color: darken(@borderColor, 8%);
+}
+
+//apply active state to buttons with link & type modifiers
+.makeLinkActive(@backgroundColor) {
+	background-color: transparent;
+	border-color: transparent;
+	color: darken(@backgroundColor, 10%);
+}
+
+.makeDisabled() {
+	cursor: not-allowed;
+    pointer-events: none; // Future-proof disabling of clicks
+    .opacity(.65);
+    .box-shadow(none);
 }
