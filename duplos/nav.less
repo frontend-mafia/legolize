@@ -66,6 +66,13 @@
 	line-height: @nav-height;
 	list-style: none;
 	text-align: center;
+	display: block;
+
+	.Icon {
+		font-size: @nav-link-fontSize * 1.5;
+		position: relative;
+		top: -1px;
+	}
 
 	> a {
 		text-align: center;
@@ -87,26 +94,6 @@
 			border-bottom: @nav-item-borderWidth @nav-item-borderStyle @nav-item-borderColor;
 		}
 	}
-
-	 &.Nav--item-disabled {
-		color: @nav-link-disabled-fontColor;
-
-		&:hover,
-		&:focus {
-			color: @nav-item-disabled-fontColor;
-			text-decoration: none;
-			background-color: transparent;
-			cursor: not-allowed;
-		}
-    }
-
-    &.Nav--item-active {
-		> a {
-			text-decoration: none;
-			background-color: @nav-link-hover-bgColor;
-			border-bottom: @nav-item-borderWidth @nav-item-borderStyle @nav-item-borderColor;
-		}
-	}
 }
 
 
@@ -116,32 +103,15 @@
 
 // Nav variants
 // -------------------------
-
-/*
-> li {
-    position: relative;
-    display: block;
-
-    > a {
-      position: relative;
-      display: block;
-      padding: @nav-link-padding;
-      &:hover,
-      &:focus {
-        text-decoration: none;
-        background-color: @nav-link-hover-bg;
-      }
-    }
-
-    // Disabled state sets text to gray and nukes hover/tab effects
-    &.disabled > a {
-      color: @nav-disabled-link-color;
-
-      &:hover,
-      &:focus {
-        color: @nav-disabled-link-hover-color;
-        text-decoration: none;
-        background-color: transparent;
-        cursor: not-allowed;
-      }
-    }*/
+.disableNavItem(@disabledBgColor, @disabledFontColor) {
+	color: @disabledFontColor;
+	a,
+	a:hover,
+	a:focus {
+		color: @disabledFontColor;
+		text-decoration: none;
+		background-color: @disabledBgColor;
+		cursor: not-allowed;
+		border-bottom: 0px;
+	}
+}
