@@ -35,7 +35,6 @@
 	text-align: center;
 	font-size: @button-fontSize;
 	font-weight: @button-fontWeight;
-	vertical-align: middle;
 	cursor: pointer;
 	white-space: nowrap;
 	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
@@ -46,8 +45,8 @@
 	border: @button-borderWidth @button-borderStyle @button-borderColor;
 	padding: @button-padding;
 	border-radius: @button-borderRadius;
-	.box-sizing(border-box);
-	.user-select(none);
+	.boxSizing(border-box);
+	.userSelect(none);
 
 	//.min-height(@button-minHeightBaselineUnits);
 
@@ -151,5 +150,5 @@
 	cursor: not-allowed;
     pointer-events: none; // Future-proof disabling of clicks
     .opacity(.65);
-    .box-shadow(none);
+    .boxShadow(none);
 }
