@@ -22,12 +22,13 @@
 @dropdown-background: #fff;
 @dropdown-padding: 10px;
 @dropdown-borderRadius: 3px;
-
+@dropdown-marginBottom: 10px;
 
 // -------------------- Core LEGO --------------------
 .Dropdown() {
 	position: relative;
 	display: inline-block;
+	margin-bottom: @dropdown-marginBottom;
 
 	.Icon.Icon--caret-down {
 		position: relative;
@@ -42,6 +43,7 @@
 	}
 
 	> ul {
+		background: @dropdown-background;
 		position: absolute;
 		top: 100%;
 		left: 0;
