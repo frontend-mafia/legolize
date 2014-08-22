@@ -18,9 +18,28 @@
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 @icon-margin: 5px;
+@dropdown-border:1px solid #ffae00;
+@dropdown-background: #fff;
+@dropdown-padding: 10px;
+@dropdown-borderRadius: 3px;
+
 
 // -------------------- Core LEGO --------------------
 .Dropdown() {
+	position: relative;
+	display: inline-block;
+
+	.Icon.Icon--caret-down {
+		position: relative;
+		top: -2px;
+	}
+
+	> a:link,
+	> a:visited {
+		text-decoration: none;
+		color: inherit;
+		margin-bottom: 0px;
+	}
 
 	> ul {
 		position: absolute;
@@ -30,17 +49,28 @@
 		display: none;
 		float: left;
 		min-width: 100%;
-		padding: 5px 0;
-		margin: 2px 0 0;
-		font-size: 14px;
 		text-align: left;
 		list-style: none;
-		background-color: #06a3d5;
-		border: 1px solid #ccc;
+
 		margin-top: -1px;
+		padding: @dropdown-padding;
+
 		.borderRadius--top(0);
-		.borderRadius--bottom(3px);
-		.boxShadow(0 6px 12px rgba(0,0,0,.175));
+		.borderRadius--bottom(@dropdown-borderRadius);
+		.boxShadow(4px 4px 0px rgba(0,0,0,0.15));
+
+		> li {
+			width: 100%;
+		}
+
+		> li:hover {
+			background: #f2f2f2;
+		}
+
+		> li > a:link,
+		> li > a:visited {
+
+		}
 	}
 }
 
@@ -53,10 +83,8 @@
 
 	> a {
 		display: block;
-		padding: 3px 20px;
 		clear: both;
 		font-weight: 400;
-		line-height: 1.42857143;
 		color: #333;
 		white-space: nowrap;
 		cursor: pointer;
