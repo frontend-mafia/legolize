@@ -17,7 +17,7 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-
+@icon-margin: 5px;
 
 // -------------------- Core LEGO --------------------
 .Dropdown() {
@@ -29,7 +29,7 @@
 		z-index: 1000;
 		display: none;
 		float: left;
-		min-width: 260px;
+		min-width: 100%;
 		padding: 5px 0;
 		margin: 2px 0 0;
 		font-size: 14px;
@@ -37,13 +37,15 @@
 		list-style: none;
 		background-color: #06a3d5;
 		border: 1px solid #ccc;
-		border-radius: 4px;
+		margin-top: -1px;
+		.borderRadius--top(0);
+		.borderRadius--bottom(3px);
 		.boxShadow(0 6px 12px rgba(0,0,0,.175));
 	}
 }
 
 // -------------------- Descendands --------------------
-.Dropdown--item {
+.Dropdown--item() {
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
@@ -57,6 +59,7 @@
 		line-height: 1.42857143;
 		color: #333;
 		white-space: nowrap;
+		cursor: pointer;
 	}
 
 	&a:hover,
@@ -70,14 +73,14 @@
 .Dropdown--left() {
 	> .Icon {
 		float: right;
-		margin-left: @alert-icon-marginLeft;
+		margin-left: @icon-margin;
 	}
 }
 
 .Dropdown--right() {
 	> .Icon {
 		float: left;
-		margin-right: @alert-icon-marginLeft;
+		margin-right: @icon-margin;
 	}
 }
 

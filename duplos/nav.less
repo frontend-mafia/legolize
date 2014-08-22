@@ -19,53 +19,26 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-@nav-height: 40px;
-@nav-minHeight: 30px;
 @nav-marginBottom: 10px;
 
 @nav-link-padding: 0px 10px;
-@nav-link-fontColor: #fff;
-@nav-link-hover-bgColor: #ffae00;
-@nav-link-disabled-fontColor: green;
 @nav-link-fontSize: 14px;
-
-@nav-item-disabled-fontColor: #fff;
-@nav-item-borderWidth: 3px;
-@nav-item-borderStyle: solid;
-@nav-item-borderColor: #ff9600;
+@nav-link-fontColor: #333;
+@nav-link-height: 39px;
 
 // -------------------- Core LEGO --------------------
 .Nav() {
-	background: #06a3d5;
-	border-radius: 3px;
-	height: @nav-height;
-	min-height: @nav-minHeight;
 	list-style: none;
-	margin: 0px 0px @nav-marginBottom 0px;
-	padding: 0;
-	border: 0px solid transparent;
+	padding: 0px;
 
-	.Nav--item:first-child a {
-		.borderRadius--left (3px);
-		padding-left: 10px;
-	}
-
-	.Nav--item:last-child a {
-		.borderRadius--right (3px);
-		padding-right: 10px;
-	}
+	.clearFix();
 }
 
 // -------------------- Descendands --------------------
 .Nav--item() {
-	margin: 0;
-	padding: 0;
-	height: inherit;
 	position: relative;
 	display: block;
-	line-height: @nav-height;
 	list-style: none;
-	text-align: center;
 	display: block;
 
 	.Icon {
@@ -74,44 +47,49 @@
 		top: -1px;
 	}
 
-	> a {
-		text-align: center;
-		font-weight: bold;
+	> a:link,
+	> a:visited {
 		text-decoration: none;
 		border-radius: 0;
+		margin: 0;
+		display: block;
 		color: @nav-link-fontColor;
 		padding: @nav-link-padding;
 		font-size: @nav-link-fontSize;
-		height: inherit;
-		line-height: inherit;
-		margin: 0px;
-		display: block;
-
-		&:hover,
-		&:focus{
-			text-decoration: none;
-			background-color: @nav-link-hover-bgColor;
-			border-bottom: @nav-item-borderWidth @nav-item-borderStyle @nav-item-borderColor;
-		}
+		height: @nav-link-height;
+		line-height: @nav-link-height;
 	}
 }
 
 
 
 // -------------------- Modifiers --------------------
-
+.Nav--inline() {
+	> li,
+	.Nav--item {
+		float: left;
+	}
+}
 
 // Nav variants
 // -------------------------
-.disableNavItem(@disabledBgColor, @disabledFontColor) {
-	color: @disabledFontColor;
-	a,
+.disabledNavItem(@background, @borderBottom, @fontColor) {
+	a:link,
+	a:visited,
 	a:hover,
 	a:focus {
-		color: @disabledFontColor;
-		text-decoration: none;
-		background-color: @disabledBgColor;
+		background: @background;
+		border-bottom: @borderBottom;
+		color: @fontColor;
 		cursor: not-allowed;
-		border-bottom: 0px;
+	}
+}
+
+.activeNavItem(@background, @bottomBorder, @fontColor) {
+	> a:link,
+	> a:visited, {
+		background: @background;
+		color: fontColor;
+		border-bottom: @bottomBorder;
 	}
 }
