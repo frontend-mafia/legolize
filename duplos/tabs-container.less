@@ -1,0 +1,39 @@
+//********************************************
+//	Tab Container Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
+
+// -------------------- Core LEGO --------------------
+.TabsContainer() {
+	width: 100%;
+
+}
+
+// -------------------- Descendands --------------------
+.Tab() {
+	display: none;
+	margin-top: 0px;
+	width: 100%;
+	border-bottom: 0px;
+}
+
+
+// -------------------- Modifiers --------------------
+
+// TabContainer variants
+// -------------------------
