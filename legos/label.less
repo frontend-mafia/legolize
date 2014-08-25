@@ -21,7 +21,7 @@
 @label-fontSize: 13px;
 @label-fontFamilly: Arial, sans-serif;
 @label-minWidth: 20px;
-@label-padding: 7px 7px;
+@label-padding: 5px 7px;
 @label-borderRadius: 4px;
 
 @label-border: 1px solid #c8c8c8;
@@ -65,11 +65,7 @@
 
 
 // -------------------- Modifiers --------------------
-.Label--active() {
-	border: @label-hover-border;
-	background: @label-hover-background;
-	color: @label-hover-fontColor;
-}
+
 
 // -------------------- States --------------------
 
@@ -80,17 +76,19 @@
 // -------------------------
 
 // Change padding, font-size, line-height and border-radius
-.buttonSize(@paddingVertical; @paddingHorizontal; @fontSize; @lineHeight; @borderRadius) {
+.labelSize(@paddingVertical; @paddingHorizontal; @fontSize; @lineHeight; @borderRadius) {
 	font-size: @fontSize;
 	padding: @paddingVertical @paddingHorizontal;
 	line-height: @lineHeight;
 	.borderRadius(@borderRadius);
 }
 
-// Link variants
+// Label variants
 // -------------------------
 //apply active state to buttons with type modifiers only
-.makeActive(@backgroundColor, @borderColor) {
-	background-color: darken(@backgroundColor, 8%);
-	border-color: darken(@borderColor, 8%);
+
+.labelVariant(@bgColor, @fontColor, @border: 1px solid @bgColor) {
+	background-color: @bgColor;
+	color: @fontColor;
+	border: @border;
 }
