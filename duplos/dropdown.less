@@ -22,18 +22,15 @@
 @dropdown-background: #fff;
 @dropdown-padding: 10px;
 @dropdown-borderRadius: 3px;
-@dropdown-marginBottom: 10px;
+
+@divider-bgColor: #e5e5e5;
+@divider-margin: 9px 0;
 
 // -------------------- Core LEGO --------------------
 .Dropdown() {
 	position: relative;
 	display: inline-block;
-	margin-bottom: @dropdown-marginBottom;
 
-	.Icon.Icon--caret-down {
-		position: relative;
-		top: -2px;
-	}
 
 	> a:link,
 	> a:visited {
@@ -43,18 +40,17 @@
 	}
 
 	> ul {
-		background: @dropdown-background;
 		position: absolute;
 		top: 100%;
-		left: 0;
 		z-index: 1000;
-		display: none;
-		float: left;
 		min-width: 100%;
+		left: 0;
+		float: left;
 		text-align: left;
 		list-style: none;
-
 		margin-top: 0px;
+		display: none;
+		background: @dropdown-background;
 		padding: @dropdown-padding;
 
 		.borderRadius--top(0);
@@ -71,7 +67,7 @@
 
 		> li > a:link,
 		> li > a:visited {
-
+			line-height: 24px;
 		}
 	}
 }
@@ -92,35 +88,22 @@
 		cursor: pointer;
 	}
 
-	&a:hover,
-	&a:focus {
+	> a:hover,
+	> a:focus {
 		.makeActive();
 	}
 }
 
+.Dropdown--divider() {
+	overflow: hidden;
+	height: 1px;
+	margin: @divider-margin;
+	background-color: @divider-bgColor;
+}
 
 // -------------------- Modifiers --------------------
-.Dropdown--left() {
-	> .Icon {
-		float: right;
-		margin-left: @icon-margin;
-	}
-}
-
-.Dropdown--right() {
-	> .Icon {
-		float: left;
-		margin-right: @icon-margin;
-	}
-}
-
 .Dropdown--active {
 	.makeActive();
-}
-
-//do we need it?
-.Dropdown--disabled {
-
 }
 
 // Dropdown variants
