@@ -40,9 +40,20 @@
 @listGroupItem-borderColorActive: #ddd;
 @listGroupItem-borderRadius: 5px;
 
+//When item is disabled
+@listGroupItem-fontColorDisabled: #777;
+@listGroupItem-bgColorDisabled: #eee;
+@listGroupItem-borderColorDisabled: #ddd;
+
 // -------------------- Core LEGO --------------------
 .ListGroup () {
 	padding: @listGroup-padding;
+
+	> a:hover,
+	> a:focus {
+		cursor: pointer;
+		background-color: @listGroupItem-bgColorHover;
+	}
 }
 
 // -------------------- Core descendants --------------------
@@ -51,6 +62,10 @@
 	display: block;
 	color: @listGroup-fontColor;
 	background-color: @listGroupItem-bgColor;
+	text-decoration: none;
+	display: block;
+	padding: 10px 15px;
+	position: relative;
 
 	// Place the border on the list items and negative margin up for better styling
 	margin-bottom: -@listGroupItem-borderWidth;
@@ -62,32 +77,6 @@
 	}
 	&:last-child {
 		.borderRadius--bottom(@listGroupItem-borderRadius);
-	}
-
-	// Hover state
-	&:hover,
-	&:focus {
-		cursor: pointer;
-		background-color: @listGroupItem-bgColorHover;
-	}
-
-	// ---------- State classes ----------
-	// Active class on item itself, not parent
-	&.is-active,
-	&.is-active:hover,
-	&.is-active:focus {
-		//z-index: 2; // Place active items above their siblings for proper border styling
-		color: @listGroup-fontColorActive;
-		background-color: @listGroupItem-bgColorActive;
-		border-color: @listGroupItem-borderColorActive;
-
-		.ListGroup-itemHeading {
-			color: inherit; // Force color to inherit for custom content
-		}
-
-		.ListGroup-itemText {
-
-		}
 	}
 }
 
@@ -103,6 +92,26 @@
 
 // -------------------- Modifiers --------------------
 
+//make and element active
+.ListGroup-item--active() {
+	z-index: 2; // Place active items above their siblings for proper border styling
+	background-color: @listGroupItem-bgColorActive;
+	border-color: @listGroupItem-borderColorActive;
+}
+
+.ListGroup-item--disabled() {
+	z-index: 2; // Place active items above their siblings for proper border styling
+	background-color: @listGroupItem-bgColorDisabled;
+	color: @listGroupItem-fontColorDisabled;
+	border-color: @listGroupItem-borderColorDisabled;
+
+	&:hover {
+		background-color: @listGroupItem-bgColorDisabled;
+		color: @listGroupItem-fontColorDisabled;
+		border-color: @listGroupItem-borderColorDisabled;
+	}
+}
+
 // Simple version of ListGroup = without rounded corners
 .ListGroup--simple () {
 	.ListGroup-item {
@@ -113,5 +122,26 @@
 		&:last-child {
 			.borderRadius--bottom(0);
 		}
+	}
+}
+
+// -------------------- Variations --------------------
+.listGroupVariation(@color, @bgColor, @border, @header-bgColor) {
+	color: @color;
+	background-color: lighten(@bgColor, 8%);
+	border: @border;
+
+	.ListGroup-itemHeading {
+		color: @header-bgColor;
+	}
+}
+
+.listItemLinkHoverColor(@color, @bgColor, @border, @header-bgColor) {
+	color: @color;
+	background-color: @bgColor;
+	border: @border;
+
+	.ListGroup-itemHeading {
+		color: @header-bgColor;
 	}
 }
