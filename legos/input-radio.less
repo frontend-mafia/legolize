@@ -1,0 +1,69 @@
+//********************************************
+//	Radio Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// -------------------- Variables --------------------
+
+
+
+// -------------------- Core LEGO --------------------
+.Radio() {
+	position: relative;
+	display: block;
+	min-height: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: inline-block;
+
+	.Icon {
+		display: inline-block;
+		vertical-align: top;
+		position: relative;
+		top: -1px;
+		margin: 0 3px;
+	}
+
+	> input[type="radio"] {
+		visibility: hidden;
+	}
+
+	> input[type="radio"]:not(:checked)  + .Icon:before {
+		content: "\e62E";
+	}
+
+	> input[type="radio"]:checked + .Icon:before {
+		content: "\e62F";
+	}
+
+}
+
+// -------------------- Descendands --------------------
+
+
+// -------------------- Modifiers --------------------
+
+
+// -------------------- States --------------------
+
+
+// -------------------- Mixins --------------------
+
+// -------------------- Type variants --------------------
+.radioVariant(@iconColor) {
+	.Icon {
+		color: @iconColor;
+	}
+}
