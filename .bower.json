@@ -18,11 +18,11 @@
     "test",
     "tests"
   ],
-  "_release": "acf07bbf1b",
+  "_release": "fcbb6e1a91",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "acf07bbf1b91dfc1f302a46abd42796baf41cc1b"
+    "commit": "fcbb6e1a9105ac702775c954b8bb8dada3bc3dd3"
   },
   "_source": "https://haukurmar@bitbucket.org/meniga/legolize.git",
   "_target": "*",
