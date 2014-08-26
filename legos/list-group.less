@@ -70,6 +70,7 @@
 	// Place the border on the list items and negative margin up for better styling
 	margin-bottom: -@listGroupItem-borderWidth;
 	border: @listGroupItem-borderWidth @listGroupItem-borderStyle @listGroupItem-borderColor;
+	.boxSizing(border-box);
 
 	// Round the first and last items
 	&:first-child {

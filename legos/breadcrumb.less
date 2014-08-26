@@ -1,0 +1,51 @@
+//********************************************
+//	Breadcrumb Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
+@breadcrumb-padding-vertical:   8px;
+@breadcrumb-padding-horizontal: 15px;
+@breadcrumb-bg:                 #f5f5f5;
+@breadcrumb-color:              #ccc;
+@breadcrumb-separator:          "/";
+@breadcrumbs-border-radius:     3px;
+@breadcrumbs-link-color:        #777;
+
+// -------------------- Core LEGO --------------------
+.Breadcrumb() {
+	padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
+	margin-bottom: 10px;
+	list-style: none;
+	background-color: @breadcrumb-bg;
+	border-radius: @breadcrumbs-border-radius;
+
+	> li {
+		display: inline-block;
+
+		a:link,
+		a:visited {
+			color: @breadcrumbs-link-color;
+			text-decoration: none;
+		}
+
+		+ li:before {
+			content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+			padding: 0 5px;
+			color: @breadcrumb-color;
+		}
+	}
+}
