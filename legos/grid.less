@@ -1,0 +1,62 @@
+//********************************************
+//	Grid Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
+@grid-marginLeft: 2%;
+
+
+// -------------------- Core LEGO --------------------
+.Grid() {
+	margin-left: @grid-marginLeft;
+}
+
+// -------------------- Modifiers --------------------
+
+.Grid--1Of2() {
+	.gridCalculator(1,2);
+}
+
+.Grid--1Of3() {
+	.gridCalculator(1,3);
+}
+
+.Grid--2Of3() {
+	.gridCalculator(2,3);
+}
+
+.Grid--1Of4() {
+	.gridCalculator(1,4);
+}
+
+.Grid--2Of4() {
+	.gridCalculator(2,4);
+}
+
+.Grid--3Of4() {
+	.gridCalculator(3,4);
+}
+
+.Grid--2Of2(), .Grid--3Of3(), .Grid--4Of4() {
+	width:100%;
+}
+
+// -------------------- Mixins --------------------
+
+.gridCalculator(@columns, @totalColumns) {
+	width: (@columns/@totalColumns)-(@grid-marginLeft)%;
+}
