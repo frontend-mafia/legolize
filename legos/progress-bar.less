@@ -17,7 +17,6 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-@progress-bgColor: #B3B3B3;
 @progress-height: 30px;
 @progress-bar-minWidth: 30px;
 @progress-bar-color: #fff;
@@ -31,11 +30,9 @@
 
 // -------------------- Core LEGO --------------------
 .Progress() {
+	position: relative;
 	height: @progress-height;
 	line-height: @progress-height;
-	background-color: @progress-bgColor;
-	position: relative;
-	margin-bottom: 5px;
 	margin-right: @progress-marginRight;
 }
 
@@ -79,9 +76,8 @@
 
 // Create the descendands that should be in all modifiers
 // -------------------------
-.createProgressModifier(@progress-bar-color, @progress-bar-bgColor) {
+.createProgressModifier(@progress-bar-bgColor) {
 	background-color: @progress-bar-bgColor;
-	color: @progress-bar-color;
 }
 
 .createStatusMarkModifier(@statusMark-color, @statusMark-fontSize) {
