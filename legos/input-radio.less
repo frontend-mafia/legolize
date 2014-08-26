@@ -16,26 +16,22 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@radio-icon-size: 6px;
+@radio-icon-size: 14px;
 @radio-color: #666;
 @radio--disabled-color: #aaa;
-
+@radio-marginRight: 4px;
 
 // -------------------- Core LEGO --------------------
 .Radio() {
 	position: relative;
 	display: block;
-	min-height: 20px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	display: block;
 
 	.Icon.Icon--radio {
-		width: 14px;
-		height: 14px;
-		border-radius: 7px;
+		width: @radio-icon-size;
+		height: @radio-icon-size;
+		border-radius: 500em;
 		border: 1px solid @radio-color;
-		margin: 0 4px;
+		margin-right: @radio-marginRight;
 		vertical-align: middle;
 		position: relative;
 	}
@@ -45,28 +41,17 @@
 	}
 
 	input[type="radio"]:checked + .Icon.Icon--radio:before {
-		width: @radio-icon-size;
-		height: @radio-icon-size;
-		border-radius: @radio-icon-size / 2;
+		width: @radio-icon-size / 2 - 1;
+		height: @radio-icon-size / 2 - 1;
+		border-radius: 500em;
 		content: " ";
 		display: block;
 		position: absolute;
-		top: @radio-icon-size / 2;
-		left: @radio-icon-size / 2;
+		top: @radio-icon-size / 4;
+		left: @radio-icon-size / 4;
 		background: @radio-color;
 	}
 }
-
-// -------------------- Descendands --------------------
-
-
-// -------------------- Modifiers --------------------
-
-
-// -------------------- States --------------------
-
-
-// -------------------- Mixins --------------------
 
 // -------------------- Type variants --------------------
 .radioVariant(@bgColor) {
