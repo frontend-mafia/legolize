@@ -17,7 +17,7 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-@grid-marginLeft: 2%;
+@grid-marginRight: 2%;
 
 
 // -------------------- Core LEGO --------------------
@@ -65,7 +65,7 @@
 // -------------------- Mixins --------------------
 
 .gridCalculator(@columns, @totalColumns) {
-	margin-left: @grid-marginLeft;
+	margin-right: @grid-marginRight;
 	float:left;
-	width: (@columns/@totalColumns*100%)-(@grid-marginLeft);
+	width: (@columns/@totalColumns*100%)-(@grid-marginRight);
 }
