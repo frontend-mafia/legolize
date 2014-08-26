@@ -1,5 +1,5 @@
 //********************************************
-//	Grid Core
+//	Column Core
 //********************************************/
 
 // When writing Lego's we use BEM naming conventions.
@@ -17,55 +17,21 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-@grid-marginLeft: 2%;
 
 
 // -------------------- Core LEGO --------------------
-.Grid() {
+.Column() {
 }
 
 // -------------------- Modifiers --------------------
 
-.Grid--1Of2() {
-	.gridCalculator(1,2);
+.Column--primary() {
 }
 
-.Grid--2Of2() {
-	width:100%;
+.Column--secondary() {
 }
 
-.Grid--1Of3() {
-	.gridCalculator(1,3);
-}
-
-.Grid--2Of3() {
-	.gridCalculator(2,3);
-}
-
-.Grid--3Of3() {
-	width:100%;
-}
-
-.Grid--1Of4() {
-	.gridCalculator(1,4);
-}
-
-.Grid--2Of4() {
-	.gridCalculator(2,4);
-}
-
-.Grid--3Of4() {
-	.gridCalculator(3,4);
-}
-
-.Grid--4Of4() {
-	width:100%;
+.Column--aside() {
 }
 
 // -------------------- Mixins --------------------
-
-.gridCalculator(@columns, @totalColumns) {
-	margin-left: @grid-marginLeft;
-	float:left;
-	width: (@columns/@totalColumns*100%)-(@grid-marginLeft);
-}
