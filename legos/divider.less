@@ -1,0 +1,121 @@
+//********************************************
+//	Divider Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
+
+
+// -------------------- Core LEGO --------------------
+.Divider() {
+	margin: 1rem 0rem;
+
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+
+	line-height: 1;
+	height: 0em;
+
+	.boxSizing(border-box);
+	.userSelect(none);
+
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+	>.Icon {
+		margin: 0em;
+		font-size: 1.5rem;
+		vertical-align: middle;
+	}
+}
+
+// -------------------- Descendands --------------------
+
+// -------------------- Modifiers --------------------
+.Divider--horizontal() {
+	position: relative;
+	top: 0%;
+	left: 0%;
+	border: 0px;
+	margin: 1rem 1.5rem;
+	height: auto;
+	padding: 0em;
+	text-align: center;
+	line-height: 1;
+
+	&:before,
+	&:after {
+		position: absolute;
+		top: 50%;
+		content: " ";
+		z-index: 3;
+
+		width: 50%;
+		top: 50%;
+		height: 0%;
+
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+	}
+
+	&:before {
+		left: 0%;
+		margin-left: -1.5rem;
+	}
+	&:after {
+		left: auto;
+		right: 0%;
+		margin-right: -1.5rem;
+	}
+}
+
+.Divider--vertical() {
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+
+	margin: 0% 0% 0% -3%;
+
+	width: 6%;
+	height: 50%;
+	border: 0px;
+	line-height: 0;
+	padding: 0em;
+	text-align: center;
+
+	&:before,
+	&:after {
+		position: absolute;
+		left: 50%;
+		content: " ";
+		z-index: 3;
+
+		border-left: 1px solid rgba(0, 0, 0, 0.1);
+		border-right: 1px solid rgba(255, 255, 255, 0.8);
+
+		width: 0%;
+		height: 80%;
+	}
+
+	&:before {
+		top: -100%;
+	}
+
+	&:after {
+		top: auto;
+		bottom: 0;
+	}
+}
