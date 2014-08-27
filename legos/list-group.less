@@ -48,6 +48,9 @@
 // -------------------- Core LEGO --------------------
 .ListGroup () {
 	padding: @listGroup-padding;
+	.borderRadius--top(@listGroupItem-borderRadius);
+	border: @listGroupItem-borderWidth @listGroupItem-borderStyle @listGroupItem-borderColor;
+	overflow: hidden;
 
 	> a:hover,
 	> a:focus {
@@ -68,16 +71,11 @@
 	position: relative;
 
 	// Place the border on the list items and negative margin up for better styling
-	margin-bottom: -@listGroupItem-borderWidth;
-	border: @listGroupItem-borderWidth @listGroupItem-borderStyle @listGroupItem-borderColor;
+	border-bottom: @listGroupItem-borderWidth @listGroupItem-borderStyle @listGroupItem-borderColor;
 	.boxSizing(border-box);
 
-	// Round the first and last items
-	&:first-child {
-		.borderRadius--top(@listGroupItem-borderRadius);
-	}
 	&:last-child {
-		.borderRadius--bottom(@listGroupItem-borderRadius);
+		border-bottom: 0px;
 	}
 }
 
