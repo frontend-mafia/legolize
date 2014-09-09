@@ -1,0 +1,98 @@
+//********************************************
+//	DatePeriod Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
+@alert-padding: 10px;
+@alert-borderRadius: 3px;
+
+// --- Default modifier ---
+@alert-border: 1px solid #d8d8d8;
+@alert-bgColor: #fff;
+
+@alert-icon-margin: 5px;
+
+// -------------------- Core LEGO --------------------
+.DatePeriod() {
+	.Button {
+		text-align: left;
+		position: relative;
+		padding: 10px;
+
+		.DatePeriod-period {
+			padding-right: 5em;
+			font-size: 14px;
+			line-height: normal;
+			font-weight: bold;
+		}
+
+		.DatePeriod-interval {
+			font-size: 12px;
+			line-height: normal;
+		}
+
+		.Icon {
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			margin-top: -12px;
+			font-size: 34px;
+		}
+
+	}
+
+	&:hover {
+		.DatePeriod-list {
+			display: block;
+		}
+	}
+
+}
+
+// -------------------- Descendands --------------------
+.DatePeriod-list() {
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	left: 0;
+	display: none;
+	z-index: 1;
+
+	.Nav {
+		margin-top: 5px;
+		padding: 0px 0px 5px 0px;
+		box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+		background-color: #fff;
+
+		.Nav-item {
+			padding: 5px;
+			margin: 0 5px;
+			font-size: 12px;
+			line-height: normal;
+			width: 95%;
+
+			&:hover {
+				background-color: #ededed;
+			}
+			.Icon {
+				line-height: 12px;
+			}
+		}
+	}
+}
+
+// -------------------- Modifiers --------------------

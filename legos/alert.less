@@ -18,56 +18,30 @@
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 @alert-padding: 10px;
-@alert-marginTop: 20px;
-@alert-marginBottom: 10px;
 @alert-borderRadius: 3px;
-@alert-icon-marginLeft: 10px;
-@alert-icon-marginRight: 10px;
 
 // --- Default modifier ---
 @alert-border: 1px solid #d8d8d8;
-@alert-bgColor: #faf9f9;
+@alert-bgColor: #fff;
+
+@alert-icon-margin: 5px;
 
 // -------------------- Core LEGO --------------------
 .Alert() {
 	padding: @alert-padding;
-	margin: @alert-marginTop 0 @alert-marginBottom 0;
 	border: @alert-border;
 	border-radius: @alert-borderRadius;
 	background: @alert-bgColor;
-}
+	position: relative;
 
-// -------------------- Descendands --------------------
-.Alert-icon() {
-
-}
-
-// -------------------- Modifiers --------------------
-.Alert-icon--left() {
-	> .Icon {
-		float: left;
-		margin-right: @alert-icon-marginRight;
-	}
-}
-
-.Alert-icon--right() {
-	> .Icon {
-		float: right;
-		margin-left: @alert-icon-marginLeft;
-	}
-}
-
-// Alert variants
-// -------------------------
-.alertVariant(@border, @backgroundColor, @iconColor) {
-	border: @border;
-	background-color: @backgroundColor;
-
-	a:link, a:visited {
-		color: darken(@backgroundColor, 8%);
-	}
-
-	> .Icon {
-		color: @iconColor;
+	//Styling for carets
+	&:after,
+	&:before {
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
 	}
 }

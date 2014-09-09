@@ -16,50 +16,49 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@checkbox-marginRight: 4px;
+@checkbox-marginRight: 3px;
+@checkbox-fontSize: 1em;
 
 
 // -------------------- Core LEGO --------------------
 .Checkbox() {
 	position: relative;
 	display: block;
-
-	.Icon {
-		display: inline-block;
-		vertical-align: top;
-		position: relative;
-		top: -1px;
-		margin-right: @checkbox-marginRight;
-	}
-
-	> input {
-		visibility: hidden;
-	}
-
-	> input[type="checkbox"]:not(:checked)  + .Icon:before {
-		content: "\e62E";
-	}
-
-	> input[type="checkbox"]:checked + .Icon:before {
-		content: "\e62F";
-	}
-
+	cursor: pointer;
+	vertical-align: middle;
+	font-size: @checkbox-fontSize;
 }
 
 // -------------------- Descendands --------------------
+.Checkbox-icon() {
+	background: #fff;
+	border: 1px solid #d8d8d8;
+	border-radius: 2px;
+	display: block;
+	float: left;
+	width: 14px;
+	height: 14px;
+	text-indent: -1px;
+	line-height: 12px;
+	margin: 4px 5px 0 0;
 
+	&:before {
+		position: absolute;
+		font-size: 17px;
+		left: 0px;
+		top: -1px;
+	}
+}
 
-// -------------------- Modifiers --------------------
+.Checkbox-input() {
+	visibility: hidden;
+	position: absolute;
 
+	&[type="checkbox"]:not(:checked)  + .Checkbox-icon:before {
+		content: "";
+	}
 
-// -------------------- States --------------------
-
-
-// -------------------- Mixins --------------------
-
-// -------------------- Type variants --------------------
-.checkboxVariant(@iconColor) {
-	.Icon {
-		color: @iconColor;
+	&[type="checkbox"]:checked + .Checkbox-icon:before {
+		content: "\e62C";
 	}
 }

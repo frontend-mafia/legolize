@@ -17,22 +17,23 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
+@progress-bgColor: #eee;
+@progress-bar-bgColor: #888;
 @progress-height: 30px;
 @progress-bar-minWidth: 30px;
 @progress-bar-color: #fff;
-@progress-bar-bgColor: #808080; //What color should be by default?
-@progress-currentMark-bgColor: #fff;
+@progress-currentMark-border: 1px solid #eee;
 @progress-currentMark-opacity: 0.5;
-@progress-currentMark-width: 1px;
 @progress-marginRight: 30px;
 
 // --- Default modifier ---
 
 // -------------------- Core LEGO --------------------
 .Progress() {
-	position: relative;
 	height: @progress-height;
 	line-height: @progress-height;
+	position: relative;
+	margin-bottom: 5px;
 	margin-right: @progress-marginRight;
 }
 
@@ -48,12 +49,11 @@
 
 .Progress-currentMark() {
 	height: inherit;
-	font-size: 0px;
-	top: 0px;
-	z-index: 0;
 	position: absolute;
-	width: @progress-currentMark-width;
-	background: @progress-currentMark-bgColor;
+	top: 0px;
+	width: 0;
+	height: 100%;
+	border-right: @progress-currentMark-border;
 	opacity: @progress-currentMark-opacity;
 }
 
@@ -69,18 +69,10 @@
 	}
 }
 
-// -------------------- Modifiers --------------------
-
-
-// -------------------- Mixins --------------------
-
-// Create the descendands that should be in all modifiers
-// -------------------------
-.createProgressModifier(@progress-bar-bgColor) {
-	background-color: @progress-bar-bgColor;
-}
-
-.createStatusMarkModifier(@statusMark-color, @statusMark-fontSize) {
-	color: @statusMark-color;
-	font-size: @statusMark-fontSize;
+.Progress-label() {
+	font-size: 12px;
+	display: block;
+	text-align: left;
+	width: 100%;
+	font-weight: bold;
 }

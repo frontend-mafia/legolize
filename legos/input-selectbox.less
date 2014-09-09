@@ -1,0 +1,48 @@
+//********************************************
+//	Selectbox Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// -------------------- Variables --------------------
+@selectbox-marginRight: 3px;
+@selectbox-fontSize: 13px;
+@selectbox-lineHeight: 24px;
+@selectbox-paddding: 0px 6px;
+@selectbox-border: 1px solid rgba(0, 0, 0, 0.15);
+@selectbox-borderRadius: 3px;
+@selectbox-placeholder-color: #BBBBBB;
+@selectbox-fontColor: #585858;
+@selectbox-bgColor: #fff;
+
+// -------------------- Core LEGO --------------------
+.Selectbox() {
+	color: @selectbox-fontColor;
+	font-size: @selectbox-fontSize;
+	line-height: @selectbox-lineHeight;
+	padding: @selectbox-paddding;
+	/*border: @selectbox-border;*/
+	outline: none;
+	border-radius: @selectbox-borderRadius;
+	background-color: @selectbox-bgColor;
+	padding: 7px 7px;
+	max-width: 100%;
+
+	&::-webkit-input-placeholder {
+		color: @selectbox-placeholder-color;
+	}
+	&::-moz-placeholder {
+		color: @selectbox-placeholder-color;
+	}
+}

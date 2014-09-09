@@ -20,11 +20,13 @@
 
 
 // --- Default modifier ---
+@media-margin: 5px;
 
 // -------------------- Core LEGO --------------------
 .Media() {
 	overflow: hidden;
 	zoom: 1;
+	margin: @media-margin;
 }
 
 // -------------------- Descendands --------------------
@@ -35,20 +37,5 @@
 .Media-body() {
 	.Media();
 	display: block;
-
-	.Media-heading() {
-	}
-}
-
-// -------------------- Modifiers --------------------
-.Media-object--left(@marginTop, @marginLeft) {
-	float: left;
-	margin-top: @marginTop;
-	margin-right: @marginLeft;
-}
-
-.Media-object--right(@marginTop, @marginRight) {
-	float: right;
-	margin-top: @marginTop;
-	margin-right: @marginRight;
+	margin-top: 0;
 }

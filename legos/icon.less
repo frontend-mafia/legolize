@@ -20,7 +20,8 @@
 
 
 // --- Default modifier ---
-@icon-content: "";
+@icon-content: " ";
+@icon-fontSize: 2em;
 
 @font-face {
 	font-family: 'Menicon';
@@ -35,10 +36,11 @@
 
 // -------------------- Core LEGO --------------------
 .Icon() {
-	color: inherit;
-	font-size: inherit;
+	font-size: @icon-fontSize;
 	vertical-align: middle;
 	display: inline-block;
+	position: relative;
+	line-height: normal;
 
 	&::before {
 		font-family: Menicon;
@@ -48,8 +50,5 @@
 		color: inherit;
 	}
 }
-
-// -------------------- Descendands --------------------
-
 
 // -------------------- Modifiers --------------------

@@ -1,5 +1,5 @@
 //********************************************
-//	Radio Core
+//	Textarea Core
 //********************************************/
 
 // When writing Lego's we use BEM naming conventions.
@@ -16,37 +16,30 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@radio-marginRight: 4px;
+@textarea-marginRight: 3px;
+@textarea-fontSize: 1em;
+@textarea-border: 1px solid rgba(0, 0, 0, 0.15);
+@textarea-borderRadius: 3px;
+@textarea-placeholder-color: #BBBBBB;
+@textarea-fontColor: #585858;
+@textarea-minHeight: 140px;
 
 // -------------------- Core LEGO --------------------
-.Radio() {
-	position: relative;
-	display: block;
-	cursor: pointer;
-	vertical-align: bottom;
-}
+.Textarea() {
+	color: @textarea-fontColor;
+	margin: 0;
+	padding: @textarea-fontSize / 2 @textarea-fontSize;
+	font-size: @textarea-fontSize;
 
-// -------------------- Descendands --------------------
-.Radio-icon() {
-	display: inline-block;
-	vertical-align: top;
-	position: relative;
-	top: -2px;
-	margin-right: @radio-marginRight;
-	font-size: 1.5em;
-}
+	border: @textarea-border;
+	outline: none;
+	border-radius: @textarea-borderRadius;
+	min-height: @textarea-minHeight;
 
-.Radio-input() {
-	visibility: hidden;
-	position: absolute;
-
-	&[type="radio"]:not(:checked)  + .Radio-icon:before {
-		content: "\e631";
+	&::-webkit-input-placeholder {
+		color: @textarea-placeholder-color;
 	}
-
-	&[type="radio"]:checked + .Radio-icon:before {
-		content: "\e632";
-		margin-left: -1px;
-		margin-right: 1px;
+	&::-moz-placeholder {
+		color: @textarea-placeholder-color;
 	}
 }

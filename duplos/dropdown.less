@@ -18,98 +18,115 @@
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 @icon-margin: 5px;
-@dropdown-border:1px solid #ffae00;
+
+@dropdown-menu-border: 1px solid #d8d8d8;
+@dropdown-fontColor: #333;
+
 @dropdown-background: #fff;
-@dropdown-padding: 10px;
 @dropdown-borderRadius: 3px;
 
 @divider-bgColor: #e5e5e5;
-@divider-margin: 9px 0;
+@divider-margin: 3px 0;
+
+@menu--wide-minWidth: 250px;
+
+//active state
+@dropdown-active-fontColor: #262626;
+@dropdown-active-bgColor: #f5f5f5;
+
+//disabled state
+@dropdown-disabled-fontColor: #262626;
+@dropdown-disabled-bgColor: #f5f5f5;
+
 
 // -------------------- Core LEGO --------------------
 .Dropdown() {
 	position: relative;
 	display: inline-block;
-
-
-	> a:link,
-	> a:visited {
-		text-decoration: none;
-		color: inherit;
-		margin-bottom: 0px;
-	}
-
-	> ul {
-		position: absolute;
-		top: 100%;
-		z-index: 1000;
-		min-width: 100%;
-		left: 0;
-		float: left;
-		text-align: left;
-		list-style: none;
-		margin-top: 0px;
-		display: none;
-		background: @dropdown-background;
-		padding: @dropdown-padding;
-
-		.borderRadius--top(0);
-		.borderRadius--bottom(@dropdown-borderRadius);
-		.boxShadow(4px 4px 0px rgba(0,0,0,0.15));
-
-		> li {
-			width: 100%;
-		}
-
-		> li:hover {
-			background: #f2f2f2;
-		}
-
-		> li > a:link,
-		> li > a:visited {
-			line-height: 24px;
-		}
-	}
+	color: @dropdown-fontColor;
+	cursor: pointer;
 }
 
 // -------------------- Descendands --------------------
-.Dropdown--item() {
-	list-style: none;
+.Dropdown-menu() {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	text-align: left;
+	z-index: 1000;
+
+	padding: 0;
+	margin: 0px;
+	min-width: 100%;
+	padding: 10px;
+
+	display: none;
+	background: @dropdown-background;
+	border: @dropdown-menu-border;
+
+	.borderRadius--bottom(@dropdown-borderRadius);
+}
+
+.Dropdown-item() {
+	.Nav-item();
+
 	margin: 0px;
 	padding: 0px;
-	text-align: left;
+	width: 100%;
+	line-height: normal;
 
-	> a {
-		display: block;
-		clear: both;
-		font-weight: 400;
-		color: #333;
-		white-space: nowrap;
-		cursor: pointer;
+	.Link:link,
+	.Link:visited {
+		color: #06a3d5;
+		line-height: 24px;
+		font-size: 12px;
+		font-weight: normal;
+		width: 100%;
 	}
 
-	> a:hover,
-	> a:focus {
-		.makeActive();
+	.Link:hover,
+	.Link:focus {
+		background: #f2f2f2;
 	}
+}
+
+.Dropdown-icon() {
+	font-size: 1.125em;
+	float: right;
 }
 
 .Dropdown--divider() {
 	overflow: hidden;
-	height: 1px;
+	height: 0px;
+	width: 100%;
 	margin: @divider-margin;
-	background-color: @divider-bgColor;
+	border-bottom: 1px solid @divider-bgColor;
 }
 
 // -------------------- Modifiers --------------------
-.Dropdown--active {
-	.makeActive();
+.Dropdown-menu--wide() {
+	width: 100%;
+	min-width: @menu--wide-minWidth;
+
+	.Nav-item--right & {
+		left: auto;
+		right: 0;
+	}
+
+	.Dropdown-item {
+		width: 50%;
+	}
 }
 
-// Dropdown variants
-// -------------------------
-.makeActive() {
-	color: #262626;
+// -------------------- States --------------------
+.Dropdown-is-active() {
+	color: @dropdown-active-fontColor;
 	text-decoration: none;
-	background-color: #f5f5f5;
+	background-color: @dropdown-active-bgColor;
+}
+
+.Dropdown-is-disabled() {
+	color: @dropdown-disabled-fontColor;
+	text-decoration: none;
+	background-color: @dropdown-disabled-bgColor;
 }

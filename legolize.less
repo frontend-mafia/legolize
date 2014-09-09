@@ -4,35 +4,42 @@
 @import "baseline/baseline.variables.less";
 @import "baseline/baseline.mixins.less";
 
+// Import layout legos
+@import "legos/layout.less";
+@import "legos/grid.less";
+@import "legos/column.less";
+
 // Import legos
 @import "legos/alert.less";
-@import "legos/breadcrumb.less";
 @import "legos/button.less";
+@import "legos/breadcrumb.less";
 @import "legos/divider.less";
 @import "legos/heading.less";
 @import "legos/icon.less";
 @import "legos/label.less";
+@import "legos/link.less";
 @import "legos/list-group.less";
-@import "legos/panel.less";
 @import "legos/media.less";
+@import "legos/modal.less";
+@import "legos/nav.less";
+@import "legos/pager.less";
+@import "legos/panel.less";
 @import "legos/progress-bar.less";
-@import "legos/pagination.less";
-@import "legos/grid.less";
-@import "legos/layout.less";
-@import "legos/column.less";
+@import "legos/slider.less";
+@import "legos/tab.less";
+@import "legos/table.less";
 
-//Import Form Fields
-@import "legos/form-field.less";
+// Import form legos
+@import "legos/form.less";
 @import "legos/input-checkbox.less";
 @import "legos/input-radio.less";
+@import "legos/input-textbox.less";
+@import "legos/input-textarea.less";
+@import "legos/input-selectbox.less";
 
 // Import duplos
-@import "duplos/nav.less";
-@import "duplos/dropdown.less"; //!!! dropdown must be below nav
-@import "duplos/tabs-container.less";
-
-//Import Widgets
-@import "duplos/modal.less";
+@import "duplos/dropdown.less";
+@import "duplos/date-period.less";
 
 .normalizeInit () {
 	@import (less) "./vendor/normalize-css/normalize.css";

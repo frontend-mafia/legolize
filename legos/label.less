@@ -18,75 +18,47 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@label-fontSize: 13px;
-@label-fontFamilly: Arial, sans-serif;
+@label-fontSize: 14px;
 @label-minWidth: 20px;
-@label-padding: 5px 7px;
-@label-borderRadius: 4px;
+@label-padding: 0px 10px;
+@label-borderRadius: 3px;
 
 @label-border: 1px solid #c8c8c8;
 @label-background: #fff;
 @label-fontColor: #5b5b5b;
 
-@label-hover-border: 1px solid #06a3d5;
-@label-hover-background: #06a3d5;
-@label-hover-fontColor: #fff;
-
-
 // -------------------- Core LEGO --------------------
 .Label() {
 	display: inline-block;
-	text-align: center;
-	font-size: @label-fontSize;
-	font-family: @label-fontFamilly;
-	cursor: pointer;
-	white-space: nowrap;
-	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-	width: auto;
-	white-space: nowrap;
-	overflow: visible;
-	min-width: @label-minWidth;
-	border: @label-border;
-	padding: @label-padding;
-	border-radius: @label-borderRadius;
-	.boxSizing(border-box);
-	.userSelect(none);
 
-	&:hover {
-		text-decoration: none;
-		border: @label-hover-border;
-		background: @label-hover-background;
-		color: @label-hover-fontColor;
-	}
+	border: @label-border;
+	border-radius: @label-borderRadius;
+	padding: @label-padding;
+	min-width: @label-minWidth;
+
+	font-size: @label-fontSize;
+	text-align: center;
+	white-space: nowrap;
 }
 
 // -------------------- Descendands --------------------
-
-
-// -------------------- Modifiers --------------------
-
-
-// -------------------- States --------------------
-
-
-// -------------------- Mixins --------------------
+.Label-icon() {
+	vertical-align: top;
+	margin-right: 3px;
+}
 
 // Type variants
 // -------------------------
-
 // Change padding, font-size, line-height and border-radius
-.labelSize(@paddingVertical; @paddingHorizontal; @fontSize; @lineHeight; @borderRadius) {
+.labelSizeVariant( @fontSize; @lineHeight; @borderRadius) {
 	font-size: @fontSize;
-	padding: @paddingVertical @paddingHorizontal;
+	//padding: @paddingVertical @paddingHorizontal;
 	line-height: @lineHeight;
 	.borderRadius(@borderRadius);
 }
 
-// Label variants
-// -------------------------
-//apply active state to buttons with type modifiers only
-
-.labelVariant(@bgColor, @fontColor, @border: 1px solid @bgColor) {
+// Label variants mixin
+.labelTypeVariant(@bgColor, @fontColor, @border: 1px solid @bgColor) {
 	background-color: @bgColor;
 	color: @fontColor;
 	border: @border;

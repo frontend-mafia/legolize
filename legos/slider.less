@@ -1,0 +1,136 @@
+//********************************************
+//	Slider Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// -------------------- Variables --------------------
+@slider-bar-bgColor: #b3b3b3;
+@slider-progress-bgColor: #868686;
+@slider-height: 30px;
+@slider-bar-minWidth: 30px;
+@slider-label-lineHeight: 1.5em;
+@slider-label-fontSize: 0.8em;
+
+@slider-progress-zindex: 2;
+@slider-dragbar-zindex: 4;
+@slider-icon-color: #fff;
+@slider-icon-zindex: 3;
+
+@slider-dragbar-laber-width: 100px;
+@slider-dragbar-laber-height: 35px;
+
+// -------------------- Core LEGO --------------------
+.Slider() {
+	width: 100%;
+	text-align: center;
+}
+
+// -------------------- Descendands --------------------
+.Slider-bar() {
+	height: @slider-height;
+	position: relative;
+	margin-bottom: 5px;
+	background: #eee;
+	text-align: center;
+	z-index: @slider-progress-zindex;
+	background-color: @slider-bar-bgColor;
+}
+
+.Slider-progress() {
+	height: inherit;
+	float: left;
+	min-width: @slider-bar-minWidth;
+	text-align: center;
+	position: relative;
+	display: inline-block;
+	background-color: @slider-progress-bgColor;
+}
+
+.Slider-pointer() {
+	position: absolute;
+	cursor: w-resize;
+}
+
+.Slider-statusMark() {
+	position: absolute;
+	height: inherit;
+	width: 0px;
+	border-right: 1px solid #fff;
+	top: 0;
+}
+
+.Slider-dragbar() {
+	position: absolute;
+	z-index: @slider-dragbar-zindex;
+	margin-top: -10px;
+	left: 20%;
+	cursor: w-resize;
+}
+
+.Slider-dragbarLabel() {
+	position: absolute;
+	line-height: @slider-label-lineHeight;
+	font-size: @slider-label-fontSize;
+	width: 100px;
+	height: 50px;
+	display: table-cell;
+	line-height: 50px;
+}
+
+.Slider-icon() {
+	position: absolute;
+	color: @slider-icon-color;
+	z-index: @slider-icon-zindex;
+	font-size: @slider-height;
+}
+
+.Slider-label() {
+	display: inline-block;
+	line-height: @slider-label-lineHeight;
+	font-size: @slider-label-fontSize;
+}
+
+// -------------------- Modifiers --------------------
+
+//Slider dragbar labels
+.Slider-dragbarLabel--top() {
+	top: 0px;
+	left: 50%;
+	margin-left: -@slider-dragbar-laber-width / 2;
+	margin-top: -@slider-dragbar-laber-height;
+	text-align: center;
+	vertical-align: bottom;
+}
+
+.Slider-dragbarLabel--right() {
+	right: 0px;
+	margin-right: -@slider-dragbar-laber-width - 10px;
+	text-align: left;
+}
+
+.Slider-dragbarLabel--bottom() {
+	bottom: 0px;
+	margin-bottom: -@slider-dragbar-laber-height;
+	text-align: center;
+	vertical-align: top;
+	left: 50%;
+	margin-left: -@slider-dragbar-laber-width / 2;
+}
+
+.Slider-dragbarLabel--left() {
+	left: 0px;
+	margin-left: -@slider-dragbar-laber-width - 10px;
+	text-align: right;
+}

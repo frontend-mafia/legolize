@@ -1,0 +1,77 @@
+//********************************************
+//	Nav Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @lego--modifier-property ex: @button--warning-borderColor
+// @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// --- Global ---
+// Either use baseline units or pixels for margin/padding/height
+
+//Default styles
+@nav-item-fontColor: #333;
+
+@nav-item-hover-fontColor: #000;
+@nav-item-hover-background: #eee;
+
+@nav-item-focus-fontColor: #000;
+@nav-item-focus-background: #eee;
+
+
+@nav-item--link-lineHeight: 34px;
+
+
+//nav link disabled
+@nav-item-disabled-fontColor: #bdd4db;
+@nav-item-disabled-background: transparent;
+
+//nav link active
+@nav-item-active-background: #eee;
+@nav-item-active-fontColor: #06a3d5;
+
+// -------------------- Core LEGO --------------------
+.Nav() {
+	padding: 0px;
+	position: relative;
+	.clearfix();
+}
+
+// -------------------- Descendands --------------------
+.Nav-item() {
+	list-style: none;
+	float: left;
+	.boxSizing(border-box);
+}
+
+
+// -------------------- States --------------------
+.Nav-item-is-disabled() {
+	background: @nav-item-disabled-background;
+	color: @nav-item-disabled-fontColor;
+	cursor: not-allowed;
+	a {
+		cursor: not-allowed;
+	}
+}
+
+.Nav-item-is-active() {
+	background: @nav-item-active-background;
+	color: @nav-item-active-fontColor;
+}
+
+.Nav-item-is-focus() {
+	background: @nav-item-focus-background;
+	color: @nav-item-focus-fontColor;
+}
+
+// -------------------- Modifiers --------------------

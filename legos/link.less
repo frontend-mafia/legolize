@@ -1,5 +1,5 @@
 //********************************************
-//	FormField Core
+//	Link Core
 //********************************************/
 
 // When writing Lego's we use BEM naming conventions.
@@ -17,45 +17,20 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
+@grid-marginRight: 1%;
 
-
-@formField-default-placeholder-color: #BBBBBB;
-@formField-default-fontColor: #585858;
-@formField-default-borderRadius: .3125em;
-@formField-marginBottom: 10px;
-@formField-textarea-minHeight: 100px;
-
-@formField-icon-size: 34px;
-
-
-@formField-label-marginBottom: 3px;
 
 // -------------------- Core LEGO --------------------
-.Form() {
-	width: 100%;
-}
-
-// -------------------- Descendands --------------------
-.Form-item() {
-	display: block;
-	position: relative;
-}
-
-.Form-icon() {
-	.Textbox,
-	.Textarea,
-	.Selectbox {
-		text-indent: 1em;
-		width: 100%;
+.Link() {
+	&:link,
+	&:visited {
+		text-decoration: none;
 	}
-
-	.Icon {
-		position: absolute;
-		top: 1em;
-	}
+	margin: 0px 5px 0px 0px;
+	display: inline-block;
+	font-size: 13px;
 }
 
-.Form-itemLabel() {
-	display: block;
-	display: block;
-}
+// -------------------- Modifiers --------------------
+
+// -------------------- Mixins --------------------

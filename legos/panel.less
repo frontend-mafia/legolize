@@ -32,12 +32,12 @@
 @panel-color: inherit;
 @panel-bgColor: #fff;
 @panel-border: 1px solid darken(@panel-bgColor, 20%);
-@panel-header-bgColor: darken(@panel-bgColor, 10%);
+@panel-header-bgColor: #fff; //darken(@panel-bgColor, 10%);
 @panel-heading-color: inherit;
 
 // -------------------- Core LEGO --------------------
 .Panel() {
-	color: @panel-color;
+	//color: @panel-color;
 	border: @panel-border;
 	background-color: @panel-bgColor;
 	border-radius: @panel-borderRadius;
@@ -54,6 +54,7 @@
 	background-color: @panel-header-bgColor;
 	border-top-left-radius: @panel-borderRadius;
 	border-top-right-radius: @panel-borderRadius;
+	border-bottom: solid 1px #d8d8d8;
 }
 
 .Panel-heading() {
@@ -70,7 +71,8 @@
 	padding-right: @panel-body-paddingRight;
 }
 
-// TODO: rethink if this belongs to Panel
+
+// -------------------- Modifiers --------------------
 .Panel-body--highlight() {
 	.Panel-body();
 	background-color: #e6e6e6;
@@ -84,7 +86,16 @@
 	}
 }
 
-// -------------------- Modifiers --------------------
+.Panel--transparent() {
+	border: 0;
+	border-radius: 0;
+	background-color: transparent;
+
+	.Panel-header {
+		background-color: transparent;
+	}
+}
+
 
 // -------------------- Mixins --------------------
 

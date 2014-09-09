@@ -1,5 +1,5 @@
 //********************************************
-//	FormField Core
+//	Tab Container Core
 //********************************************/
 
 // When writing Lego's we use BEM naming conventions.
@@ -18,44 +18,16 @@
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 
-
-@formField-default-placeholder-color: #BBBBBB;
-@formField-default-fontColor: #585858;
-@formField-default-borderRadius: .3125em;
-@formField-marginBottom: 10px;
-@formField-textarea-minHeight: 100px;
-
-@formField-icon-size: 34px;
-
-
-@formField-label-marginBottom: 3px;
-
 // -------------------- Core LEGO --------------------
-.Form() {
+.Tab() {
 	width: 100%;
+
 }
 
 // -------------------- Descendands --------------------
-.Form-item() {
-	display: block;
-	position: relative;
-}
-
-.Form-icon() {
-	.Textbox,
-	.Textarea,
-	.Selectbox {
-		text-indent: 1em;
-		width: 100%;
-	}
-
-	.Icon {
-		position: absolute;
-		top: 1em;
-	}
-}
-
-.Form-itemLabel() {
-	display: block;
-	display: block;
+.Tab-item() {
+	display: none;
+	margin-top: 0px;
+	width: 100%;
+	border-bottom: 0px;
 }

@@ -1,0 +1,92 @@
+/********************************************
+	Table
+********************************************/
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// -------------------- Variables --------------------
+
+@table-bg:                      transparent;
+@table-bg-hover:                #f5f5f5;
+@table-bg-active:               @table-bg-hover;
+
+@table-cell-border: 			1px solid #d8d8d8;
+
+// -------------------- Core LEGO --------------------
+.Table() {
+	width: 100%;
+	max-width: 100%;
+	display: table;
+	border-collapse: collapse;
+	border-bottom: @table-cell-border;
+}
+
+// -------------------- Descendants --------------------
+.Table-head() {
+	.Table-cell {
+		border-top: 0;
+		vertical-align: bottom;
+
+		a:link,
+		a:visited {
+			color: @brandPrimary;
+			text-decoration: none;
+		}
+	}
+}
+
+.Table-body() {
+
+}
+
+.Table-row() {
+	display: table-row;
+
+	&.Table-footer {
+		.Table-cell {
+			background-color: #f8f8f8;
+			font-weight: bold;
+			padding: 2% 0;
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+	}
+}
+
+.Table-rowGroup() {
+	display: table-row-group;
+}
+
+.Table-columnGroup() {
+	display: table-column-group;
+}
+
+.Table-cell() {
+	padding: 0px 5px;
+	line-height: normal;
+	vertical-align: middle;
+	text-align: left;
+	display: table-cell;
+	border-top: @table-cell-border;
+}
+
+// -------------------- Modifiers --------------------
+.tableRowVariant(@row-bgColor) {
+	&:hover .Table-cell,
+	&.is-active .Table-cell {
+		background-color: @row-bgColor;
+		color: #fff;
+		cursor: pointer;
+		.Button {
+			background-color: #fff;
+			color: @row-bgColor;
+		}
+	}
+}

@@ -1,5 +1,5 @@
 //********************************************
-//	Radio Core
+//	Pagination Core
 //********************************************/
 
 // When writing Lego's we use BEM naming conventions.
@@ -16,37 +16,43 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@radio-marginRight: 4px;
+@pager-item-padding: 0 3px;
+@pager-separator-padding: 0px 3px;
+@pager-separator-fontColor: #ddd;
+
 
 // -------------------- Core LEGO --------------------
-.Radio() {
-	position: relative;
-	display: block;
-	cursor: pointer;
-	vertical-align: bottom;
+.Pager() {
+	text-align: center;
+	overflow: hidden;
+	padding: 5px;
+	border-bottom: 1px solid #e4e4e4;
 }
 
 // -------------------- Descendands --------------------
-.Radio-icon() {
-	display: inline-block;
+.Pager-item() {
+	text-decoration: none;
 	vertical-align: top;
-	position: relative;
-	top: -2px;
-	margin-right: @radio-marginRight;
-	font-size: 1.5em;
+	display: inline-block;
+	cursor: pointer;
 }
 
-.Radio-input() {
-	visibility: hidden;
-	position: absolute;
+.Pager-separator() {
+	padding: @pager-separator-padding;
+	color:@pager-separator-fontColor;
+}
 
-	&[type="radio"]:not(:checked)  + .Radio-icon:before {
-		content: "\e631";
-	}
+// -------------------- Modifiers --------------------
 
-	&[type="radio"]:checked + .Radio-icon:before {
-		content: "\e632";
-		margin-left: -1px;
-		margin-right: 1px;
+// -------------------- States --------------------
+
+// -------------------- Mixins --------------------
+.pagerItemVariant(@fontColor, @hoverFontColor) {
+	color: @fontColor;
+
+	&:hover {
+		color: @hoverFontColor;
 	}
 }
+
+// -------------------- Variants --------------------
