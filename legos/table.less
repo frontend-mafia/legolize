@@ -17,7 +17,8 @@
 @table-bg-hover:                #f5f5f5;
 @table-bg-active:               @table-bg-hover;
 
-@table-cell-border: 			1px solid #d8d8d8;
+@table-cell-borderColor: #d8d8d8;
+
 
 // -------------------- Core LEGO --------------------
 .Table() {
@@ -25,16 +26,26 @@
 	max-width: 100%;
 	display: table;
 	border-collapse: collapse;
-	border-bottom: @table-cell-border;
+	border-bottom: 1px solid @table-cell-borderColor;
 }
 
 // -------------------- Descendants --------------------
+.Table-body() {
+
+}
+
+.Table-row() {
+	display: table-row;
+}
+
 .Table-head() {
+	.Table-row();
+
 	.Table-cell {
 		border-top: 0;
 		border-width: 2px;
 		vertical-align: bottom;
-		border-bottom: 2px solid #d8d8d8;
+		border-bottom: 2px solid @table-cell-borderColor;
 
 		a:link,
 		a:visited {
@@ -44,21 +55,12 @@
 	}
 }
 
-.Table-body() {
+.Table-footer() {
+	.Table-row();
 
-}
-
-.Table-row() {
-	display: table-row;
-
-	&.Table-footer {
-		.Table-cell {
-			background-color: #f8f8f8;
-			font-weight: bold;
-			padding: 2% 0;
-			padding-left: 5px;
-			padding-right: 5px;
-		}
+	.Table-cell {
+		border-top: 2px solid @table-cell-borderColor;
+		font-weight: bold;
 	}
 }
 
@@ -76,10 +78,12 @@
 	vertical-align: middle;
 	text-align: left;
 	display: table-cell;
-	border-top: @table-cell-border;
+	border-top: 1px solid @table-cell-borderColor;
 }
 
 // -------------------- Modifiers --------------------
+
+// -------------------- Table type modifiers --------------------
 .Table--striped() {
 	.Table-row:nth-child(even) {
 		.Table-cell {
@@ -89,23 +93,79 @@
 }
 
 .Table--bordered() {
-	border: 1px solid #d8d8d8;
+	border: 1px solid @table-cell-borderColor;
 
 	.Table-cell {
-		border-right: 1px solid #d8d8d8;
+		border-right: 1px solid @table-cell-borderColor;
+	}
+}
+
+.Table--condensed() {
+	.Table-cell {
+		padding: 0px 5px;
+		line-height: 2em;
+	}
+
+	.Table-footer {
+		.Table-cell {
+			padding: 0 5px;
+		}
+	}
+}
+
+.Table-row--highlight() {
+	.Table-cell {
+		background-color: #FAF9F9;
+	}
+}
+
+// -------------------- Table-cell layout modifiers --------------------
+.Table-cell--left() {
+	text-align: left;
+}
+
+.Table-cell--center() {
+	text-align: center;
+}
+
+.Table-cell--right() {
+	text-align: right;
+}
+
+.Table-cell--full() {
+	padding: 0;
+}
+
+.Table-cell--indented() {
+	padding-left: 32px !important;
+	position: relative;
+
+	.Icon {
+		position: absolute;
+		left: 5px;
+		top: 0;
 	}
 }
 
 // -------------------- Mixins --------------------
-.tableRowVariant(@row-bgColor) {
-	&:hover .Table-cell,
-	&.is-active .Table-cell {
-		background-color: @row-bgColor;
-		color: #fff;
+.tableRowVariant(@row-bgColor, @row-fontColor, @row-hover-bgColor, @row-hover-fontColor) {
+
+	background-color: @row-bgColor;
+	color: @row-fontColor;
+	cursor: pointer;
+	.Button {
+		background-color: #fff;
+		color: @row-bgColor;
+	}
+
+	&.hover:hover {
+		background-color: @row-hover-bgColor;
+		color: @row-hover-fontColor;
 		cursor: pointer;
+
 		.Button {
 			background-color: #fff;
-			color: @row-bgColor;
+			color: @row-hover-bgColor;
 		}
 	}
 }

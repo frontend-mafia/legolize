@@ -19,7 +19,6 @@
 // -------------------- Variables --------------------
 // Default link color
 @listGroup-fontColor: inherit;
-@listGroup-fontColorActive: blue;
 @listGroup-fontSize: 1em;
 
 // Margin / Padding
@@ -60,7 +59,6 @@
 .ListGroup-item () {
 	position: relative;
 	display: block;
-	//color: @listGroup-fontColor;
 	font-size: @listGroup-fontSize;
 	background-color: @listGroup-item-bgColor;
 	text-decoration: none;
@@ -76,7 +74,6 @@
 	// ---------- State classes ----------
 	&.is-active,
 	&.is-active:focus {
-		//color: @listGroup-fontColorActive;
 		border-color: @listGroup-item-borderColorActive;
 
 		.ListGroup-itemHeading {
@@ -97,7 +94,6 @@
 
 .ListGroup-itemHeader() {
 	cursor: pointer;
-	//color: @listGroup-fontColor;
 	height: @ListGroup--acordion-lineHeight;
 	line-height: @ListGroup--acordion-lineHeight;
 	background-color: @ListGroup--acordion-header-bgColor;
@@ -122,7 +118,6 @@
 	}
 }
 
-
 // The Heading itself (like h4.ListGroup-itemHeading)
 .ListGroup-itemHeading () {
 	color: @listGroup-itemHeading-fontColor;
@@ -133,9 +128,23 @@
 
 }
 
-// -------------------- Modifiers --------------------
+// -------------------- Mixins --------------------
+.listGroupItemVariant(@listGroup-color, @listGroup-bgColor,  @listGroup-header-bgColor) {
+	color: @listGroup-color;
+	background-color: @listGroup-bgColor;
+	&:hover {
+		background-color: darken(@listGroup-header-bgColor, 4%);
+	}
 
-// Simple version of ListGroup = without rounded corners
+	.ListGroup-itemHeader {
+		background-color: @listGroup-header-bgColor;
+		&:hover {
+			background-color: darken(@listGroup-header-bgColor, 4%);
+		}
+	}
+}
+
+// ListGroup with rounded corners
 .ListGroup--round () {
 	.ListGroup-item {
 		&:first-child {

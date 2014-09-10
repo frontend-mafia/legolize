@@ -45,3 +45,40 @@
 		pointer-events: none;
 	}
 }
+
+// -------------------- Mixins --------------------
+
+//Creates type variants with colored background
+.alertVariant(@borderColor, @bgColor, @borderWidth: 1px) {
+	border: @borderWidth solid @borderColor;
+	background-color: @bgColor;
+
+	&.Alert--caretTop:before    { border-bottom-color: @borderColor; }
+	&.Alert--caretRight:before  { border-left-color:   @borderColor; }
+	&.Alert--caretBottom:before { border-top-color:    @borderColor; }
+	&.Alert--caretLeft:before   { border-right-color:  @borderColor; }
+
+	&.Alert--caretTop:after    { border-bottom-color: @alert-bgColor; }
+	&.Alert--caretRight:after  { border-left-color:   @alert-bgColor; }
+	&.Alert--caretBottom:after { border-top-color:    @alert-bgColor; }
+	&.Alert--caretLeft:after   { border-right-color:  @alert-bgColor; }
+}
+
+//Alert caret variant
+.alertCaretVariant(@position1, @position2) {
+	&:after,
+	&:before {
+		@{position1}: 100%;
+		@{position2}: 50% - 10px;
+	}
+	&:before {
+		border-@{position1}-color: @alert--default-borderColor;
+		margin-@{position2}: -2 * @alert-caretSize;
+		border-width: 2 * @alert-caretSize;
+	}
+	&:after {
+		border-@{position1}-color: @alert--default-bgColor;
+		margin-@{position2}: -@alert-caretSize;
+		border-width: @alert-caretSize;
+	}
+}

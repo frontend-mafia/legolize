@@ -18,10 +18,16 @@
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 
+// -------------------- Variables --------------------
+@tab-border: 1px solid #d8d8d8;
+@tab-padding: 15px 10px;
+@tab-marginBottom: 10px;
+@tab-item-borderRadius: 3px;
+
+
 // -------------------- Core LEGO --------------------
 .Tab() {
 	width: 100%;
-
 }
 
 // -------------------- Descendands --------------------
@@ -30,4 +36,19 @@
 	margin-top: 0px;
 	width: 100%;
 	border-bottom: 0px;
+	border: @tab-border;
+	padding: @tab-padding;
+	margin-bottom: @tab-marginBottom;
+	border-top: 0px;
+	background: #fff;
+}
+
+// -------------------- States --------------------
+.Tab-item-is-active() {
+	display: block;
+}
+
+// -------------------- Type modifiers --------------------
+.Tab-item--round {
+	.borderRadius--top(@tab-item-borderRadius);
 }

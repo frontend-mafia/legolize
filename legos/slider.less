@@ -31,6 +31,13 @@
 @slider-dragbar-laber-width: 100px;
 @slider-dragbar-laber-height: 35px;
 
+@slider-bar--primary-bgColor: #06a3d5;
+@slider-bar--success-bgColor: #57a62f;
+@slider-bar--warning-bgColor: #ffae00;
+@slider-bar--danger-bgColor: #d42020;
+
+@slider-pointer-size: 20px;
+
 // -------------------- Core LEGO --------------------
 .Slider() {
 	width: 100%;
@@ -61,6 +68,14 @@
 .Slider-pointer() {
 	position: absolute;
 	cursor: w-resize;
+}
+
+.Slider-pointer--image() {
+	top: -@slider-pointer-size / 3;
+ 	width: @slider-pointer-size;
+ 	height: @slider-pointer-size;
+	margin-left: -@slider-pointer-size / 2;
+	margin-right: -@slider-pointer-size / 2;
 }
 
 .Slider-statusMark() {
@@ -103,6 +118,21 @@
 }
 
 // -------------------- Modifiers --------------------
+.Slider-progress--primary() {
+	background-color: @slider-bar--primary-bgColor;
+}
+
+.Slider-progress--success() {
+	background-color: @slider-bar--success-bgColor;
+}
+
+.Slider-progress--warning() {
+	background-color: @slider-bar--warning-bgColor;
+}
+
+.Slider-progress--danger() {
+	background-color: @slider-bar--danger-bgColor;
+}
 
 //Slider dragbar labels
 .Slider-dragbarLabel--top() {
