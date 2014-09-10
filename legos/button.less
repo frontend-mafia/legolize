@@ -113,3 +113,53 @@
 .Button-is-focus() {
 	outline: 0;
 }
+
+// -------------------- Mixins --------------------
+
+.buttonSize(@paddingVertical; @paddingHorizontal; @fontSize; @lineHeight; @borderRadius) {
+	font-size: @fontSize;
+	padding: @paddingVertical @paddingHorizontal;
+	line-height: @lineHeight;
+
+	.Icon {
+		font-size: @fontSize;
+		line-height: @fontSize;
+	}
+
+	.borderRadius(@borderRadius);
+}
+
+.buttonVariant(@textColor, @backgroundColor, @borderColor: transparent, @hoverColor: #fff) {
+	color: @textColor;
+	background-color: @backgroundColor;
+	border-color: @borderColor;
+
+	&:hover {
+		background-color: darken(@backgroundColor, 8%);
+		border-color: darken(@borderColor, 8%);
+		color: @hoverColor;
+	}
+
+	&:active,
+	&.is-active {
+		.Button-is-active(@backgroundColor);
+	}
+}
+
+.buttonVariantWhite(@borderColor) {
+	color: @borderColor;
+	background-color: #fff;
+	border-color: @borderColor;
+
+	&:hover {
+		background-color: @borderColor;
+		border-color: @borderColor;
+		color: #fff;
+	}
+
+	&:active,
+	&.is-active {
+		.Button-is-active(@borderColor);
+		color: #fff;
+	}
+}

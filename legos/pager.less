@@ -20,6 +20,9 @@
 @pager-separator-padding: 0px 3px;
 @pager-separator-fontColor: #ddd;
 
+@paging-active-fontColor: #5B5B5B;
+@paging-disabled-fontColor: #777;
+
 
 // -------------------- Core LEGO --------------------
 .Pager() {
@@ -45,6 +48,15 @@
 // -------------------- Modifiers --------------------
 
 // -------------------- States --------------------
+.Pager-item-is-active() {
+	.pagerItemVariant(@paging-active-fontColor, @paging-active-fontColor);
+	cursor: default;
+}
+
+.Pager-item-is-disabled() {
+	.pagerItemVariant(@paging-disabled-fontColor, @paging-disabled-fontColor);
+	cursor: not-allowed;
+}
 
 // -------------------- Mixins --------------------
 .pagerItemVariant(@fontColor, @hoverFontColor) {

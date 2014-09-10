@@ -43,3 +43,22 @@
 		color: @textarea-placeholder-color;
 	}
 }
+
+// ---------------------- Mixins ---------------------
+.textboxVariant(@borderColor, @fontColor) {
+	border-color: @borderColor;
+	color: @fontColor;
+
+	&:focus,
+	&.is-focus {
+		box-shadow: inset 0 1px 1px @borderColor;
+	}
+
+	.Textbox-icon {
+		color: @fontColor;
+	}
+}
+
+.textboxSize(@fontSize) {
+	font-size: @fontSize;
+}

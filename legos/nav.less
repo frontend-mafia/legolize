@@ -30,6 +30,47 @@
 @nav-item-active-background: #eee;
 @nav-item-active-fontColor: #0079a0;
 
+//indented nav tab item
+@nav-tab-item-indent: 24px;
+
+// ------------ Nav--menu variables --------------------
+@menu-background: #06a3d5;
+@menu-borderRadius: 5px;
+
+//menu-default
+@menu-item-fontColor: #fff;
+@menu-item-fontWeight: bold;
+@menu-item-background: transparent;
+@menu-item-borderBottom: 3px solid transparent;
+
+@nav-link-padding: 1.5px 10px;
+@nav-link-fontSize: 14px;
+@nav-link-fontColor: #333;
+
+//menu link hover
+@menu-item-hover-fontColor: #fff;
+@menu-item-hover-background: #ffae00;
+@menu-item-hover-borderBottom: 3px solid #ff9600;
+
+@menu-item-disabled-fontColor: #bababa;
+
+@menu-dropdown-border: 1px solid #FFAE00;
+
+// ------------ Nav--tab variables ---------------------
+@tab-border: 1px solid #d8d8d8;
+@tab-marginRight: 3px;
+
+//tab link default
+@tab-item-background: #faf9f9;
+@tab-item-fontColor: #06a3d5;
+
+//tab hover active
+@tab-item-hover-fontColor: #55c0e2;
+
+//tab link active
+@tab-item-active-background: #fff;
+@tab-item-active-fontColor: #06a3d5;
+
 // -------------------- Core LEGO --------------------
 .Nav() {
 	padding: 0px;
@@ -80,4 +121,87 @@
 	}
 }
 
+
+
 // -------------------- Modifiers --------------------
+.Nav-item--indented() {
+	margin-left: @nav-tab-item-indent;
+}
+
+.Nav--menu() {
+	background: @menu-background;
+	border-radius: @menu-borderRadius;
+
+	.Nav-item {
+		border-bottom: @menu-item-borderBottom;
+		background: @menu-item-background;
+		line-height: 36px;
+		font-weight: bold;
+		padding: 0;
+
+		&,
+		> .Link:link,
+		> .Link:visited {
+			color: #fff;
+			font-size: 14px;
+			margin: 0;
+		}
+
+		> .Link {
+			padding: 1px 10px;
+		}
+
+
+		&:first-child {
+			.borderRadius--left (@menu-borderRadius);
+		}
+
+		&:last-child {
+			.borderRadius--right (@menu-borderRadius);
+		}
+
+		&:hover,
+		&.is-active {
+			background: @menu-item-hover-background;
+			border-bottom: @menu-item-hover-borderBottom;
+		}
+
+		&.is-disabled {
+			&,
+			.Link {
+				color: @menu-item-disabled-fontColor;
+			}
+		}
+
+		.Dropdown-menu {
+			border: @menu-dropdown-border;
+		}
+	}
+}
+
+.Nav--tabs() {
+	margin-bottom: 0;
+	border-bottom: 1px solid #ddd;
+
+	.Nav-item {
+		background: @tab-item-background;
+		margin-right: @tab-marginRight;
+		margin-bottom: -1px;
+		line-height: 28px;
+		border: @tab-border;
+		padding: 0px 15px;
+
+		&:hover {
+			border: @tab-border;
+		}
+
+		&.is-active {
+			background: @tab-item-active-background;
+			border-bottom: 1px solid transparent;
+			.Link {
+				color: @brandPrimary;
+			}
+		}
+
+	}
+}

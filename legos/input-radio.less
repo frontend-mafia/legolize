@@ -50,3 +50,16 @@
 		margin-right: 1px;
 	}
 }
+
+// -------------------- Mixins --------------------
+.radioIconSizeVariant(@iconDiscSize, @fontSize) {
+	font-size: @fontSize;
+
+	.Radio-icon-fontSize {
+		font-size: @iconDiscSize;
+	}
+}
+
+.radioIconVariant(@iconColor) {
+	color: @iconColor;
+}
