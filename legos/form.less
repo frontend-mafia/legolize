@@ -26,9 +26,10 @@
 @formField-textarea-minHeight: 100px;
 
 @formField-icon-size: 34px;
-
+@formField-icon-top: .4em;
 
 @formField-label-marginBottom: 3px;
+@formField-inputs-textIndent: 1.5em;
 
 // -------------------- Core LEGO --------------------
 .Form() {
@@ -45,13 +46,13 @@
 	.Textbox,
 	.Textarea,
 	.Selectbox {
-		text-indent: 1em;
+		text-indent: @formField-inputs-textIndent;
 		width: 100%;
 	}
 
 	.Icon {
 		position: absolute;
-		top: 1em;
+		top: @formField-icon-top;
 	}
 }
 

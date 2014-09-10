@@ -32,7 +32,9 @@
 .Table-head() {
 	.Table-cell {
 		border-top: 0;
+		border-width: 2px;
 		vertical-align: bottom;
+		border-bottom: 2px solid #d8d8d8;
 
 		a:link,
 		a:visited {
@@ -69,7 +71,7 @@
 }
 
 .Table-cell() {
-	padding: 0px 5px;
+	padding: 10px 5px;
 	line-height: normal;
 	vertical-align: middle;
 	text-align: left;
@@ -78,6 +80,23 @@
 }
 
 // -------------------- Modifiers --------------------
+.Table--striped() {
+	.Table-row:nth-child(even) {
+		.Table-cell {
+			background-color: #f9f9f9;
+		}
+	}
+}
+
+.Table--bordered() {
+	border: 1px solid #d8d8d8;
+
+	.Table-cell {
+		border-right: 1px solid #d8d8d8;
+	}
+}
+
+// -------------------- Mixins --------------------
 .tableRowVariant(@row-bgColor) {
 	&:hover .Table-cell,
 	&.is-active .Table-cell {
