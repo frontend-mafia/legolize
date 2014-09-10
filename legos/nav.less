@@ -18,26 +18,17 @@
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 
-//Default styles
-@nav-item-fontColor: #333;
-
-@nav-item-hover-fontColor: #000;
-@nav-item-hover-background: #eee;
-
-@nav-item-focus-fontColor: #000;
+//Nav item focus
+@nav-item-focus-fontColor: #0079a0;
 @nav-item-focus-background: #eee;
 
+//Nav item disabled
+@nav-item-disabled-fontColor: #bababa;
+@nav-item-disabled-background: #eee;
 
-@nav-item--link-lineHeight: 34px;
-
-
-//nav link disabled
-@nav-item-disabled-fontColor: #bdd4db;
-@nav-item-disabled-background: transparent;
-
-//nav link active
+//Nav item active
 @nav-item-active-background: #eee;
-@nav-item-active-fontColor: #06a3d5;
+@nav-item-active-fontColor: #0079a0;
 
 // -------------------- Core LEGO --------------------
 .Nav() {
@@ -50,28 +41,43 @@
 .Nav-item() {
 	list-style: none;
 	float: left;
-	.boxSizing(border-box);
-}
+	padding: 5px 10px;
 
+	&:hover {
+		background-color: @nav-item-focus-background;
+	}
+}
 
 // -------------------- States --------------------
 .Nav-item-is-disabled() {
 	background: @nav-item-disabled-background;
 	color: @nav-item-disabled-fontColor;
-	cursor: not-allowed;
-	a {
-		cursor: not-allowed;
+	pointer-events: none;
+
+	.Link,
+	.Link:hover {
+		color: @nav-item-disabled-fontColor;
 	}
 }
 
 .Nav-item-is-active() {
 	background: @nav-item-active-background;
 	color: @nav-item-active-fontColor;
+
+	.Link,
+	.Link:hover {
+		color: @nav-item-active-fontColor;
+	}
 }
 
 .Nav-item-is-focus() {
 	background: @nav-item-focus-background;
 	color: @nav-item-focus-fontColor;
+
+	.Link,
+	.Link:hover {
+		color: @nav-item-focus-fontColor;
+	}
 }
 
 // -------------------- Modifiers --------------------
