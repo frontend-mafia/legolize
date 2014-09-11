@@ -26,7 +26,10 @@
 	max-width: 100%;
 	display: table;
 	border-collapse: collapse;
-	border-bottom: 1px solid @table-cell-borderColor;
+
+	.Table-footer .Table-cell {
+		border-bottom: 1px solid @table-cell-borderColor;
+	}
 }
 
 // -------------------- Descendants --------------------
@@ -46,6 +49,10 @@
 		border-width: 2px;
 		vertical-align: bottom;
 		border-bottom: 2px solid @table-cell-borderColor;
+
+		&.Table-row--no-border {
+			border: 0;
+		}
 
 		a:link,
 		a:visited {
@@ -76,7 +83,6 @@
 	padding: 10px 5px;
 	line-height: normal;
 	vertical-align: middle;
-	text-align: left;
 	display: table-cell;
 	border-top: 1px solid @table-cell-borderColor;
 }
@@ -93,10 +99,13 @@
 }
 
 .Table--bordered() {
-	border: 1px solid @table-cell-borderColor;
 
 	.Table-cell {
 		border-right: 1px solid @table-cell-borderColor;
+
+		&:first-child {
+			border-left: 1px solid @table-cell-borderColor;
+		}
 	}
 }
 
@@ -113,9 +122,30 @@
 	}
 }
 
+// -------------------- Table row modifiers --------------------
 .Table-row--highlight() {
 	.Table-cell {
 		background-color: #FAF9F9;
+	}
+}
+
+.Table-row--hover() {
+	&:hover {
+		.Table-cell {
+			background-color: #FAF9F9;
+		}
+	}
+}
+
+.Table-row--no-border() {
+	border: 0;
+
+	.Table-cell {
+		border: 0;
+
+		&:first-child {
+			border-left: 0;
+		}
 	}
 }
 
@@ -157,7 +187,7 @@
 		background-color: #fff;
 		color: @row-bgColor;
 	}
-
+	.Table-row--hover:hover &,
 	&.hover:hover {
 		background-color: @row-hover-bgColor;
 		color: @row-hover-fontColor;
