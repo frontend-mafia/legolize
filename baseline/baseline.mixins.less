@@ -55,6 +55,22 @@
 	max-height: @baseline * (round(@units / @baseline));
 }
 
+.min-width(@units) when not (ispixel(@units)) {
+	min-width: @baseline * @units;
+}
+
+.min-width(@units) when (ispixel(@units)) {
+	min-width: @baseline * (round(@units / @baseline));
+}
+
+.max-width(@units) when not (ispixel(@units)) {
+	max-width: @baseline * @units;
+}
+
+.max-width(@units) when (ispixel(@units)) {
+	max-width: @baseline * (round(@units / @baseline));
+}
+
 .width(@units) when not (ispixel(@units)) {
 	width: @baseline * @units;
 }

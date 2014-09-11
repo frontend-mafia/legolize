@@ -1,0 +1,122 @@
+@import "../core.less";
+
+//********************************************
+//	Circle Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// -------------------- Variables --------------------
+
+@circle-color: #fff;
+@circle-dimensionUnits: 150px;
+// Either use pixels, percentages or baseline units
+
+// Bordered modifier
+@circle--bordered-borderWidth: 5px;
+@circle--bordered-borderColor: rgba(0, 0, 0, .5);
+@circle--bordered-borderStyle: solid;
+
+// Filled modifier
+@circle--filled-backgroundColor: #e7e7e7;
+
+// Inner circle
+@circle-inner-borderColor: #fff;
+@circle-inner-backgroundColor: #06a3d5;
+
+// Rectangular fill
+@circle-fill-backgroundColor: #06a3d5;
+
+// -------------------- Mixins --------------------
+.innerCircle () {
+	width: 100%;
+	height: 100%;
+}
+
+// -------------------- Core LEGO --------------------
+
+.Circle() {
+	position: relative;
+	border-radius: 50%;
+	overflow: hidden;
+	color: @circle-color;
+
+	display: flex;
+	align-items: center; // Children vertically in the middle
+	justify-content: center; // Content centered
+
+	.width(@circle-dimensionUnits);
+	.height(@circle-dimensionUnits);
+
+	.Circle-media {
+		max-height: 100%;
+	}
+
+	// Inner circle
+	.Circle {
+		.innerCircle();
+	}
+}
+
+// -------------------- Descendands --------------------
+// Rectangular fill
+.Circle-fill {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: @circle-fill-backgroundColor;
+	z-index: 10;
+}
+
+// -------------------- Modifiers --------------------
+
+// Filled circle with background color
+.Circle--filled() {
+	&:extend(.Circle);
+	background-color: @circle--filled-backgroundColor;
+
+	// Inner circle
+	.Circle {
+		.innerCircle();
+
+		&.Circle--bordered {
+			border-color: @circle-inner-borderColor;
+		}
+
+		&.Circle--filled {
+			background-color: @circle-inner-backgroundColor;
+		}
+	}
+}
+
+// Bordered circle
+.Circle--bordered() {
+	&:extend(.Circle);
+	border: @circle--bordered-borderWidth @circle--bordered-borderStyle @circle--bordered-borderColor;
+
+	// Inner circle
+	.Circle {
+		.innerCircle();
+
+		&.Circle--bordered {
+			border-color: @circle-inner-borderColor;
+		}
+
+		&.Circle--filled {
+			background-color: @circle-inner-backgroundColor;
+		}
+	}
+}
