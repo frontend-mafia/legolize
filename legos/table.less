@@ -39,6 +39,7 @@
 
 .Table-row() {
 	display: table-row;
+	width: 100%;
 }
 
 .Table-head() {
@@ -50,7 +51,7 @@
 		vertical-align: bottom;
 		border-bottom: 2px solid @table-cell-borderColor;
 
-		&.Table-row--no-border {
+		&.Table-row--noBorder {
 			border: 0;
 		}
 
@@ -137,7 +138,7 @@
 	}
 }
 
-.Table-row--no-border() {
+.Table-row--noBorder() {
 	border: 0;
 
 	.Table-cell {
@@ -146,6 +147,12 @@
 		&:first-child {
 			border-left: 0;
 		}
+	}
+}
+
+.Table-row--full() {
+	.Table-cell {
+		padding: 0;
 	}
 }
 
