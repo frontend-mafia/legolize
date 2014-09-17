@@ -17,14 +17,14 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-@CategoryDropdown-button-width: 230px;
-@CategoryDropdown-dropdown-width: 272px;
-@CategoryDropdown-dropdown-borderRadius: 5px;
-@CategoryDropdown-dropdown-borderWidth: 1px;
-@CategoryDropdown-dropdown-borderStyle: solid;
-@CategoryDropdown-dropdown-borderColor: #c8c8c8;
-@CategoryDropdown-dropdown-item-padding: 3px 11px;
-@CategoryDropdown-careet-size: 22px;
+@categoryDropdown-button-width: 230px;
+@categoryDropdown-dropdown-width: 272px;
+@categoryDropdown-dropdown-borderRadius: 5px;
+@categoryDropdown-dropdown-borderWidth: 1px;
+@categoryDropdown-dropdown-borderStyle: solid;
+@categoryDropdown-dropdown-borderColor: #c8c8c8;
+@categoryDropdown-dropdown-item-padding: 3px 11px;
+@categoryDropdown-caret-size: 22px;
 
 // -------------------- Core LEGO --------------------
 .CategoryDropdown() {
@@ -32,12 +32,12 @@
 	display: inline-block;
 
 	.Dropdown, .Button {
-		width: @CategoryDropdown-button-width;
+		width: @categoryDropdown-button-width;
 		text-align: left;
 
 		.Icon--caret-bottom-down {
 			line-height: 0;
-			font-size: @CategoryDropdown-careet-size;
+			font-size: @categoryDropdown-caret-size;
 		}
 	}
 
@@ -51,18 +51,18 @@
 .CategoryDropdown-container() {
 	padding: 0;
 	margin: 0;
-	border: @CategoryDropdown-dropdown-borderRadius @CategoryDropdown-dropdown-borderWidth @CategoryDropdown-dropdown-borderStyle;
-	border-radius: @CategoryDropdown-dropdown-borderRadius;
-	width: @CategoryDropdown-dropdown-width;
+	border: @categoryDropdown-dropdown-borderWidth @categoryDropdown-dropdown-borderStyle @categoryDropdown-dropdown-borderColor;
+	border-radius: @categoryDropdown-dropdown-borderRadius;
+	width: @categoryDropdown-dropdown-width;
 
 	.ListGroup {
-		width: @CategoryDropdown-dropdown-width - 2* @CategoryDropdown-dropdown-borderWidth;
+		width: @categoryDropdown-dropdown-width - 2* @categoryDropdown-dropdown-borderWidth;
 
 		.ListGroup-item.detected-categories   { display: none; }
 		.ListGroup-item.your-categories-label { display: none; }
 
 		.ListGroup-item {
-			padding: @CategoryDropdown-dropdown-item-padding;
+			padding: @categoryDropdown-dropdown-item-padding;
 			position: relative;
 
 			.Icon.Icon--caret-right {
