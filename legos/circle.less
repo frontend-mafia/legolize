@@ -20,23 +20,24 @@
 // -------------------- Variables --------------------
 
 @circle-color: #fff;
-@circle-dimensionUnits: 150px;
+@circle-dimensionUnits: 110px;
 // Either use pixels, percentages or baseline units
 
 // Bordered modifier
 @circle--bordered-borderWidth: 5px;
-@circle--bordered-borderColor: rgba(0, 0, 0, .5);
+@circle--bordered-borderColor: #e3e3e3;
 @circle--bordered-borderStyle: solid;
 
 // Filled modifier
-@circle--filled-backgroundColor: #e7e7e7;
+@circle--filled-backgroundColor: #06a3d4;
 
 // Inner circle
 @circle-inner-borderColor: #fff;
-@circle-inner-backgroundColor: #06a3d5;
+@circle-inner-backgroundColor: #06a3d4;
 
 // Rectangular fill
-@circle-fill-backgroundColor: #06a3d5;
+@circle-fill-backgroundColor: #06a3d4;
+@circle-fill-zIndex: 10;
 
 // -------------------- Mixins --------------------
 .innerCircle () {
@@ -45,22 +46,20 @@
 }
 
 // -------------------- Core LEGO --------------------
-
 .Circle() {
 	position: relative;
 	border-radius: 50%;
 	overflow: hidden;
 	color: @circle-color;
-
 	display: flex;
 	align-items: center; // Children vertically in the middle
 	justify-content: center; // Content centered
-
 	.width(@circle-dimensionUnits);
 	.height(@circle-dimensionUnits);
 
 	.Circle-media {
 		max-height: 100%;
+		z-index: @circle-fill-zIndex + 1;
 	}
 
 	// Inner circle
@@ -78,7 +77,7 @@
 	bottom: 0;
 	left: 0;
 	background-color: @circle-fill-backgroundColor;
-	z-index: 10;
+	z-index: @circle-fill-zIndex;
 }
 
 // -------------------- Modifiers --------------------
