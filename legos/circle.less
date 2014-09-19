@@ -58,8 +58,7 @@
 	.height(@circle-dimensionUnits);
 
 	.Circle-media {
-		max-height: 100%;
-		z-index: @circle-fill-zIndex + 1;
+		.Circle-media();
 	}
 
 	// Inner circle
@@ -70,7 +69,7 @@
 
 // -------------------- Descendands --------------------
 // Rectangular fill
-.Circle-fill {
+.Circle-fill() {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -78,6 +77,12 @@
 	left: 0;
 	background-color: @circle-fill-backgroundColor;
 	z-index: @circle-fill-zIndex;
+}
+
+// Circle media (like image, icon etc.)
+.Circle-media() {
+	max-height: 100%;
+	z-index: @circle-fill-zIndex + 1;
 }
 
 // -------------------- Modifiers --------------------

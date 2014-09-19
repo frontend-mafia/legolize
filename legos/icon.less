@@ -26,11 +26,13 @@
 
 //This path should point to the font files excluding the file extensions,
 //i.e. if the font files are called Menicon.eot, Menicon.svg etc, then the path should be like this:
-@icon-fontPath: "/fonts/Menicon"; 
+@icon-fontPath: "/fonts/Menicon";
 
 // -------------------- Core LEGO --------------------
 .Icon() {
+	font-family: @icon-fontFamily;
 	font-size: @icon-fontSize;
+	font-style: normal;
 	vertical-align: middle;
 	display: inline-block;
 	position: relative;
