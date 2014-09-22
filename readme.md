@@ -38,10 +38,14 @@ Two quick start options are available:
 	v1-*
 	js-someName
 	ui-LayoutLegoName
-	fn-FunctionalLegoName
+	fn-legoNameFunctionalName
 	u-utilityName
 
+example:
 
+    .fn-buttonSearch
+	.u-pullRight
+	
 ### Variable names
 
     @lego--modifier-descendand-property 
