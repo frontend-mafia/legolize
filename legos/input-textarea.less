@@ -16,49 +16,62 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@textarea-marginRight: 3px;
 @textarea-fontSize: 1em;
-@textarea-border: 1px solid rgba(0, 0, 0, 0.15);
-@textarea-borderRadius: 3px;
+@textarea-padding: 5px 10px;
 @textarea-placeholder-color: #BBBBBB;
-@textarea-fontColor: #585858;
 @textarea-minHeight: 140px;
 
+@textarea-borderRadius: 3px;
+@textarea-borderWidth: 1px;
+@textarea-borderStyle: solid;
+@textarea-default-borderColor: #d8d8d8;
+
+@textarea-default-fontColor: #585858;
+@textarea-default-borderColor: #585858;
+@textarea-focus-borderColor: #06a3d5;
+
+@textarea-disabled-borderColor: #cacaca;
+@textarea-disabled-fontColor: #888;
+
+@textarea-transition: border 500ms ease-out;
 // -------------------- Core LEGO --------------------
 .Textarea() {
-	color: @textarea-fontColor;
+
 	margin: 0;
-	padding: @textarea-fontSize / 2 @textarea-fontSize;
-	font-size: @textarea-fontSize;
-
-	border: @textarea-border;
-	outline: none;
-	border-radius: @textarea-borderRadius;
+	padding: @textarea-padding;
 	min-height: @textarea-minHeight;
+	font-size: @textarea-fontSize;
+	outline: none;
+	
+	border-radius: @textarea-borderRadius;
+	border-width: @textarea-borderWidth;
+	border-style: @textarea-borderStyle;
+	
+	.textareaVariant(@textarea-default-borderColor, @textarea-default-fontColor);
+	.placeholderColor(@textarea-placeholder-color);
+	.transition (@textarea-transition);
 
-	&::-webkit-input-placeholder {
-		color: @textarea-placeholder-color;
+	&:active, &:focus, &.is-active {
+		border-color: @textarea-focus-borderColor;
 	}
-	&::-moz-placeholder {
-		color: @textarea-placeholder-color;
+
+	&.is-disabled {
+		border-color: @textarea-disabled-borderColor;
+		color: @textarea-disabled-fontColor;
+		cursor: not-allowed;
 	}
 }
 
 // ---------------------- Mixins ---------------------
-.textboxVariant(@borderColor, @fontColor) {
+.textareaVariant(@borderColor, @fontColor) {
 	border-color: @borderColor;
 	color: @fontColor;
 
-	&:focus,
-	&.is-focus {
-		box-shadow: inset 0 1px 1px @borderColor;
-	}
-
-	.Textbox-icon {
-		color: @fontColor;
+	&:active, &:focus, &.is-focus {
+		border-color: darken(@borderColor, 8%);
 	}
 }
 
-.textboxSize(@fontSize) {
+.textareaSize(@fontSize) {
 	font-size: @fontSize;
 }

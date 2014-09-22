@@ -16,30 +16,64 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@textbox-marginRight: 3px;
 @textbox-fontSize: 1em;
-@textbox-border: 1px solid rgba(0, 0, 0, 0.15);
-@textbox-borderRadius: 3px;
+@textbox-marginRight: 3px;
 @textbox-placeholder-color: #BBBBBB;
-@textbox-fontColor: #585858;
 
+@textbox-borderRadius: 3px;
+@textbox-borderWidth: 1px;
+@textbox-borderStyle: solid;
+
+@textbox-default-borderColor: #d8d8d8;
+@textbox-default-fontColor: #585858;
+@textbox-focus-borderColor: #06a3d5;
+
+@textbox-disabled-borderColor: #cacaca;
+@textbox-disabled-fontColor: #888;
+
+@textbox-transition: border 500ms ease-out;
 
 // -------------------- Core LEGO --------------------
 .Textbox() {
 
-	color: @textbox-fontColor;
 	margin: 0;
 	padding: @textbox-fontSize / 2 @textbox-fontSize;
 	font-size: @textbox-fontSize;
-
-	border: @textbox-border;
 	outline: none;
-	border-radius: @textbox-borderRadius;
 
-	&::-webkit-input-placeholder {
-		color: @textbox-placeholder-color;
+	border-radius: @textbox-borderRadius;
+	border-width: @textbox-borderWidth;
+	border-style: @textbox-borderStyle;
+
+	.textboxVariant(@textbox-default-borderColor, @textbox-default-fontColor);
+	.placeholderColor(@textbox-placeholder-color);
+	.transition (@textbox-transition);
+
+	&:active, &:focus, &.is-active {
+		border-color: @textbox-focus-borderColor;
 	}
-	&::-moz-placeholder {
-		color: @textbox-placeholder-color;
+
+	&.is-disabled {
+		border-color: @textbox-disabled-borderColor;
+		color: @textbox-disabled-fontColor;
+		cursor: not-allowed;
 	}
+}
+
+// ---------------------- Mixins ---------------------
+.textboxVariant(@borderColor, @fontColor) {
+	border-color: @borderColor;
+	color: @fontColor;
+
+	&:active, &:focus, &.is-focus {
+		border-color: darken(@borderColor, 8%);
+	}
+
+	.Textbox-icon {
+		color: @fontColor;
+	}
+}
+
+.textboxSize(@fontSize) {
+	font-size: @fontSize;
 }
