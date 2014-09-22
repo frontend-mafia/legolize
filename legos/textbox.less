@@ -1,0 +1,79 @@
+//********************************************
+//	Textbox Core
+//********************************************/
+
+// When writing Lego's we use BEM naming conventions.
+// Do NOT put any dimensions like font-size/line-height/size/padding/margin etc. into the core Lego unless it's configurable
+// The purpose of these Lego's is to have them as trimmed as possible and themed later
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+// -------------------- Variables --------------------
+@textbox-fontSize: 1em;
+@textbox-marginRight: 3px;
+@textbox-placeholder-color: #BBBBBB;
+
+@textbox-borderRadius: 3px;
+@textbox-borderWidth: 1px;
+@textbox-borderStyle: solid;
+
+@textbox-default-borderColor: #d8d8d8;
+@textbox-default-fontColor: #585858;
+@textbox-focus-borderColor: #06a3d5;
+
+@textbox-disabled-borderColor: #cacaca;
+@textbox-disabled-fontColor: #888;
+
+@textbox-transition: border 500ms ease-out;
+
+// -------------------- Core LEGO --------------------
+.Textbox() {
+
+	margin: 0;
+	padding: @textbox-fontSize / 2 @textbox-fontSize;
+	font-size: @textbox-fontSize;
+	outline: none;
+
+	border-radius: @textbox-borderRadius;
+	border-width: @textbox-borderWidth;
+	border-style: @textbox-borderStyle;
+
+	.textboxVariant(@textbox-default-borderColor, @textbox-default-fontColor);
+	.placeholderColor(@textbox-placeholder-color);
+	.transition (@textbox-transition);
+
+	&:active, &:focus, &.is-active {
+		border-color: @textbox-focus-borderColor;
+	}
+
+	&.is-disabled {
+		border-color: @textbox-disabled-borderColor;
+		color: @textbox-disabled-fontColor;
+		cursor: not-allowed;
+	}
+}
+
+// ---------------------- Mixins ---------------------
+.textboxVariant(@borderColor, @fontColor) {
+	border-color: @borderColor;
+	color: @fontColor;
+
+	&:active, &:focus, &.is-focus {
+		border-color: darken(@borderColor, 8%);
+	}
+
+	.Textbox-icon {
+		color: @fontColor;
+	}
+}
+
+.textboxSize(@fontSize) {
+	font-size: @fontSize;
+}

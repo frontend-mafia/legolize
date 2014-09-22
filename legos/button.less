@@ -87,6 +87,15 @@
 	width: 100%;
 }
 
+.Button--link {
+	border: 0;
+	background: none;
+
+	&:hover {
+		background: none;
+	}
+}
+
 .Button-icon--left() {
 	margin-right: 3px;
 	float: left;
@@ -143,6 +152,14 @@
 	&:active,
 	&.is-active {
 		.Button-is-active(@backgroundColor);
+	}
+}
+
+.buttonLinkVariant(@color) {
+	color: @color;
+
+	&:hover, &.is-active {
+		color: darken(@color, 8%);
 	}
 }
 
