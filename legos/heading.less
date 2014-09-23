@@ -23,9 +23,17 @@
 @headingFive-fontSize: 18px;
 @headingSix-fontSize: 16px;
 
+// Either use baseline units or pixels
+@heading-marginTop: 2;
+@heading-marginBottom: 2;
+
 // -------------------- Core LEGO --------------------
 .Heading () {
+	font-size: @headingSix-fontSize;
+	.lineHeight-calculated(@headingSix-fontSize);
 
+	.margin-top(@heading-marginTop);
+	.margin-bottom(@heading-marginBottom);
 }
 
 // -------------------- Modifiers --------------------
