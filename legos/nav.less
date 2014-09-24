@@ -34,42 +34,58 @@
 @nav-tab-item-indent: 24px;
 
 // ------------ Nav--menu variables --------------------
-@menu-background: #06a3d5;
-@menu-borderRadius: 5px;
+@nav--menu-background: #06a3d5;
+@nav--menu-borderRadius: 5px;
 
 //menu-default
-@menu-item-fontColor: #fff;
-@menu-item-fontWeight: bold;
-@menu-item-background: transparent;
-@menu-item-borderBottom: 3px solid transparent;
+@nav--menu-item-fontColor: #fff;
+@nav--menu-item-fontWeight: bold;
+@nav--menu-item-background: transparent;
+@nav--menu-item-borderBottom: 3px solid transparent;
 
 @nav-link-padding: 1.5px 10px;
 @nav-link-fontSize: 14px;
 @nav-link-fontColor: #333;
 
 //menu link hover
-@menu-item-hover-fontColor: #fff;
-@menu-item-hover-background: #ffae00;
-@menu-item-hover-borderBottom: 3px solid #ff9600;
+@nav--menu-item-hover-fontColor: #fff;
+@nav--menu-item-hover-background: #ffae00;
+@nav--menu-item-hover-borderBottom: 3px solid #ff9600;
 
-@menu-item-disabled-fontColor: #bababa;
+@nav--menu-item-disabled-fontColor: #bababa;
 
-@menu-dropdown-border: 1px solid #FFAE00;
+@nav--menu-dropdown-border: 1px solid #FFAE00;
 
 // ------------ Nav--tab variables ---------------------
-@tab-border: 1px solid #d8d8d8;
-@tab-marginRight: 3px;
+@nav--tab-border: 1px solid #d8d8d8;
+@nav--tab-marginRight: 3px;
 
 //tab link default
-@tab-item-background: #faf9f9;
-@tab-item-fontColor: #06a3d5;
+@nav--tab-item-background: #faf9f9;
+@nav--tab-item-fontColor: #06a3d5;
 
 //tab hover active
-@tab-item-hover-fontColor: #55c0e2;
+@nav--tab-item-hover-fontColor: #55c0e2;
 
 //tab link active
-@tab-item-active-background: #fff;
-@tab-item-active-fontColor: #06a3d5;
+@nav--tab-item-active-background: #fff;
+@nav--tab-item-active-fontColor: #06a3d5;
+
+// ------------ Nav--vertical variables ---------------------
+@nav--vertical-navLink-color: rgba(255, 255, 255, .8);
+@nav--vertical-navItem-borderWidth: 0 0 1px;
+@nav--vertical-navItem-borderColor: rgba(255, 255, 255, .5);
+@nav--vertical-navItem-borderStyle: solid;
+@nav--vertical-navLink-lineHeight: 36px;
+@nav--vertical-navLink-sidePadding: 20px;
+
+// Hover
+@nav--vertical-navLink-hover-color: #fff;
+@nav--vertical-navLink-hover-backgroundColor: rgba(255, 255, 255, .3);
+
+// Active
+@nav--vertical-navLink-active-color: @nav--vertical-navLink-color;
+@nav--vertical-navLink-active-backgroundColor: @nav--vertical-navLink-hover-backgroundColor;
 
 // -------------------- Core LEGO --------------------
 .Nav() {
@@ -81,12 +97,6 @@
 // -------------------- Descendands --------------------
 .Nav-item() {
 	list-style: none;
-	float: left;
-	padding: 5px 10px;
-
-	&:hover {
-		background-color: @nav-item-focus-background;
-	}
 }
 
 // -------------------- States --------------------
@@ -121,82 +131,101 @@
 	}
 }
 
-
-
 // -------------------- Modifiers --------------------
 .Nav-item--indented() {
 	margin-left: @nav-tab-item-indent;
 }
 
+// Horizontal navigation
 .Nav--menu() {
-	background: @menu-background;
-	border-radius: @menu-borderRadius;
+	background: @nav--menu-background;
+	border-radius: @nav--menu-borderRadius;
+	margin: 0;
 
+	// TODO: Shouldn't we have the background and the borders on .Nav-link instead of .Nav-item?
 	.Nav-item {
-		border-bottom: @menu-item-borderBottom;
-		background: @menu-item-background;
-		line-height: 36px;
-		font-weight: bold;
-		padding: 0;
-
-		&,
-		> .Link:link,
-		> .Link:visited {
-			color: #fff;
-			font-size: 14px;
-			margin: 0;
-		}
-
-		> .Link {
-			padding: 1px 10px;
-		}
-
+		float: left;
+		border-bottom: @nav--menu-item-borderBottom;
+		background: @nav--menu-item-background;
 
 		&:first-child {
-			.borderRadius--left (@menu-borderRadius);
+			.borderRadius--left (@nav--menu-borderRadius);
 		}
 
 		&:last-child {
-			.borderRadius--right (@menu-borderRadius);
+			.borderRadius--right (@nav--menu-borderRadius);
 		}
 
 		&:hover,
 		&.is-active {
-			background: @menu-item-hover-background;
-			border-bottom: @menu-item-hover-borderBottom;
+			background: @nav--menu-item-hover-background;
+			border-bottom: @nav--menu-item-hover-borderBottom;
 		}
+	}
 
-		&.is-disabled {
-			&,
-			.Link {
-				color: @menu-item-disabled-fontColor;
-			}
-		}
-
-		.Dropdown-menu {
-			border: @menu-dropdown-border;
-		}
+	.Nav-link {
+		color: @nav--menu-item-fontColor;
+		font-size: 17px; // TODO: Make configurable
+		padding: 0; // TODO: Make configurable and with baseline support
 	}
 }
 
+// Vertical navigation
+.Nav--vertical() {
+	.Nav-item,
+	.Nav-link {
+		float: none;
+		display: block;
+	}
+
+	.Nav-item {
+		border: @nav--vertical-navItem-borderWidth @nav--vertical-navItem-borderStyle @nav--vertical-navItem-borderColor;
+
+		&.is-active {
+			> .Nav-link {
+				background-color: @nav--vertical-navLink-active-backgroundColor;
+			}
+		}
+	}
+
+	.Nav-link {
+		color: @nav--vertical-navLink-color;
+		padding: 0 @nav--vertical-navLink-sidePadding;
+		.line-height(@nav--vertical-navLink-lineHeight);
+
+		&:hover {
+			color: @nav--vertical-navLink-hover-color;
+			background-color: @nav--vertical-navLink-hover-backgroundColor;
+		}
+	}
+
+	.Nav-linkIcon {
+		float: right;
+		.line-height(@nav--vertical-navLink-lineHeight);
+	}
+}
+
+// Tabs navigation
+// TODO: Needs improvement, such as configurable properties
 .Nav--tabs() {
 	margin-bottom: 0;
 	border-bottom: 1px solid #ddd;
 
+	// TODO: Shouldn't we have a lot of these configurations on .Nav-link instead of .Nav-item?
 	.Nav-item {
-		background: @tab-item-background;
-		margin-right: @tab-marginRight;
+		background: @nav--tab-item-background;
+		margin-right: @nav--tab-marginRight;
 		margin-bottom: -1px;
 		line-height: 28px;
-		border: @tab-border;
+		border: @nav--tab-border;
 		padding: 0px 15px;
 
 		&:hover {
-			border: @tab-border;
+			border: @nav--tab-border;
 		}
 
 		&.is-active {
-			background: @tab-item-active-background;
+			background: @nav--tab-item-active-background;
 			border-bottom: 1px solid transparent;
 			.Link {
 				color: @brandPrimary;
