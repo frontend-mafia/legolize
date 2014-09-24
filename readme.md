@@ -7,7 +7,7 @@ This is the core project where all default Lego's are defined.
 To get a scaffolding project that uses this, go to [legolize-base](https://bitbucket.org/meniga/legolize-base) and [legolize-legos](https://bitbucket.org/meniga/legolize-legos)
 
 
-## Quick start
+# How to install
 
 Two quick start options are available:
 
@@ -22,12 +22,50 @@ Two quick start options are available:
   	
 - Install with [Bower](http://bower.io): 
     
-        $ bower install legolize. (not implemented yet)
+        $ bower install legolize ( only available privately for now  )
 
 
 ---
 
+# Development workflow
+
+When working on Legolize we have two workflows, one is for developing and reviewing, and the other is for bower versioning.
+
+## Developing Legolize
+
+1. Always work on a specific branch related to your LEGO
+
+        $ git checkout -b lego/legoname
+    
+2. When done and pushed, create a pull request, and add reviewers to review changes before you merge to master
+
+        [https://bitbucket.org/meniga/legolize/pull-requests](https://bitbucket.org/meniga/legolize/pull-requests)
+    
+3. After code review, you can merge to master 
+
+## Releasing a bower version
+
+Once we have stable version on master it's time to give it a version tag
+
+1. Be sure you are working on master
+
+        $ git checkout master
+
+2. Run bower command to change the version number ( v Major.Minor.Patch )
+
+        $ bower version patch (adds a new version to the last version number)
+        $ bower version minor (adds a new version to the middle version number)
+        $ bower version major (adds a new version to the first version number)
+
+3. Push all changes to master including tags
+
+        $ git push --all
+
+---
+
 ## Naming convention
+
+This section is not 100% up to date since a few changes have been made, 
 
 ### Class names
 
@@ -35,57 +73,37 @@ Two quick start options are available:
 	LegoName--modifierName
 	LegoName-descendantName
 	LegoName.is-stateOfLego
-	v1-*
-	js-someName
-	ui-LayoutLegoName
-	fn-legoNameFunctionalName
 	u-utilityName
+	fn-elementFunctionName
+	js-someName
 
-example:
 
+Examples:
+   
+    Button
+    Button--primary
+    ListGroup-item
+    Nav-item.is-active	
+    .u-pullRight
     .fn-buttonSearch
-	.u-pullRight
+    .js-tabContent
 	
 ### Variable names
 
-    @lego--modifier-descendand-property 
+    @legoName-cssProperty    
+    @legoName--modifierName-cssProperty
+    @legoName--modifierName-descendandName-cssProperty
 	
-example:
+Examples:
 
+    @button-borderColor: #333;
     @button--primary-borderColor: #333;
-    @listGroup-itemHeading-fontSize
+    @listGroup--item-backgroundColor: #fff;
+    
 
 
 ---
 	
-## Examples
-
-### Lego
-
-    .Heading
-    .Heading--one 
-    
-    .ListGroup-itemHeader
-    .ListGroup-item.is-active
-
-
-### Layout classes
-
-Layout classes are different from standard Lego's, they are primary used to descibe a specific layout unit.
-There are no Layout classes in this core project since they are not supposed to be used here.
-
-This is just to demonstrate naming conventions.
-
-	.ui-Page
-	.ui-PageHeader
-	.ui-PageNav
-	.ui-PageFooter
-
-	.ui-Section
-	.ui-Section-content
-	.ui-Section-container
-
-
 ### Choosing names for classes
 
 _Q: What do I have to think about when writing class names?_
@@ -96,11 +114,18 @@ _Q: What do I have to think about when writing class names?_
 	.Buttons	= Wrong
 
 
-It's also a good idea to name the classes by describing the visual reference to the object but not it's functionality since you might want to use the Lego's elsewhere where it doesn't make sense to have the functionality name.
+Always name the css classes by describing the **visual reference** to the object but not it's functionality since you might want to use the Lego's elsewhere where it doesn't make sense to have the functionality name.
 
 Example:
 
 	.Button--primary 	= Correct
 	.Button--search 	= Wrong
+
+
+If you want to have a **functionality reference**, just add the fn-elementFunctionName
+
+Example: 
+
+    .fn-buttonSearch
 
 
