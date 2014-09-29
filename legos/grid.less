@@ -17,43 +17,285 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-@grid-marginRight: 1%;
 
+// -------------------- Variables --------------------
+// Outer margin
+@grid-margin: 20px;
+
+// Column gutter
+@grid-gutter: 12px;
 
 // -------------------- Core LEGO --------------------
 .Grid() {
+	padding-right: @grid-margin;
+	padding-left: @grid-margin;
 }
 
-// -------------------- Modifiers --------------------
+// -------------------- Descendands --------------------
+.Grid-row() {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-right: -(@grid-gutter / 2);
+	margin-left: -(@grid-gutter / 2);
+
+	// -------------------- Modifiers --------------------
+	// ----- Horizontal alignment -----
+	// Begin column alignment from left
+	&.Grid-row--alignLeft,
+	&.Grid-row--alignStart {
+		justify-content: flex-start;
+		text-align: start;
+	}
+
+	// Begin column alignment from center
+	&.Grid-row--alignCenter {
+		justify-content: center;
+		text-align: center;
+	}
+
+	// Begin column alignment from right
+	&.Grid-row--alignRight,
+	&.Grid-row--alignEnd {
+		justify-content: flex-end;
+		text-align: end;
+	}
+
+	// ----- Vertical alignment -----
+	// Vertically align items from top
+	&.Grid-row--alignTop {
+		align-items: flex-start;
+	}
+
+	// Vertically align items from middle
+	&.Grid-row--alignMiddle {
+		align-items: center;
+	}
+
+	// Vertically align items from bottom
+	&.Grid-row--alignBottom {
+		align-items: flex-end;
+	}
+
+	// ----- Distribution -----
+	// Items are evenly distributed in the line with equal space around them
+	&.Grid-row--distributeAround {
+		justify-content: space-around;
+	}
+
+	// Items are evenly distributed in the line; first item is on the start line, last item on the end line
+	&.Grid-row--distributeBetween {
+		justify-content: space-between;
+	}
+
+	// ----- Ordering -----
+	// Reverse order of children
+	&.Grid-row--reverse {
+		flex-direction: row-reverse;
+		flex-wrap: row-reverse;
+	}
+}
+
+.Grid-col() {
+
+	// -------------------- Modifiers --------------------
+
+	// ---------- Ordering ----------
+	&.Grid-col--reverse {
+		flex-direction: column-reverse;
+		flex-wrap: column-reverse;
+	}
+
+	// Make column first in order
+	&.Grid-col--orderFirst {
+		order: -1;
+	}
+
+	// Make column last in order
+	&.Grid-col--orderLast {
+		order: 1;
+	}
+
+	// ---------- Columns ----------
+	&.Grid-col--1,
+	&.Grid-col--2,
+	&.Grid-col--3,
+	&.Grid-col--4,
+	&.Grid-col--5,
+	&.Grid-col--6,
+	&.Grid-col--7,
+	&.Grid-col--8,
+	&.Grid-col--9,
+	&.Grid-col--10,
+	&.Grid-col--11,
+	&.Grid-col--12,
+	&.Grid-col--25,
+	&.Grid-col--33,
+	&.Grid-col--50,
+	&.Grid-col--66,
+	&.Grid-col--75,
+	&.Grid-col--100,
+	&&.Grid-offset--1,
+	&&.Grid-offset--2,
+	&&.Grid-offset--3,
+	&&.Grid-offset--4,
+	&&.Grid-offset--5,
+	&&.Grid-offset--6,
+	&&.Grid-offset--7,
+	&&.Grid-offset--8,
+	&&.Grid-offset--9,
+	&&.Grid-offset--10,
+	&&.Grid-offset--25,
+	&&.Grid-offset--33,
+	&&.Grid-offset--50,
+	&&.Grid-offset--66,
+	&&.Grid-offset--75,
+	&&.Grid-offset--100,
+	&.Grid-col--auto {
+		box-sizing: border-box;
+		flex-direction: column;
+		flex-grow: 0;
+		flex-shrink: 0;
+		padding-right: @grid-gutter / 2;
+		padding-left: @grid-gutter / 2;
+	}
+
+	&.Grid-col--auto {
+		flex: 1 1 0; // grow|shrink|basis
+	}
+
+	&.Grid-col--1 {
+		flex-basis: 8.333333333333334%;
+	}
+
+	&.Grid-col--2 {
+		flex-basis: 16.666666666666668%;
+	}
+
+	&.Grid-col--25,
+	&.Grid-col--3 {
+		flex-basis: 25%;
+	}
+
+	&.Grid-col--33,
+	&.Grid-col--4 {
+		flex-basis: 33.333333333333336%;
+	}
+
+	&.Grid-col--5 {
+		flex-basis: 41.66666666666667%;
+	}
+
+	&.Grid-col--50,
+	&.Grid-col--6 {
+		flex-basis: 50%;
+	}
+
+	&.Grid-col--7 {
+		flex-basis: 58.333333333333336%;
+	}
+
+	&.Grid-col--66,
+	&.Grid-col--8 {
+		flex-basis: 66.66666666666667%;
+	}
+
+	&.Grid-col--75,
+	&.Grid-col--9 {
+		flex-basis: 75%;
+	}
+
+	&.Grid-col--10 {
+		flex-basis: 83.33333333333334%;
+	}
+
+	&.Grid-col--11 {
+		flex-basis: 91.66666666666667%;
+	}
+
+	&.Grid-col-100,
+	&.Grid-col--12 {
+		flex-basis: 100%;
+	}
+
+	// ---------- Offset ----------
+	&.Grid-offset--1 {
+		margin-left: 8.333333333333334%;
+	}
+
+	&.Grid-offset--2 {
+		margin-left: 16.666666666666668%;
+	}
+
+	&.Grid-offset--3 {
+		margin-left: 25%;
+	}
+
+	&.Grid-offset--4 {
+		margin-left: 33.333333333333336%;
+	}
+
+	&.Grid-offset--5 {
+		margin-left: 41.66666666666667%;
+	}
+
+	&.Grid-offset--6 {
+		margin-left: 50%;
+	}
+
+	&.Grid-offset--7 {
+		margin-left: 58.333333333333336%;
+	}
+
+	&.Grid-offset--8 {
+		margin-left: 66.66666666666667%;
+	}
+
+	&.Grid-offset--9 {
+		margin-left: 75%;
+	}
+
+	&.Grid-offset--10 {
+		margin-left: 83.33333333333334%;
+	}
+
+	&.Grid-offset--11 {
+		margin-left: 91.66666666666667%;
+	}
+}
+
+// ---------- Old Grid ----------
+@grid-marginRight: 1%;
 
 .Grid--1Of1() {
-	width:100%;
+	width: 100%;
 }
 
 .Grid--1Of2() {
-	.gridCalculator(1,2);
+	.gridCalculator(1, 2);
 }
 
 .Grid--1Of3() {
-	.gridCalculator(1,3);
+	.gridCalculator(1, 3);
 }
 
 .Grid--2Of3() {
-	.gridCalculator(2,3);
+	.gridCalculator(2, 3);
 }
 
 .Grid--1Of4() {
-	.gridCalculator(1,4);
+	.gridCalculator(1, 4);
 }
 
 .Grid--3Of4() {
-	.gridCalculator(3,4);
+	.gridCalculator(3, 4);
 }
 
 // -------------------- Mixins --------------------
 
 .gridCalculator(@columns, @totalColumns) {
 	margin-right: @grid-marginRight;
-	float:left;
+	float: left;
 	width: (@columns/@totalColumns*100%)-(@grid-marginRight);
 }
