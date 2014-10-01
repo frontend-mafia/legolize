@@ -59,7 +59,7 @@ Once we have stable version on master it's time to give it a version tag
 
 3. Push all changes to master including tags
 
-        $ git push --all
+        $ git push --tags
 
 ---
 
@@ -127,5 +127,3 @@ If you want to have a **functionality reference**, just add the fn-elementFuncti
 Example: 
 
     .fn-buttonSearch
-
-
