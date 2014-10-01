@@ -18,43 +18,29 @@
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 
-//Nav item focus
-@nav-item-focus-fontColor: #0079a0;
-@nav-item-focus-background: #eee;
-
-//Nav item disabled
-@nav-item-disabled-fontColor: #bababa;
-@nav-item-disabled-background: #eee;
-
-//Nav item active
-@nav-item-active-background: #eee;
-@nav-item-active-fontColor: #0079a0;
-
-//indented nav tab item
-@nav-tab-item-indent: 24px;
-
 // ------------ Nav--menu variables --------------------
-@nav--menu-background: #06a3d5;
-@nav--menu-borderRadius: 5px;
+@nav--menu-background: none;
+@nav--menu-border: none;
+@nav--menu-borderRadius: 0;
 
-//menu-default
-@nav--menu-item-fontColor: #fff;
-@nav--menu-item-fontWeight: bold;
-@nav--menu-item-background: transparent;
-@nav--menu-item-borderBottom: 3px solid transparent;
-
-@nav-link-padding: 1.5px 10px;
-@nav-link-fontSize: 14px;
-@nav-link-fontColor: #333;
+// Item
+@nav--menu-item-background: none;
+@nav--menu-item-border: none;
 
 //menu link hover
-@nav--menu-item-hover-fontColor: #fff;
-@nav--menu-item-hover-background: #ffae00;
-@nav--menu-item-hover-borderBottom: 3px solid #ff9600;
+@nav--menu-item-hover-background: lighten(@nav--menu-background, 7%);
+@nav--menu-item-hover-border: none;
 
-@nav--menu-item-disabled-fontColor: #bababa;
+// Link
+@nav--menu-link-color: inherit;
+@nav--menu-link-fontSize: inherit;
+@nav--menu-link-fontWeight: bold;
+@nav--menu-link-padding: 0 10px;
+@nav--menu-link-height: 36px;
+@nav--menu-link-lineHeight: @nav--menu-link-height;
 
-@nav--menu-dropdown-border: 1px solid #FFAE00;
+// Link hover
+@nav--menu-link-hover-color: @nav--menu-link-color;
 
 // ------------ Nav--tab variables ---------------------
 @nav--tab-border: 1px solid #d8d8d8;
@@ -72,6 +58,7 @@
 @nav--tab-item-active-fontColor: #06a3d5;
 
 // ------------ Nav--vertical variables ---------------------
+// TODO: Refactor names to remove the "navLink" to "link", should be link as the descendand is called .Nav-link
 @nav--vertical-navLink-color: rgba(255, 255, 255, .8);
 @nav--vertical-navItem-borderWidth: 0 0 1px;
 @nav--vertical-navItem-borderColor: rgba(255, 255, 255, .5);
@@ -89,8 +76,9 @@
 
 // -------------------- Core LEGO --------------------
 .Nav() {
-	padding: 0px;
 	position: relative;
+	margin: 0;
+	padding: 0;
 	.clearfix();
 }
 
@@ -99,55 +87,29 @@
 	list-style: none;
 }
 
+.Nav-link {
+}
+
 // -------------------- States --------------------
-.Nav-item-is-disabled() {
-	background: @nav-item-disabled-background;
-	color: @nav-item-disabled-fontColor;
-	pointer-events: none;
-
-	.Link,
-	.Link:hover {
-		color: @nav-item-disabled-fontColor;
-	}
-}
-
-.Nav-item-is-active() {
-	background: @nav-item-active-background;
-	color: @nav-item-active-fontColor;
-
-	.Link,
-	.Link:hover {
-		color: @nav-item-active-fontColor;
-	}
-}
-
-.Nav-item-is-focus() {
-	background: @nav-item-focus-background;
-	color: @nav-item-focus-fontColor;
-
-	.Link,
-	.Link:hover {
-		color: @nav-item-focus-fontColor;
-	}
-}
 
 // -------------------- Modifiers --------------------
-.Nav-item--indented() {
-	margin-left: @nav-tab-item-indent;
-}
-
 // Horizontal navigation
 .Nav--menu() {
 	background: @nav--menu-background;
+	border: @nav--menu-border;
 	border-radius: @nav--menu-borderRadius;
-	margin: 0;
 
-	// TODO: Shouldn't we have the background and the borders on .Nav-link instead of .Nav-item?
 	.Nav-item {
 		float: left;
-		border-bottom: @nav--menu-item-borderBottom;
 		background: @nav--menu-item-background;
+		border: @nav--menu-item-border;
 
+		&:hover {
+			background: @nav--menu-item-hover-background;
+			border: @nav--menu-item-hover-border;
+		}
+
+		// Make first and last child have the same top border radius as the container
 		&:first-child {
 			.borderRadius--left (@nav--menu-borderRadius);
 		}
@@ -159,14 +121,21 @@
 		&:hover,
 		&.is-active {
 			background: @nav--menu-item-hover-background;
-			border-bottom: @nav--menu-item-hover-borderBottom;
+			border: @nav--menu-item-hover-border;
 		}
 	}
 
 	.Nav-link {
-		color: @nav--menu-item-fontColor;
-		font-size: 17px; // TODO: Make configurable
-		padding: 0; // TODO: Make configurable and with baseline support
+		color: @nav--menu-link-color;
+		font-size: @nav--menu-link-fontSize;
+		font-weight: @nav--menu-link-fontWeight;
+		padding: @nav--menu-link-padding;
+		.height(@nav--menu-link-height);
+		.line-height(@nav--menu-link-lineHeight);
+
+		&:hover {
+			color: @nav--menu-link-hover-color;
+		}
 	}
 }
 
