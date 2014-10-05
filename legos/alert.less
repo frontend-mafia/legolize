@@ -24,8 +24,6 @@
 @alert-border: 1px solid #d8d8d8;
 @alert-bgColor: #fff;
 
-@alert-icon-margin: 5px;
-
 // -------------------- Core LEGO --------------------
 .Alert() {
 	padding: @alert-padding;
@@ -33,7 +31,7 @@
 	border-radius: @alert-borderRadius;
 	background: @alert-bgColor;
 	position: relative;
-
+	
 	//Styling for carets
 	&:after,
 	&:before {
@@ -48,22 +46,6 @@
 	.Media {
 		margin: 0;
 	}
-}
-
-// -------------------- Descendents --------------------
-
-.Alert-content() {
-	display:inline-block;
-	width:90%;
-}
-
-.Alert-header() {
-	.Heading {
-		margin:12px 0;
-	}
-}
-
-.Alert-body() {
 }
 
 // -------------------- Mixins --------------------
