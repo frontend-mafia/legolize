@@ -46,6 +46,7 @@
 @nav--tab-border: 1px solid #d8d8d8;
 @nav--tab-marginRight: 3px;
 @nav--tab-borderWeight: 1px;
+@nav--tab-fontColor: #5b5b5b;
 
 //tab link default
 @nav--tab-item-background: #faf9f9;
@@ -187,7 +188,8 @@
 	.Nav-item {
 		display: inline-block;
 
-		.Nav-link {
+		.Nav-link,
+		.Nav-link:visited {
 			background: @nav--tab-item-background;
 			margin-right: @nav--tab-marginRight;
 			border: @nav--tab-border;
@@ -196,7 +198,9 @@
 			font-size: @nav--menu-link-fontSize;
 			font-weight: @nav--menu-link-fontWeight;
 			margin-bottom: -@nav--tab-borderWeight;
-			
+			color: @nav--tab-fontColor;
+			text-decoration: none;
+
 			&:hover {
 				border: @nav--tab-border;
 				color: @nav--tab-item-hover-fontColor;
