@@ -17,89 +17,67 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-@icon-margin: 5px;
-
-@dropdown-menu-border: 1px solid #d8d8d8;
-@dropdown-fontColor: #333;
 
 @dropdown-background: #fff;
 @dropdown-borderRadius: 3px;
 
-@divider-bgColor: #e5e5e5;
-@divider-margin: 3px 0;
-
 @menu--wide-minWidth: 250px;
 
-//active state
-@dropdown-active-fontColor: #262626;
-@dropdown-active-bgColor: #f5f5f5;
+//Dropdown menu
+@dropdown-menu-borderWidth: 1px;
+@dropdown-menu-borderStyle: solid;
+@dropdown-menu-borderColor: #d8d8d8;
+@dropdown-menu-padding: 10px;
 
-//disabled state
-@dropdown-disabled-fontColor: #262626;
-@dropdown-disabled-bgColor: #f5f5f5;
+//Dropdown link
+@dropdown-link-fontColor: #06a3d5;
+@dropdown-link-lineHeight: 24px;
+@dropdown-link-fontSize: 12px;
+
+//Dropdown link hover
+@dropdown-link-hover-bgColor: #f2f2f2;
 
 
 // -------------------- Core LEGO --------------------
 .Dropdown() {
 	position: relative;
 	display: inline-block;
-	color: @dropdown-fontColor;
 	cursor: pointer;
 }
 
 // -------------------- Descendands --------------------
 .Dropdown-menu() {
+	padding: @dropdown-menu-padding;
+	background: @dropdown-background;
+	border: @dropdown-menu-borderWidth @dropdown-menu-borderStyle @dropdown-menu-borderColor;
+	
 	position: absolute;
+	z-index: 1000;
 	top: 100%;
 	left: 0;
-	text-align: left;
-	z-index: 1000;
-
 	margin: 0px;
-	min-width: 100%;
-	padding: 10px;
-
 	display: none;
-	background: @dropdown-background;
-	border: @dropdown-menu-border;
 
 	.borderRadius--bottom(@dropdown-borderRadius);
 }
 
 .Dropdown-item() {
-	.Nav-item();
-
-	margin: 0px;
-	padding: 0px;
 	width: 100%;
 	line-height: normal;
+	list-style: none;
 
-	.Link:link,
-	.Link:visited {
-		color: #06a3d5;
-		line-height: 24px;
-		font-size: 12px;
+	.Dropdown-link:link,
+	.Dropdown-link:visited {
+		color: @dropdown-link-fontColor;
+		line-height: @dropdown-link-lineHeight;
+		font-size: @dropdown-link-fontSize;
 		font-weight: normal;
 		width: 100%;
 	}
 
-	.Link:hover,
-	.Link:focus {
-		background: #f2f2f2;
+	.Dropdown-link:hover {
+		background: @dropdown-link-hover-bgColor;
 	}
-}
-
-.Dropdown-icon() {
-	font-size: 1.125em;
-	float: right;
-}
-
-.Dropdown--divider() {
-	overflow: hidden;
-	height: 0px;
-	width: 100%;
-	margin: @divider-margin;
-	border-bottom: 1px solid @divider-bgColor;
 }
 
 // -------------------- Modifiers --------------------
@@ -110,8 +88,6 @@
 }
 
 .Dropdown-menu--wide() {
-	width: 100%;
-	min-width: @menu--wide-minWidth;
 
 	.Nav-item--right & {
 		left: auto;
@@ -121,17 +97,4 @@
 	.Dropdown-item {
 		width: 50%;
 	}
-}
-
-// -------------------- States --------------------
-.Dropdown-is-active() {
-	color: @dropdown-active-fontColor;
-	text-decoration: none;
-	background-color: @dropdown-active-bgColor;
-}
-
-.Dropdown-is-disabled() {
-	color: @dropdown-disabled-fontColor;
-	text-decoration: none;
-	background-color: @dropdown-disabled-bgColor;
 }

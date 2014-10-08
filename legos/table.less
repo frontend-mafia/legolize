@@ -13,28 +13,43 @@
 
 // -------------------- Variables --------------------
 
-@table-bg:                      transparent;
-@table-bg-hover:                #f5f5f5;
-@table-bg-active:               @table-bg-hover;
+//Table variables
+@table-bg: transparent;
+@table-bg-hover: #f5f5f5;
+@table-bg-active: @table-bg-hover;
+@table-borderWidth: 1px;
+@table-borderStyle: solid;
+@table-borderColor: #d8d8d8;
 
-@table-cell-borderColor: #d8d8d8;
+//Table cell variables
+@table-cell--paddingVertical: 10px; 
+@table-cell--paddingHorizontal: 5px; 
+@table-cell-borderWidth: 1px;
+
+//Table head variables
+@table-head-cell-borderWidth: 2px;
+
+//Table footer variables
+@table-footer-cell-borderWidth: 2px;
+
+//Table striped variables
+@Table--striped-bgColor: #f9f9f9;
 
 
 // -------------------- Core LEGO --------------------
 .Table() {
 	width: 100%;
-	max-width: 100%;
 	display: table;
 	border-collapse: collapse;
-
-	.Table-footer .Table-cell {
-		border-bottom: 1px solid @table-cell-borderColor;
-	}
 }
 
 // -------------------- Descendants --------------------
-.Table-body() {
-
+.Table-cell() {
+	padding: @table-cell--paddingVertical @table-cell--paddingHorizontal;
+	border-top: @table-cell-borderWidth @table-borderStyle @table-borderColor;
+	line-height: normal;
+	vertical-align: middle;
+	display: table-cell;
 }
 
 .Table-row() {
@@ -43,68 +58,57 @@
 }
 
 .Table-head() {
-	.Table-row();
+	display: table-header-group;
 
 	.Table-cell {
+		border-bottom: @table-head-cell-borderWidth @table-borderStyle @table-borderColor;
 		border-top: 0;
-		border-width: 2px;
-		vertical-align: bottom;
-		border-bottom: 2px solid @table-cell-borderColor;
+		font-weight: 700;
+	}
 
-		&.Table-row--noBorder {
-			border: 0;
-		}
+	.Table--bordered & .Table-cell {
+		border-top: @table-borderWidth @table-borderStyle @table-borderColor;
+	}
+}
 
-		a:link,
-		a:visited {
-			color: @brandPrimary;
-			text-decoration: none;
-		}
+.Table-body() {
+	width: 100%;
+	display: table-row-group;
+
+	.Table--bordered & .Table-cell {
+		border-bottom: @table-borderWidth @table-borderStyle @table-borderColor;
 	}
 }
 
 .Table-footer() {
-	.Table-row();
+	display: table-footer-group;
 
 	.Table-cell {
-		border-top: 2px solid @table-cell-borderColor;
+		border-top: @table-footer-cell-borderWidth @table-borderStyle @table-borderColor;
+		border-bottom: @table-borderWidth @table-borderStyle @table-borderColor;
 		font-weight: bold;
 	}
-}
-
-.Table-rowGroup() {
-	display: table-row-group;
-}
-
-.Table-columnGroup() {
-	display: table-column-group;
-}
-
-.Table-cell() {
-	padding: 10px 5px;
-	line-height: normal;
-	vertical-align: middle;
-	display: table-cell;
-	border-top: 1px solid @table-cell-borderColor;
 }
 
 // -------------------- Modifiers --------------------
 
 // -------------------- Table type modifiers --------------------
 .Table--striped() {
-	.Table-row:nth-child(even) {
-		.Table-cell {
-			background-color: #f9f9f9;
+	.Table-body {
+		.Table-row:nth-child(odd) {
+			.Table-cell {
+				background-color: @Table--striped-bgColor;
+			}
 		}
 	}
 }
 
 .Table--bordered() {
 	.Table-cell {
-		border-right: 1px solid @table-cell-borderColor;
+		border-right: 1px @table-borderStyle @table-borderColor;
 
 		&:first-child {
-			border-left: 1px solid @table-cell-borderColor;
+			border-left: 1px @table-borderStyle @table-borderColor;
 		}
 	}
 }
@@ -138,14 +142,8 @@
 }
 
 .Table-row--noBorder() {
-	border: 0;
-
 	.Table-cell {
-		border: 0;
-
-		&:first-child {
-			border-left: 0;
-		}
+		border: 0 !important;
 	}
 }
 
@@ -156,18 +154,6 @@
 }
 
 // -------------------- Table-cell layout modifiers --------------------
-.Table-cell--left() {
-	text-align: left;
-}
-
-.Table-cell--center() {
-	text-align: center;
-}
-
-.Table-cell--right() {
-	text-align: right;
-}
-
 .Table-cell--full() {
 	padding: 0;
 }
