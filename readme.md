@@ -6,7 +6,7 @@ This is the core project where all default Lego's are defined.
 
 To get a scaffolding project that uses this, go to [legolize-base](https://bitbucket.org/meniga/legolize-base) and [legolize-legos](https://bitbucket.org/meniga/legolize-legos)
 
-To view implementation and documentation for usage of the Lego's visit [http://meniga.bitbucket.org/](http://meniga.bitbucket.org/)
+Visit [http://meniga.bitbucket.org/](http://meniga.bitbucket.org/) for usage of the Lego's 
 
 # How to install
 
