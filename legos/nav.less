@@ -37,7 +37,7 @@
 @nav--menu-link-fontWeight: bold;
 @nav--menu-link-padding: 0 10px;
 @nav--menu-link-height: 36px;
-@nav--menu-link-lineHeight: 36px;
+@nav--menu-link-lineHeight: @nav--menu-link-height;
 
 // Link hover
 @nav--menu-link-hover-color: @nav--menu-link-color;
@@ -133,6 +133,7 @@
 
 	.Nav-link {
 		color: @nav--menu-link-color;
+		font-size: @nav--menu-link-fontSize;
 		font-weight: @nav--menu-link-fontWeight;
 		padding: @nav--menu-link-padding;
 		display: block;
