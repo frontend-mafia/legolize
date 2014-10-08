@@ -51,9 +51,10 @@
 //tab link default
 @nav--tab-item-background: #faf9f9;
 @nav--tab-item-fontColor: #06a3d5;
-@nav--menu-link-padding: 0 15px;
-@nav--menu-link-lineHeight: 36px;
-@nav--menu-link-fontWeight: 700;
+@nav--tab-link-fontSize: inherit;
+@nav--tab-link-padding: 0 15px;
+@nav--tab-link-lineHeight: 30px;
+@nav--tab-link-fontWeight: 700;
 
 //tab hover active
 @nav--tab-item-hover-fontColor: #55c0e2;
@@ -132,6 +133,7 @@
 
 	.Nav-link {
 		color: @nav--menu-link-color;
+		font-size: @nav--menu-link-fontSize;
 		font-weight: @nav--menu-link-fontWeight;
 		padding: @nav--menu-link-padding;
 		display: block;
@@ -193,10 +195,10 @@
 			background: @nav--tab-item-background;
 			margin-right: @nav--tab-marginRight;
 			border: @nav--tab-border;
-			padding: @nav--menu-link-padding;
-			line-height: @nav--menu-link-lineHeight;
-			font-size: @nav--menu-link-fontSize;
-			font-weight: @nav--menu-link-fontWeight;
+			padding: @nav--tab-link-padding;
+			line-height: @nav--tab-link-lineHeight;
+			font-size: @nav--tab-link-fontSize;
+			font-weight: @nav--tab-link-fontWeight;
 			margin-bottom: -@nav--tab-borderWeight;
 			color: @nav--tab-fontColor;
 			text-decoration: none;
