@@ -19,7 +19,7 @@
 @selectbox-marginRight: 3px;
 @selectbox-fontSize: 13px;
 @selectbox-lineHeight: 24px;
-@selectbox-paddding: 7px;
+@selectbox-padding: 7px;
 @selectbox-border: 1px solid rgba(0, 0, 0, 0.15);
 @selectbox-borderRadius: 3px;
 @selectbox-placeholder-color: #BBBBBB;
@@ -28,7 +28,6 @@
 
 // -------------------- Core LEGO --------------------
 .Selectbox() {
-	
 	border: @selectbox-border;
 	outline: none;
 	border-radius: @selectbox-borderRadius;
@@ -38,32 +37,31 @@
 	overflow: hidden;
 	position: relative;
 
-    &:after {
-    	position: absolute;
-    	line-height: 100%;
-    	top: 0;
-    	right: 10px;
-    	font-family: "Menicon";
-    	font-weight: normal;
-    	font-size: 16px;
-    	content: "\e63C";
-    	z-index: 2;
-    }
+	&:after {
+		position: absolute;
+		line-height: 100%;
+		top: 0;
+		right: 10px;
+		font-family: "Menicon";
+		font-weight: normal;
+		font-size: 16px;
+		content: "\e63C";
+		z-index: 2;
+	}
 }
 
 .Selectbox-input() {
 	color: @selectbox-fontColor;
 	font-size: @selectbox-fontSize;
 	line-height: @selectbox-lineHeight;
-	padding: @selectbox-paddding;
+	padding: @selectbox-padding;
 	border: 0;
-    width: 120%;
+	width: 120%;
 
 	&:focus {
 		outline: none;
 	}
 }
-
 
 // ---------------------- Mixins ---------------------
 .selectboxVariant(@borderColor, @fontColor) {
