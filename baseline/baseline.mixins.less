@@ -161,3 +161,19 @@
 .bottom(@units) when (ispixel(@units)) {
 	bottom: @baseline * (round(@units / @baseline));
 }
+
+.left(@units) when not (ispixel(@units)) {
+	left: (@baseline * @units);
+}
+
+.left(@units) when (ispixel(@units)) {
+	left: @baseline * (round(@units / @baseline));
+}
+
+.right(@units) when not (ispixel(@units)) {
+	right: (@baseline * @units);
+}
+
+.right(@units) when (ispixel(@units)) {
+	right: @baseline * (round(@units / @baseline));
+}
