@@ -15,8 +15,6 @@
 // @lego--modifier-property ex: @button--warning-borderColor
 // @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
-@import (reference) "caret";
-
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 @progress-borderWidth: 1px;
@@ -104,8 +102,16 @@
 	width: @progress-balloon-width;
 	margin-left: 0 - (@progress-balloon-width / 2);
 
-	&:extend(.Caret all);
-	&:extend(.Caret--top all);
+	&:before,
+	&:after {
+		bottom: 100%;
+		left: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+	}
 
 	&:before {
 		border-bottom-color: @progress-borderColor;
