@@ -15,16 +15,38 @@
 // @lego--modifier-property ex: @button--warning-borderColor
 // @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
+@import (reference) "caret";
+
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
+@progress-borderWidth: 1px;
+@progress-borderStyle: solid;
+@progress-borderColor: #d8d8d8;
+
 @progress-bgColor: #eee;
 @progress-bar-bgColor: #888;
 @progress-height: 30px;
 @progress-bar-minWidth: 30px;
 @progress-bar-color: #fff;
-@progress-currentMark-border: 1px solid #eee;
 @progress-currentMark-opacity: 0.5;
 @progress-marginRight: 30px;
+
+//progress current marker
+@progress-mark-borderColor: #eee;
+
+//progress label variables
+@progress-label-fontSize: 12px;
+
+//progress balloon
+@progress-balloon-lineHeight: 20px;
+@progress-balloon-top: 40px;
+@progress-balloon-fontColor: inherit;
+@progress-balloon-padding: 1px 5px;
+@progress-balloon-borderRadius: 5px;
+@progress-balloon-bgColor: #fff;
+@progress-balloon-caretSize: 6px;
+@progress-balloon-width: 80px;
+
 
 // --- Default modifier ---
 
@@ -33,7 +55,6 @@
 	height: @progress-height;
 	line-height: @progress-height;
 	position: relative;
-	margin-bottom: 5px;
 	margin-right: @progress-marginRight;
 }
 
@@ -53,7 +74,7 @@
 	top: 0px;
 	width: 0;
 	height: 100%;
-	border-right: @progress-currentMark-border;
+	border-right: @progress-borderWidth @progress-borderStyle @progress-mark-borderColor;
 	opacity: @progress-currentMark-opacity;
 }
 
@@ -69,8 +90,38 @@
 	}
 }
 
+.Progress-currentMarkBalloon() {
+	background: @progress-balloon-bgColor;
+	border: @progress-borderWidth @progress-borderStyle @progress-borderColor;
+	border-radius: @progress-balloon-borderRadius;
+	color: @progress-balloon-fontColor;
+	font-size: @progress-label-fontSize;
+	line-height: @progress-balloon-lineHeight;
+	padding: @progress-balloon-padding;
+	position: absolute;
+	top: @progress-balloon-top;
+	z-index: 1;
+	width: @progress-balloon-width;
+	margin-left: 0 - (@progress-balloon-width / 2);
+
+	&:extend(.Caret all);
+	&:extend(.Caret--top all);
+
+	&:before {
+		border-bottom-color: @progress-borderColor;
+		margin-left: 0 - (@progress-balloon-caretSize + 2);
+		border-width: @progress-balloon-caretSize + 2;
+	}
+
+	&:after {
+		border-bottom-color: @progress-balloon-bgColor;
+		margin-left: -@progress-balloon-caretSize;
+		border-width: @progress-balloon-caretSize;
+	}
+}
+
 .Progress-label() {
-	font-size: 12px;
+	font-size: @progress-label-fontSize;
 	display: block;
 	text-align: left;
 	width: 100%;
