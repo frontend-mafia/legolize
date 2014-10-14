@@ -1,4 +1,4 @@
-@import "../core.less";
+@import "../core";
 
 //********************************************
 //	Button Core
@@ -31,6 +31,8 @@
 
 @button-icon-size: 14px;
 
+@button--link-color: inherit;
+@button--link-hover-color: inherit;
 
 // -------------------- Core LEGO --------------------
 .Button() {
@@ -40,18 +42,15 @@
 	cursor: pointer;
 	overflow: visible;
 	text-decoration: none;
-
 	min-width: 30px;
 	width: auto;
 	padding: @button-padding;
 	border-radius: @button-borderRadius;
 	border: @button-borderWidth @button-borderStyle @button-borderColor;
-
 	font-size: @button-fontSize;
 	line-height: @button-lineHeight;
 	text-align: center;
 	white-space: nowrap;
-
 	.boxSizing(border-box);
 	.userSelect(none);
 
@@ -90,8 +89,10 @@
 .Button--link() {
 	border: 0;
 	background: none;
+	color: @button--link-color;
 
 	&:hover {
+		color: @button--link-hover-color;
 		background: none;
 	}
 }
@@ -108,9 +109,9 @@
 
 // -------------------- States --------------------
 .Button-is-disabled() {
-    pointer-events: none; // Future-proof disabling of clicks
-    .opacity(.65);
-    .boxShadow(none);
+	pointer-events: none; // Future-proof disabling of clicks
+	.opacity(.65);
+	.boxShadow(none);
 }
 
 .Button-is-active(@backgroundColor, @borderColor: transparent) {
