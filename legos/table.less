@@ -35,6 +35,9 @@
 //Table striped variables
 @Table--striped-bgColor: #f9f9f9;
 
+//Table caption variables
+@table-caption--paddingVertical: 10px; 
+@table-caption--paddingHorizontal: 5px;
 
 // -------------------- Core LEGO --------------------
 .Table() {
@@ -88,6 +91,12 @@
 		border-bottom: @table-borderWidth @table-borderStyle @table-borderColor;
 		font-weight: bold;
 	}
+}
+
+.Table-caption() {
+	display: table-caption;
+	font-weight: 700;
+	padding: @table-caption--paddingVertical @table-caption--paddingHorizontal;
 }
 
 // -------------------- Modifiers --------------------
