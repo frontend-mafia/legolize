@@ -21,6 +21,10 @@
 @table-borderStyle: solid;
 @table-borderColor: #d8d8d8;
 
+//Table caption
+@table-caption--paddingVertical: 10px; 
+@table-caption--paddingHorizontal: 5px;
+
 //Table cell variables
 @table-cell--paddingVertical: 10px; 
 @table-cell--paddingHorizontal: 5px; 
@@ -57,6 +61,14 @@
 	width: 100%;
 }
 
+.Table-colgroup() {
+	display: table-column-group;
+}
+
+.Table-col() {
+	display: table-column;
+}
+
 .Table-head() {
 	display: table-header-group;
 
@@ -89,6 +101,9 @@
 		font-weight: bold;
 	}
 }
+
+
+
 
 // -------------------- Modifiers --------------------
 
