@@ -19,12 +19,10 @@
 	font-size: @baseline * (round(@units / @baseline));
 }
 
-// Deprecated
 .lineHeight-calculated(@fontSize, @baseline: @baseline, @increaseUnitsBy: 0) {
 	line-height: @baseline * (ceil(@fontSize / @baseline) + @increaseUnitsBy);
 }
 
-// Deprecated
 .make-textSize(@fontSize) {
 	font-size: @fontSize;
 	.lineHeight-calculated(@fontSize);
