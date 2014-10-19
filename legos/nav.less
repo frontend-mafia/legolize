@@ -79,6 +79,24 @@
 @nav--vertical-link-active-color: @nav--vertical-link-color;
 @nav--vertical-link-active-backgroundColor: @nav--vertical-link-hover-backgroundColor;
 
+// ------------ Nav--pills variables ---------------------
+@nav--pills-item-padding: 5px 10px;
+@nav--pills-item-borderRadius: 3px;
+@nav--pills-item-borderWidth: 1px;
+@nav--pills-item-borderStyle: solid;
+@nav--pills-item-borderColor: #999999;
+
+@nav--pills-item-color: rgba(0, 0, 0, .8);
+@nav--pills-item-backgroundColor: #fff;
+
+// Hover
+@nav--pills-item-hover-color: #fff;
+@nav--pills-item-hover-backgroundColor: @brandPrimary;
+
+// Active
+@nav--pills-item-active-color: #fff;
+@nav--pills-item-active-backgroundColor: @brandPrimary;
+
 // -------------------- Core LEGO --------------------
 .Nav() {
 	position: relative;
@@ -229,6 +247,43 @@
 
 		.Nav-link {
 			width: 100%;
+		}
+	}
+}
+
+// Pills
+.Nav--pills() {
+	.margin-top(2);
+	.margin-bottom(2);
+
+	.Nav-item {
+		display: inline-block;
+
+		.Nav-link {
+			display:block;
+			cursor: pointer;
+			overflow: visible;
+			text-decoration: none;
+			width: auto;
+			padding: @nav--pills-item-padding;
+			border-radius: @nav--pills-item-borderRadius;
+			border: @nav--pills-item-borderWidth @nav--pills-item-borderStyle @nav--pills-item-borderColor;
+			background: @nav--pills-item-backgroundColor;
+			color: @nav--pills-item-color;
+
+			&:hover {
+				background: @nav--pills-item-hover-backgroundColor;
+				color: @nav--pills-item-hover-color;
+			}
+
+			&.is-active {
+				background: @nav--pills-item-active-backgroundColor;
+				color: @nav--pills-item-active-color;
+			}
+
+			&.is-hidden {
+				display:none;
+			}
 		}
 	}
 }
