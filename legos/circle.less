@@ -56,6 +56,7 @@
 	justify-content: center; // Content centered
 	.width(@circle-dimensionUnits);
 	.height(@circle-dimensionUnits);
+	z-index: @circle-fill-zIndex + 1; // Needed especially when animation is used to scale the actual Circle
 
 	.Circle-media {
 		.Circle-media();
@@ -89,7 +90,6 @@
 
 // Filled circle with background color
 .Circle--filled() {
-	&:extend(.Circle);
 	background-color: @circle--filled-backgroundColor;
 
 	// Inner circle
@@ -108,7 +108,6 @@
 
 // Bordered circle
 .Circle--bordered() {
-	&:extend(.Circle);
 	border: @circle--bordered-borderWidth @circle--bordered-borderStyle @circle--bordered-borderColor;
 
 	// Inner circle
