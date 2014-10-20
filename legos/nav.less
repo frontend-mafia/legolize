@@ -258,32 +258,32 @@
 
 	.Nav-item {
 		display: inline-block;
+	}
+	
+	.Nav-link {
+		display:block;
+		cursor: pointer;
+		overflow: visible;
+		text-decoration: none;
+		width: auto;
+		padding: @nav--pills-item-padding;
+		border-radius: @nav--pills-item-borderRadius;
+		border: @nav--pills-item-borderWidth @nav--pills-item-borderStyle @nav--pills-item-borderColor;
+		background: @nav--pills-item-backgroundColor;
+		color: @nav--pills-item-color;
 
-		.Nav-link {
-			display:block;
-			cursor: pointer;
-			overflow: visible;
-			text-decoration: none;
-			width: auto;
-			padding: @nav--pills-item-padding;
-			border-radius: @nav--pills-item-borderRadius;
-			border: @nav--pills-item-borderWidth @nav--pills-item-borderStyle @nav--pills-item-borderColor;
-			background: @nav--pills-item-backgroundColor;
-			color: @nav--pills-item-color;
+		&:hover {
+			background: @nav--pills-item-hover-backgroundColor;
+			color: @nav--pills-item-hover-color;
+		}
 
-			&:hover {
-				background: @nav--pills-item-hover-backgroundColor;
-				color: @nav--pills-item-hover-color;
-			}
+		&.is-active {
+			background: @nav--pills-item-active-backgroundColor;
+			color: @nav--pills-item-active-color;
+		}
 
-			&.is-active {
-				background: @nav--pills-item-active-backgroundColor;
-				color: @nav--pills-item-active-color;
-			}
-
-			&.is-hidden {
-				display:none;
-			}
+		&.is-hidden {
+			display:none;
 		}
 	}
 }
