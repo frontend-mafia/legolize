@@ -27,7 +27,7 @@
 @progress-bar-minWidth: 30px;
 @progress-bar-color: #fff;
 @progress-currentMark-opacity: 0.5;
-@progress-marginRight: 30px;
+@progress-statusMark-width: 30px;
 
 //progress current marker
 @progress-mark-borderColor: #eee;
@@ -53,7 +53,10 @@
 	height: @progress-height;
 	line-height: @progress-height;
 	position: relative;
-	margin-right: @progress-marginRight;
+	
+	&.has-statusMark {
+		margin-right: @progress-statusMark-width;
+	}
 }
 
 // -------------------- Descendands --------------------
@@ -62,8 +65,7 @@
 	float: left;
 	color: @progress-bar-color;
 	background-color: @progress-bar-bgColor;
-	padding: 0 1%;
-	min-width: @progress-bar-minWidth;
+	text-indent: 1%;
 }
 
 .Progress-currentMark() {
@@ -78,8 +80,10 @@
 
 .Progress-statusMark() {
 	top: 0;
-	right: -(@progress-marginRight + 5);
+	right: -(@progress-statusMark-width + 5);
+	width: @progress-statusMark-width;
 	position: absolute;
+	text-align: center;
 
 	&::after {
 		font-family: Menicon;
