@@ -42,18 +42,12 @@
 }
 
 // -------------------- Descendands --------------------
-.Label-icon() {
-	vertical-align: top;
-	margin-right: 3px;
-}
-
-// Type variants
-// -------------------------
-// Change padding, font-size, line-height and border-radius
-.labelSizeVariant( @fontSize; @lineHeight; @borderRadius) {
+//label size
+.labelSizeVariant(@paddingVertical; @paddingHorizontal; @fontSize; @lineHeight; @borderRadius) {
 	font-size: @fontSize;
-	//padding: @paddingVertical @paddingHorizontal;
+	padding: @paddingVertical @paddingHorizontal;
 	line-height: @lineHeight;
+
 	.borderRadius(@borderRadius);
 }
 
