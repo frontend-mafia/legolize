@@ -19,8 +19,10 @@
 
 // -------------------- Variables --------------------
 @label-fontSize: 14px;
+@label-verticalPadding: 0px;
+@label-horizontalPadding: 10px;
 @label-minWidth: 20px;
-@label-padding: 0px 10px;
+@label-lineHeight: 14px;
 @label-borderRadius: 3px;
 
 @label-border: 1px solid #c8c8c8;
@@ -29,14 +31,11 @@
 
 // -------------------- Core LEGO --------------------
 .Label() {
+	.labelSizeVariant(@label-verticalPadding; @label-horizontalPadding; @label-fontSize; @label-lineHeight; @label-borderRadius);
+
 	display: inline-block;
-
 	border: @label-border;
-	border-radius: @label-borderRadius;
-	padding: @label-padding;
 	min-width: @label-minWidth;
-
-	font-size: @label-fontSize;
 	text-align: center;
 	white-space: nowrap;
 }
@@ -44,10 +43,12 @@
 // -------------------- Descendands --------------------
 //label size
 .labelSizeVariant(@paddingVertical; @paddingHorizontal; @fontSize; @lineHeight; @borderRadius) {
-	font-size: @fontSize;
-	padding: @paddingVertical @paddingHorizontal;
-	line-height: @lineHeight;
-
+	.padding-top(@paddingVertical);
+	.padding-bottom(@paddingVertical);
+	.padding-left(@paddingHorizontal);
+	.padding-right(@paddingHorizontal);
+	.font-size(@fontSize);
+	.line-height(@lineHeight);
 	.borderRadius(@borderRadius);
 }
 
