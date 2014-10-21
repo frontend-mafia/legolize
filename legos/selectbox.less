@@ -30,7 +30,7 @@
 
 // -------------------- Core LEGO --------------------
 .Selectbox() {
-	.border-radius(@selectbox-borderRadius);
+	.borderRadius(@selectbox-borderRadius);
 	border: @selectbox-borderWidth @selectbox-borderStyle @selectbox-borderColor;
 	outline: none;
 	background-color: @selectbox-bgColor;
@@ -54,10 +54,10 @@
 }
 
 .Selectbox-input() {
+	.font-size(@selectbox-fontSize);
+	.line-height(@selectbox-lineHeight);
+	.padding(@selectbox-padding);
 	color: @selectbox-fontColor;
-	font-size: @selectbox-fontSize;
-	line-height: @selectbox-lineHeight;
-	padding: @selectbox-padding;
 	border: 0;
 	width: 140%;
 
