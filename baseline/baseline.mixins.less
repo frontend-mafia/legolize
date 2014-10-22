@@ -145,6 +145,16 @@
 	padding-right: @baseline * (round(@units / @baseline));
 }
 
+.padding-vertical(@units) {
+	.padding-top(@units);
+	.padding-bottom(@units);
+}
+
+.padding-horizontal(@units) {
+	.padding-left(@units);
+	.padding-right(@units);
+}
+
 // -------------------- Position --------------------
 .top(@units) when not (ispixel(@units)) {
 	top: (@baseline * @units);
