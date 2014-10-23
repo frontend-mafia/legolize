@@ -4,10 +4,6 @@ Legolize is a LESS framework built up on BEM methodology inspired by the [SUIT F
 
 This is the core project where all default Lego's are defined.
 
-To get a scaffolding project that uses this, go to [legolize-base](https://bitbucket.org/meniga/legolize-base) and [legolize-legos](https://bitbucket.org/meniga/legolize-legos)
-
-Examples and documentation of all Lego's are available at [http://meniga.bitbucket.org/](http://meniga.bitbucket.org/)
-
 # How to install
 
 Two quick start options are available:
@@ -15,15 +11,15 @@ Two quick start options are available:
 - Clone the repo: 
 
     	via https    
-        	$ git clone https://YOUR-USERNAME@bitbucket.org/meniga/legolize.git
+        	$ git clone https://github.com/frontend-mafia/legolize.git
         	     
         via ssh    
-        	$ git clone git@bitbucket.org:meniga/legolize.git
+        	$ git clone git@github.com:frontend-mafia/legolize.git
     
   	
 - Install with [Bower](http://bower.io): 
     
-        $ bower install legolize ( only available privately for now  )
+        $ bower install legolize 
 
 
 ---
@@ -40,7 +36,7 @@ When working on Legolize we have two workflows, one is for developing and review
     
 2. When done and pushed, create a pull request, and add reviewers to review changes before you merge to master
 
-        [https://bitbucket.org/meniga/legolize/pull-requests](https://bitbucket.org/meniga/legolize/pull-requests)
+        [https://github.com/frontend-mafia/legolize/pulls](https://github.com/frontend-mafia/legolize/pulls)
     
 3. After code review, you can merge to master 
 
