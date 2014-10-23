@@ -5,7 +5,7 @@
     "Haukur Már Böðvarsson <haukurmar@gmail.com>"
   ],
   "main": "legolize.less",
-  "description": "Legolize is a LESS mixin framework built up on BEM methodology",
+  "description": "Legolize is a LESS mixin library for re-usable UI components written with BEM methodology.",
   "keywords": [
     "LESS",
     "CSS",
