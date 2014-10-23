@@ -1,3 +1,4 @@
+@import "../core";
 
 //********************************************
 //	Breadcrumb Core
@@ -19,40 +20,47 @@
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 @breadcrumb-color:           #b3b3b3;
-@breadcrumb-item-fontColor:  #06a3d5;
-@breadcrumb-active-color:    #aaa;
 @breadcrumb-padding: 10px;
-@breadcrumb-separator-padding: 0 5px;
+@breadcrumb-separator-horizontalPadding: 5px;
 
+//breadcrumb item
+@breadcrumb-item-fontColor: @brandPrimary;
+@breadcrumb-item-hover-color: @brandPrimary;
+@breadcrumb-item-active-color: @brandPrimary;
 
 // -------------------- Core LEGO --------------------
 .Breadcrumb() {
 	list-style: none;
-	padding: @breadcrumb-padding;
+	.padding(@breadcrumb-padding);
 }
 
 // -------------------- Descendands --------------------
 .Breadcrumb-item() {
 	display: inline-block;
-	color: @breadcrumb-item-fontColor;
 
 	& + &:before {
+		.padding-left(@breadcrumb-separator-horizontalPadding);
+		.padding-right(@breadcrumb-separator-horizontalPadding);
 		content: "/ ";
-		color: @breadcrumb-color;
-		padding: @breadcrumb-separator-padding;
+		color: @breadcrumb-item-fontColor;
+	}
+
+	&.is-active {
+		.Breadcrumb-link {
+			color: @breadcrumb-item-active-color;
+
+			&:hover {
+				color: @breadcrumb-item-active-color;
+			}
+		}
 	}
 }
 
-// ---------------------- States ---------------------
-.Breadcrumb-item-is-active() {
-	color: @breadcrumb-active-color;
+.Breadcrumb-link() {
+	cursor: pointer;
+	color: @breadcrumb-item-fontColor;
 
-	.Link {
-		cursor: default;
-		color: @breadcrumb-active-color;
-
-		&:hover {
-			color: @breadcrumb-active-color;
-		}
+	&:hover {
+		color: @breadcrumb-item-hover-color;
 	}
 }
