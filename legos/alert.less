@@ -1,3 +1,5 @@
+@import "../core";
+
 //********************************************
 //	Alert Core
 //********************************************/
@@ -17,66 +19,42 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-@alert-padding: 10px;
-@alert-borderRadius: 3px;
 
-// --- Default modifier ---
-@alert-border: 1px solid #d8d8d8;
+@alert-padding: 2;
+@alert-borderRadius: 3px;
+@alert-borderWidth: 1px;
+@alert-borderStyle: solid;
+@alert-borderColor: #d8d8d8;
 @alert-bgColor: #fff;
+
+@alert-closeButton-fontColor: #d8d8d8;
 
 // -------------------- Core LEGO --------------------
 .Alert() {
-	padding: @alert-padding;
-	border: @alert-border;
-	border-radius: @alert-borderRadius;
-	background: @alert-bgColor;
+	.createAlertVariant(@alert-borderColor, @alert-bgColor);
+	.borderRadius(@alert-borderRadius);
+	.padding(@alert-padding);
+	border-width: @alert-borderWidth;
+	border-style: @alert-borderStyle;
 	position: relative;
-	
-	//Styling for carets
-	&:after,
-	&:before {
-		border: solid transparent;
-		content: " ";
-		height: 0;
-		width: 0;
-		position: absolute;
-		pointer-events: none;
+}
+
+// -------------------- Descendants --------------------
+.Alert-closeButton() {
+	.top(1);
+	.right(1);
+	.font-size(3);
+	position: absolute;
+	color: @alert-closeButton-fontColor;
+	cursor: pointer;
+
+	&:hover {
+		color: darken(@alert-closeButton-fontColor, 10%)
 	}
 }
 
 // -------------------- Mixins --------------------
-
-//Creates type variants with colored background
-.alertVariant(@borderColor, @bgColor, @borderWidth: 1px) {
+.createAlertVariant(@borderColor, @bgColor, @borderWidth: 1px) {
 	border: @borderWidth solid @borderColor;
 	background-color: @bgColor;
-
-	&.Alert--caretTop:before    { border-bottom-color: @borderColor; }
-	&.Alert--caretRight:before  { border-left-color:   @borderColor; }
-	&.Alert--caretBottom:before { border-top-color:    @borderColor; }
-	&.Alert--caretLeft:before   { border-right-color:  @borderColor; }
-
-	&.Alert--caretTop:after    { border-bottom-color: @alert-bgColor; }
-	&.Alert--caretRight:after  { border-left-color:   @alert-bgColor; }
-	&.Alert--caretBottom:after { border-top-color:    @alert-bgColor; }
-	&.Alert--caretLeft:after   { border-right-color:  @alert-bgColor; }
-}
-
-//Alert caret variant
-.alertCaretVariant(@position1, @position2) {
-	&:after,
-	&:before {
-		@{position1}: 100%;
-		@{position2}: 50% - 10px;
-	}
-	&:before {
-		border-@{position1}-color: @alert--default-borderColor;
-		margin-@{position2}: -2 * @alert-caretSize;
-		border-width: 2 * @alert-caretSize;
-	}
-	&:after {
-		border-@{position1}-color: @alert--default-bgColor;
-		margin-@{position2}: -@alert-caretSize;
-		border-width: @alert-caretSize;
-	}
 }
