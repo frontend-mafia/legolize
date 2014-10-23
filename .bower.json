@@ -2,7 +2,7 @@
   "name": "legolize",
   "version": "0.2.1",
   "authors": [
-    "Haukur Már Böðvarsson <haukur@meniga.is>"
+    "Haukur Már Böðvarsson <haukurmar@gmail.com>"
   ],
   "main": "legolize.less",
   "description": "Legolize is a LESS mixin framework built up on BEM methodology",
@@ -25,7 +25,7 @@
     "tag": "v0.2.1",
     "commit": "cf384fed4bd2d7fd5a90b47e349ffe2f5edc07f0"
   },
-  "_source": "https://haukurmar@bitbucket.org/meniga/legolize.git",
+  "_source": "https://github.com/frontend-mafia/legolize.git",
   "_target": "*",
-  "_originalSource": "https://haukurmar@bitbucket.org/meniga/legolize.git"
+  "_originalSource": "https://github.com/frontend-mafia/legolize.git"
 }
