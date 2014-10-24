@@ -16,7 +16,9 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@radio-marginRight: 4px;
+@radio-marginRight: -3px;
+@radio-top: -4px;
+@radio-iconDiscSize: 24px;
 
 // -------------------- Core LEGO --------------------
 .Radio() {
@@ -31,9 +33,9 @@
 	display: inline-block;
 	vertical-align: top;
 	position: relative;
-	top: -2px;
+	top: @radio-top;
 	margin-right: @radio-marginRight;
-	font-size: 1.5em;
+	font-size: @radio-iconDiscSize;
 }
 
 .Radio-input() {
@@ -53,10 +55,10 @@
 
 // -------------------- Mixins --------------------
 .radioIconSizeVariant(@iconDiscSize, @fontSize) {
-	font-size: @fontSize;
+	.font-size(@fontSize);
 
 	.Radio-icon-fontSize {
-		font-size: @iconDiscSize;
+		.font-size(@iconDiscSize);
 	}
 }
 

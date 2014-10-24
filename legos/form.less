@@ -18,9 +18,10 @@
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 
-@formField-icon-bottom: 12px;
-@form-itemLabel-fontSize: 13px;
-@form-itemLabel-lineHeight: 31px;
+@form-item-icon-bottom: 12px;
+@form-itemLabel-fontSize: @base-fontSize;
+@form-itemLabel-lineHeight: @base-lineHeight;
+@form-itemLabel-paddingVertical: 0px;
 
 // -------------------- Core LEGO --------------------
 .Form() {
@@ -36,12 +37,19 @@
 .Form-icon() {
 	.Icon {
 		position: absolute;
-		bottom: @formField-icon-bottom;
+		bottom: @form-item-icon-bottom;
 	}
 }
 
 .Form-itemLabel() {
 	display: block;
-	font-size: @form-itemLabel-fontSize;
-	line-height: @form-itemLabel-lineHeight;
+	vertical-align: middle;
+	.padding-vertical(@form-itemLabel-paddingVertical);
+	.formItemLabelSize(@form-itemLabel-fontSize);
+}
+
+.formItemLabelSize(@fontSize) {
+	font-size: @fontSize;
+	//.font-size(@fontSize);
+	.lineHeight-calculatedFromFontSize(@fontSize, @form-itemLabel-fontSize, @form-itemLabel-lineHeight);
 }
