@@ -120,6 +120,16 @@
 	margin-right: @baseline * (round(@units / @baseline));
 }
 
+.margin-vertical(@units) {
+	.margin-top(@units);
+	.margin-bottom(@units);
+}
+
+.margin-horizontal(@units) {
+	.margin-left(@units);
+	.margin-right(@units);
+}
+
 // -------------------- Padding --------------------
 .padding(@units) when not (ispixel(@units)) {
 	padding: @baseline * @units;
@@ -159,6 +169,16 @@
 
 .padding-right(@units) when (ispixel(@units)) {
 	padding-right: @baseline * (round(@units / @baseline));
+}
+
+.padding-vertical(@units) {
+	.padding-top(@units);
+	.padding-bottom(@units);
+}
+
+.padding-horizontal(@units) {
+	.padding-left(@units);
+	.padding-right(@units);
 }
 
 // -------------------- Position --------------------
