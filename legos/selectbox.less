@@ -19,7 +19,8 @@
 @selectbox-marginRight: 3px;
 @selectbox-fontSize: 13px;
 @selectbox-lineHeight: 24px;
-@selectbox-padding: 7px;
+@selectbox-paddingVertical: 0px;
+@selectbox-paddingLeft: 7px;
 @selectbox-borderWidth: 1px;
 @selectbox-borderStyle: solid;
 @selectbox-borderColor: #585858;
@@ -56,7 +57,9 @@
 .Selectbox-input() {
 	.font-size(@selectbox-fontSize);
 	.line-height(@selectbox-lineHeight);
-	.padding(@selectbox-padding);
+	.padding-vertical(@selectbox-paddingVertical);
+	.padding-left(@selectbox-paddingLeft);
+	padding-right: 50%;
 	color: @selectbox-fontColor;
 	border: 0;
 	width: 140%;
@@ -68,8 +71,7 @@
 
 // ---------------------- Mixins ---------------------
 .selectboxVariant(@borderColor, @fontColor) {
-	border-color: @borderColor;
-	
+	border-color: @borderColor;	
 
 	&:focus,
 	&.is-focus {
@@ -93,5 +95,6 @@
 .selectboxSize(@fontSize) {
 	.Selectbox-input {
 		font-size: @fontSize;
+		line-height: @fontSize / @selectbox-fontSize * @selectbox-lineHeight;
 	}
 }
