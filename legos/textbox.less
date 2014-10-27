@@ -16,7 +16,9 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@textbox-fontSize: 1em;
+@textbox-fontSize: @base-fontSize;
+@textbox-lineHeight: @base-lineHeight;
+@textbox-paddingVertical: 0px;
 @textbox-marginRight: 3px;
 @textbox-placeholder-color: #BBBBBB;
 
@@ -35,17 +37,16 @@
 
 // -------------------- Core LEGO --------------------
 .Textbox() {
-
 	margin: 0;
-	padding: @textbox-fontSize / 2 @textbox-fontSize;
-	font-size: @textbox-fontSize;
+	.padding-vertical(@textbox-paddingVertical);
 	outline: none;
-
+	vertical-align:middle;
 	border-radius: @textbox-borderRadius;
 	border-width: @textbox-borderWidth;
 	border-style: @textbox-borderStyle;
 
 	.textboxVariant(@textbox-default-borderColor, @textbox-default-fontColor);
+	.textboxSize(@textbox-fontSize);
 	.placeholderColor(@textbox-placeholder-color);
 	.transition (@textbox-transition);
 
@@ -76,4 +77,7 @@
 
 .textboxSize(@fontSize) {
 	font-size: @fontSize;
+	//.font-size(@fontSize);
+	.lineHeight-calculatedFromFontSize(@fontSize, @textbox-fontSize, @textbox-lineHeight);
+	.padding-horizontal(@fontSize / 2);
 }
