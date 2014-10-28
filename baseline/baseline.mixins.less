@@ -104,6 +104,32 @@
 	margin-bottom: @baseline * (round(@units / @baseline));
 }
 
+.margin-left(@units) when not (ispixel(@units)) {
+	margin-left: @baseline * @units;
+}
+
+.margin-left(@units) when (ispixel(@units)) {
+	margin-left: @baseline * (round(@units / @baseline));
+}
+
+.margin-right(@units) when not (ispixel(@units)) {
+	margin-right: @baseline * @units;
+}
+
+.margin-right(@units) when (ispixel(@units)) {
+	margin-right: @baseline * (round(@units / @baseline));
+}
+
+.margin-vertical(@units) {
+	.margin-top(@units);
+	.margin-bottom(@units);
+}
+
+.margin-horizontal(@units) {
+	.margin-left(@units);
+	.margin-right(@units);
+}
+
 // -------------------- Padding --------------------
 .padding(@units) when not (ispixel(@units)) {
 	padding: @baseline * @units;
