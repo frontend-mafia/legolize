@@ -16,20 +16,25 @@
 // @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-
-// Wrapper
 // Either use baseline units or pixels for margin/padding/height
+
+// ----- Wrapper
 @panel-marginTop: 2;
 @panel-marginBottom: 2;
 @panel-color: inherit;
 @panel-backgroundColor: #fff;
-@panel-border: black;
+// Border
+@panel-borderWidth: 1px;
+@panel-borderStyle: solid;
+@panel-borderColor: black;
 @panel-borderRadius: 8px;
-// Header
+
+// ----- Header
 @panel-header-borderWidth : 0 0 1px;
 @panel-header-borderStyle: solid;
 @panel-header-borderColor: black;
-// Heading
+
+// ----- Heading
 @panel-heading-fontFamily: inherit;
 @panel-heading-marginTop: 1;
 @panel-heading-marginBottom: 1;
@@ -37,17 +42,19 @@
 @panel-heading-paddingRight: 10px;
 @panel-header-backgroundColor: #fff;
 @panel-heading-color: inherit;
-// Body
+
+// ----- Body
 @panel-body-paddingLeft: 10px;
 @panel-body-paddingRight: 10px;
 
 // -------------------- Core LEGO --------------------
 .Panel() {
 	//color: @panel-color;
-	border: @panel-border;
-	background-color: @panel-backgroundColor;
+	border-width: @panel-borderWidth;
+	border-style: @panel-borderStyle;
+	border-color: @panel-borderColor;
 	border-radius: @panel-borderRadius;
-
+	background-color: @panel-backgroundColor;
 	.margin-top(@panel-marginTop);
 	.margin-bottom(@panel-marginBottom);
 }
@@ -79,7 +86,6 @@
 	padding-right: @panel-body-paddingRight;
 }
 
-
 // -------------------- Modifiers --------------------
 .Panel-body--highlight() {
 	.Panel-body();
@@ -103,7 +109,6 @@
 		background-color: transparent;
 	}
 }
-
 
 // -------------------- Mixins --------------------
 
