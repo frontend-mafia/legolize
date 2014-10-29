@@ -15,31 +15,37 @@
 // @lego--modifier-property ex: @button--warning-borderColor
 // @lego--modifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
-// --- Global ---
+// -------------------- Variables --------------------
+
+// Wrapper
 // Either use baseline units or pixels for margin/padding/height
 @panel-marginTop: 2;
 @panel-marginBottom: 2;
+@panel-color: inherit;
+@panel-backgroundColor: #fff;
+@panel-border: black;
 @panel-borderRadius: 8px;
+// Header
+@panel-header-borderWidth : 0 0 1px;
+@panel-header-borderStyle: solid;
+@panel-header-borderColor: black;
+// Heading
 @panel-heading-fontFamily: inherit;
 @panel-heading-marginTop: 1;
 @panel-heading-marginBottom: 1;
 @panel-heading-paddingLeft: 10px;
 @panel-heading-paddingRight: 10px;
+@panel-header-backgroundColor: #fff;
+@panel-heading-color: inherit;
+// Body
 @panel-body-paddingLeft: 10px;
 @panel-body-paddingRight: 10px;
-
-// --- Default modifier ---
-@panel-color: inherit;
-@panel-bgColor: #fff;
-@panel-border: 1px solid darken(@panel-bgColor, 20%);
-@panel-header-bgColor: #fff; //darken(@panel-bgColor, 10%);
-@panel-heading-color: inherit;
 
 // -------------------- Core LEGO --------------------
 .Panel() {
 	//color: @panel-color;
 	border: @panel-border;
-	background-color: @panel-bgColor;
+	background-color: @panel-backgroundColor;
 	border-radius: @panel-borderRadius;
 
 	.margin-top(@panel-marginTop);
@@ -51,10 +57,12 @@
 // Wrapper around .Panel-heading
 .Panel-header() {
 	overflow: auto; // For margin elements and background
-	background-color: @panel-header-bgColor;
+	background-color: @panel-header-backgroundColor;
 	border-top-left-radius: @panel-borderRadius;
 	border-top-right-radius: @panel-borderRadius;
-	border-bottom: solid 1px #d8d8d8;
+	border-width: @panel-header-borderWidth;
+	border-style: @panel-header-borderStyle;
+	border-color: @panel-header-borderColor;
 }
 
 .Panel-heading() {

@@ -43,6 +43,7 @@
 @nav--menu-link-hover-color: @nav--menu-link-color;
 
 // ------------ Nav--tab variables ---------------------
+// TODO: Rename all variables to have --tabs instead of --tab
 @nav--tab-border: 1px solid #d8d8d8;
 @nav--tab-marginRight: 3px;
 @nav--tab-borderWeight: 1px;
@@ -50,7 +51,6 @@
 
 //tab link default
 @nav--tab-item-background: #faf9f9;
-@nav--tab-item-fontColor: #06a3d5;
 @nav--tab-link-fontSize: inherit;
 @nav--tab-link-padding: 0 15px;
 @nav--tab-link-lineHeight: 30px;
@@ -209,31 +209,32 @@
 	.Nav-item {
 		display: inline-block;
 
-		.Nav-link,
-		.Nav-link:visited {
-			background: @nav--tab-item-background;
-			margin-right: @nav--tab-marginRight;
-			border: @nav--tab-border;
-			padding: @nav--tab-link-padding;
-			line-height: @nav--tab-link-lineHeight;
-			font-size: @nav--tab-link-fontSize;
-			font-weight: @nav--tab-link-fontWeight;
-			margin-bottom: -@nav--tab-borderWeight;
-			color: @nav--tab-fontColor;
-			text-decoration: none;
-
-			&:hover {
-				border: @nav--tab-border;
-				color: @nav--tab-item-hover-fontColor;
-			}
-		}
-
 		&.is-active {
 			.Nav-link {
 				background: @nav--tab-item-active-background;
 				border-bottom: @nav--tab-borderWeight solid transparent;
-				color: @brandPrimary;
+				color: @nav--tab-item-active-fontColor;
 			}
+		}
+	}
+
+	// TODO: Change to support baseline for line-height etc.
+	.Nav-link,
+	.Nav-link:visited {
+		background: @nav--tab-item-background;
+		margin-right: @nav--tab-marginRight;
+		border: @nav--tab-border;
+		padding: @nav--tab-link-padding;
+		line-height: @nav--tab-link-lineHeight;
+		font-size: @nav--tab-link-fontSize;
+		font-weight: @nav--tab-link-fontWeight;
+		margin-bottom: -@nav--tab-borderWeight;
+		color: @nav--tab-fontColor;
+		text-decoration: none;
+
+		&:hover {
+			border: @nav--tab-border;
+			color: @nav--tab-item-hover-fontColor;
 		}
 	}
 }
@@ -259,9 +260,9 @@
 	.Nav-item {
 		display: inline-block;
 	}
-	
+
 	.Nav-link {
-		display:block;
+		display: block;
 		cursor: pointer;
 		overflow: visible;
 		text-decoration: none;
@@ -283,7 +284,7 @@
 		}
 
 		&.is-hidden {
-			display:none;
+			display: none;
 		}
 	}
 }

@@ -17,9 +17,10 @@
 
 // -------------------- Variables --------------------
 @selectbox-marginRight: 3px;
-@selectbox-fontSize: 13px;
-@selectbox-lineHeight: 24px;
-@selectbox-padding: 7px;
+@selectbox-fontSize: @base-fontSize;
+@selectbox-lineHeight: @base-lineHeight;
+@selectbox-paddingVertical: 0px;
+
 @selectbox-borderWidth: 1px;
 @selectbox-borderStyle: solid;
 @selectbox-borderColor: #585858;
@@ -51,12 +52,14 @@
 		content: "\e63C";
 		z-index: 0;
 	}
+
+	.selectboxSize(@selectbox-fontSize);
 }
 
 .Selectbox-input() {
 	.font-size(@selectbox-fontSize);
-	.line-height(@selectbox-lineHeight);
-	.padding(@selectbox-padding);
+	.padding-vertical(@selectbox-paddingVertical);
+
 	color: @selectbox-fontColor;
 	border: 0;
 	width: 140%;
@@ -68,8 +71,7 @@
 
 // ---------------------- Mixins ---------------------
 .selectboxVariant(@borderColor, @fontColor) {
-	border-color: @borderColor;
-	
+	border-color: @borderColor;	
 
 	&:focus,
 	&.is-focus {
@@ -91,7 +93,18 @@
 
 //Mixin to resize the selectbox
 .selectboxSize(@fontSize) {
+	.lineHeight-calculatedFromFontSize(@fontSize, @selectbox-fontSize, @selectbox-lineHeight);
+
 	.Selectbox-input {
 		font-size: @fontSize;
+	}
+}
+
+//Mixin to set a fixed width on the selectbox
+.selectboxWidth(@width) {
+	max-width: @width;
+
+	.Selectbox-input {
+		padding-right: @width;
 	}
 }

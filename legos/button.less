@@ -19,10 +19,10 @@
 
 // -------------------- Variables --------------------
 //default style
-@button-verticalPadding: 7px;
-@button-horizontalPadding: 14px;
-@button-fontSize: 14px;
-@button-lineHeight: 14px;
+@button-fontSize: @base-fontSize;
+@button-lineHeight: @base-lineHeight;
+@button-paddingVertical: 0px;
+
 @button-borderRadius: 3px;
 @button-borderWidth: 1px;
 @button-borderStyle: solid;
@@ -36,7 +36,8 @@
 
 // -------------------- Core LEGO --------------------
 .Button() {
-	.buttonSize(@button-verticalPadding; @button-horizontalPadding; @button-fontSize; @button-lineHeight; @button-borderRadius);
+	.padding-vertical(@button-paddingVertical);
+	.buttonSize(@button-fontSize; @button-borderRadius);
 	.boxSizing(border-box);
 	.userSelect(none);
 	
@@ -51,6 +52,7 @@
 	text-align: center;
 	text-decoration: none;
 	white-space: nowrap;
+	vertical-align:middle;
 
 	&[disabled],
 	&.is-disabled {
@@ -79,9 +81,17 @@
 }
 
 // -------------------- Modifiers --------------------
-.Button-block() {
+.Button--block() {
 	display: block;
 	width: 100%;
+}
+
+.Button--icon() {
+	background: none;
+	margin:0;
+	padding:0;
+	min-width:auto;
+	border:none;
 }
 
 .Button--link() {
@@ -124,12 +134,12 @@
 
 // -------------------- Mixins --------------------
 
-.buttonSize(@paddingVertical; @paddingHorizontal; @fontSize; @lineHeight; @borderRadius) {
-	.padding-vertical(@paddingVertical);
-	.padding-horizontal(@paddingHorizontal);
-	.font-size(@fontSize);
-	.line-height(@lineHeight);
+.buttonSize(@fontSize; @borderRadius: 3px) {
+	//.font-size(@fontSize);
+	font-size: @fontSize;
+	.lineHeight-calculatedFromFontSize(@fontSize, @button-fontSize, @button-lineHeight);
 	.borderRadius(@borderRadius);
+	.padding-horizontal(@fontSize / 2);
 
 	.Icon {
 		.font-size(@fontSize);

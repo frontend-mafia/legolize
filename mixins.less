@@ -111,6 +111,13 @@
 	}
 }
 
+
+
+// Deprecated
+.lineHeight-calculatedFromFontSize(@fontSize, @baseFontSize: @base-fontSize, @baseLineHeight: @base-lineHeight) {
+	line-height: round(@baseLineHeight * (@fontSize / @baseFontSize)) + 0p;
+}
+
 //IE6 & 7 support for inline-block
 .inline-block(){
   display: inline-block;
