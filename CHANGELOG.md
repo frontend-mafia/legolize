@@ -4,7 +4,7 @@
 
 ### Panel
   - Variable renaming border now configurable
-  ([#12](https://github.com/frontend-mafia/legolize/issues/12),
+  ([#12](https://github.com/frontend-mafia/legolize/issues/12))
 
 
 ## Bug fixes
