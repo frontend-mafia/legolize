@@ -1,3 +1,11 @@
+# v0.3.4
+
+## Breaking changes
+
+### Form
+  - Removed .Form-icon and created .Form-item--withIcon modifier instead.
+  ([#23](https://github.com/frontend-mafia/legolize/pull/23))
+
 # v0.3.3
 
 ## Breaking changes
