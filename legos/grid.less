@@ -281,38 +281,3 @@
 		margin-left: 91.66666666666667%;
 	}
 }
-
-// ---------- Old Grid ----------
-@grid-marginRight: 1%;
-
-.Grid--1Of1() {
-	width: 100%;
-}
-
-.Grid--1Of2() {
-	.gridCalculator(1, 2);
-}
-
-.Grid--1Of3() {
-	.gridCalculator(1, 3);
-}
-
-.Grid--2Of3() {
-	.gridCalculator(2, 3);
-}
-
-.Grid--1Of4() {
-	.gridCalculator(1, 4);
-}
-
-.Grid--3Of4() {
-	.gridCalculator(3, 4);
-}
-
-// -------------------- Mixins --------------------
-
-.gridCalculator(@columns, @totalColumns) {
-	margin-right: @grid-marginRight;
-	float: left;
-	width: (@columns/@totalColumns*100%)-(@grid-marginRight);
-}
