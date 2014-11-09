@@ -1,3 +1,11 @@
+# v0.3.5
+
+## Breaking changes
+
+## Textbox
+  - Fixes cursor alignment on chrome
+  ([#19](https://github.com/frontend-mafia/legolize/issues/19))
+
 # v0.3.4
 
 ## Breaking changes
