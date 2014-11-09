@@ -76,8 +76,8 @@
 }
 
 .textboxSize(@fontSize) {
-	font-size: @fontSize;
-	//.font-size(@fontSize);
-	.lineHeight-calculatedFromFontSize(@fontSize, @textbox-fontSize, @textbox-lineHeight);
+	.height-calculatedFromFontSize(@fontSize, @textbox-fontSize, @textbox-lineHeight);
 	.padding-horizontal(@fontSize / 2);
+	font-size: @fontSize;
+	line-height: 100%;
 }
