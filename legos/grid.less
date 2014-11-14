@@ -18,6 +18,8 @@
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
 
+// TODO: Don't forget to generate percentage classes (ex: .Grid-col--75)
+
 // -------------------- Variables --------------------
 // Outer margin
 @grid-margin: 20px;
@@ -93,18 +95,210 @@
 	// Reverse order of children
 	&.Grid-row--reverse {
 		flex-direction: row-reverse;
-		flex-wrap: row-reverse;
+		flex-wrap: wrap-reverse;
 	}
 }
 
 .Grid-col() {
+	//.writeColumnProperties();
+	//.writeColumnModifiers();
 
-	// -------------------- Modifiers --------------------
+	//	// -------------------- Modifiers --------------------
+	//	// ---------- Ordering ----------
+	//	&.Grid-col--reverse {
+	//		flex-direction: column-reverse;
+	//		flex-wrap: wrap-reverse;
+	//	}
+	//
+	//	// Make column first in order
+	//	&.Grid-col--orderFirst {
+	//		order: -1;
+	//	}
+	//
+	//	// Make column last in order
+	//	&.Grid-col--orderLast {
+	//		order: 1;
+	//	}
+	//.makeGrid(12);
+	// ---------- Columns ----------
+	//		&.Grid-col--1,
+	//		&.Grid-col--2,
+	//		&.Grid-col--3,
+	//		&.Grid-col--4,
+	//		&.Grid-col--5,
+	//		&.Grid-col--6,
+	//		&.Grid-col--7,
+	//		&.Grid-col--8,
+	//		&.Grid-col--9,
+	//		&.Grid-col--10,
+	//		&.Grid-col--11,
+	//		&.Grid-col--12,
+	//		&.Grid-col--25,
+	//		&.Grid-col--33,
+	//		&.Grid-col--50,
+	//		&.Grid-col--66,
+	//		&.Grid-col--75,
+	//		&.Grid-col--100,
+	//		&.Grid-offset--1,
+	//		&.Grid-offset--2,
+	//		&.Grid-offset--3,
+	//		&.Grid-offset--4,
+	//		&.Grid-offset--5,
+	//		&.Grid-offset--6,
+	//		&.Grid-offset--7,
+	//		&.Grid-offset--8,
+	//		&.Grid-offset--9,
+	//		&.Grid-offset--10,
+	//		&.Grid-offset--25,
+	//		&.Grid-offset--33,
+	//		&.Grid-offset--50,
+	//		&.Grid-offset--66,
+	//		&.Grid-offset--75,
+	//		&.Grid-offset--100,
+	//		&.Grid-col--auto {
+	//			box-sizing: border-box;
+	//			flex-direction: column;
+	//			flex-grow: 0;
+	//			flex-shrink: 0;
+	//			padding-right: @grid-gutter / 2;
+	//			padding-left: @grid-gutter / 2;
+	//		}
+	//
+	//		&.Grid-col--auto {
+	//			flex: auto;
+	//		}
+	//
+	//		&.Grid-col--1 {
+	//			flex-basis: 8.333333333333334%;
+	//			max-width: 8.333333333333334%;
+	//		}
+	//
+	//		&.Grid-col--2 {
+	//			flex-basis: 16.666666666666668%;
+	//			max-width: 16.666666666666668%;
+	//		}
+	//
+	//		&.Grid-col--25,
+	//		&.Grid-col--3 {
+	//			flex-basis: 25%;
+	//			max-width: 25%;
+	//		}
+	//
+	//		&.Grid-col--33,
+	//		&.Grid-col--4 {
+	//			flex-basis: 33.333333333333336%;
+	//			max-width: 33.333333333333336%;
+	//		}
+	//
+	//		&.Grid-col--5 {
+	//			flex-basis: 41.66666666666667%;
+	//			max-width: 41.66666666666667%;
+	//		}
+	//
+	//		&.Grid-col--50,
+	//		&.Grid-col--6 {
+	//			flex-basis: 50%;
+	//			max-width: 50%;
+	//		}
+	//
+	//		&.Grid-col--7 {
+	//			flex-basis: 58.333333333333336%;
+	//			max-width: 58.333333333333336%;
+	//		}
+	//
+	//		&.Grid-col--66,
+	//		&.Grid-col--8 {
+	//			flex-basis: 66.66666666666667%;
+	//			max-width: 66.66666666666667%;
+	//		}
+	//
+	//		&.Grid-col--75,
+	//		&.Grid-col--9 {
+	//			flex-basis: 75%;
+	//			max-width: 75%;
+	//		}
+	//
+	//		&.Grid-col--10 {
+	//			flex-basis: 83.33333333333334%;
+	//			max-width: 83.33333333333334%;
+	//		}
+	//
+	//		&.Grid-col--11 {
+	//			flex-basis: 91.66666666666667%;
+	//			max-width: 91.66666666666667%;
+	//		}
+	//
+	//		&.Grid-col--100,
+	//		&.Grid-col--12 {
+	//			flex-basis: 100%;
+	//			max-width: 100%;
+	//		}
+	//
+	//		// ---------- Offset ----------
+	//		&.Grid-offset--1 {
+	//			margin-left: 8.333333333333334%;
+	//		}
+	//
+	//		&.Grid-offset--2 {
+	//			margin-left: 16.666666666666668%;
+	//		}
+	//
+	//		&.Grid-offset--25,
+	//		&.Grid-offset--3 {
+	//			margin-left: 25%;
+	//		}
+	//
+	//		&.Grid-offset--33,
+	//		&.Grid-offset--4 {
+	//			margin-left: 33.333333333333336%;
+	//		}
+	//
+	//		&.Grid-offset--5 {
+	//			margin-left: 41.66666666666667%;
+	//		}
+	//
+	//		&.Grid-offset--50,
+	//		&.Grid-offset--6 {
+	//			margin-left: 50%;
+	//		}
+	//
+	//		&.Grid-offset--7 {
+	//			margin-left: 58.333333333333336%;
+	//		}
+	//
+	//		&.Grid-offset--66,
+	//		&.Grid-offset--8 {
+	//			margin-left: 66.66666666666667%;
+	//		}
+	//
+	//		&.Grid-offset--75,
+	//		&.Grid-offset--9 {
+	//			margin-left: 75%;
+	//		}
+	//
+	//		&.Grid-offset--10 {
+	//			margin-left: 83.33333333333334%;
+	//		}
+	//
+	//		&.Grid-offset--11 {
+	//			margin-left: 91.66666666666667%;
+	//		}
+}
 
+.writeColumnProperties() {
+	box-sizing: border-box;
+	flex-direction: column;
+	flex-grow: 0;
+	flex-shrink: 0;
+	padding-right: @grid-gutter / 2;
+	padding-left: @grid-gutter / 2;
+}
+
+.Grid-col-modifiers() {
 	// ---------- Ordering ----------
 	&.Grid-col--reverse {
 		flex-direction: column-reverse;
-		flex-wrap: column-reverse;
+		flex-wrap: wrap-reverse;
 	}
 
 	// Make column first in order
@@ -116,43 +310,46 @@
 	&.Grid-col--orderLast {
 		order: 1;
 	}
+}
 
-	// ---------- Columns ----------
-	&.Grid-col--1,
-	&.Grid-col--2,
-	&.Grid-col--3,
-	&.Grid-col--4,
-	&.Grid-col--5,
-	&.Grid-col--6,
-	&.Grid-col--7,
-	&.Grid-col--8,
-	&.Grid-col--9,
-	&.Grid-col--10,
-	&.Grid-col--11,
-	&.Grid-col--12,
-	&.Grid-col--25,
-	&.Grid-col--33,
-	&.Grid-col--50,
-	&.Grid-col--66,
-	&.Grid-col--75,
-	&.Grid-col--100,
-	&.Grid-offset--1,
-	&.Grid-offset--2,
-	&.Grid-offset--3,
-	&.Grid-offset--4,
-	&.Grid-offset--5,
-	&.Grid-offset--6,
-	&.Grid-offset--7,
-	&.Grid-offset--8,
-	&.Grid-offset--9,
-	&.Grid-offset--10,
-	&.Grid-offset--25,
-	&.Grid-offset--33,
-	&.Grid-offset--50,
-	&.Grid-offset--66,
-	&.Grid-offset--75,
-	&.Grid-offset--100,
-	&.Grid-col--auto {
+// -------------------- Functions --------------------
+// ---------- Columns ----------
+.makeAllGridColumns() {
+	.Grid-col--1,
+	.Grid-col--2,
+	.Grid-col--3,
+	.Grid-col--4,
+	.Grid-col--5,
+	.Grid-col--6,
+	.Grid-col--7,
+	.Grid-col--8,
+	.Grid-col--9,
+	.Grid-col--10,
+	.Grid-col--11,
+	.Grid-col--12,
+	.Grid-col--25,
+	.Grid-col--33,
+	.Grid-col--50,
+	.Grid-col--66,
+	.Grid-col--75,
+	.Grid-col--100,
+	.Grid-offset--1,
+	.Grid-offset--2,
+	.Grid-offset--3,
+	.Grid-offset--4,
+	.Grid-offset--5,
+	.Grid-offset--6,
+	.Grid-offset--7,
+	.Grid-offset--8,
+	.Grid-offset--9,
+	.Grid-offset--10,
+	.Grid-offset--25,
+	.Grid-offset--33,
+	.Grid-offset--50,
+	.Grid-offset--66,
+	.Grid-offset--75,
+	.Grid-offset--100,
+	.Grid-col--auto {
 		box-sizing: border-box;
 		flex-direction: column;
 		flex-grow: 0;
@@ -160,124 +357,157 @@
 		padding-right: @grid-gutter / 2;
 		padding-left: @grid-gutter / 2;
 	}
+}
 
-	&.Grid-col--auto {
-		flex: auto;
+// Create columns
+.makeGridColumns(@columnClassName; @columnCount: 12; @screenSize: "") {
+	// Create common classes like .Grid, .Grid-col and .Grid-row
+	//._makeGridCommonClasses(@screenSize);
+	// Call all loops
+	._makeSharedColumnClasses(@columnClassName, @columnCount, @screenSize);
+	._makeColumns(@columnCount, @screenSize);
+	._makeOffsets(@columnCount, @screenSize);
+}
+
+//.makeGrid(@columnClassName; @columnCount: 12; @screenSize: "") {
+//	// Create common classes like .Grid, .Grid-col and .Grid-row
+//	//._makeGridCommonClasses(@screenSize);
+//	// Call all loops
+//	._makeSharedColumnClasses(@columnCount, @screenSize);
+//	._makeColumns(@columnCount, @screenSize);
+//	._makeOffsets(@columnCount, @screenSize);
+//}
+
+// -------------------- Private functions --------------------
+
+// ----- Width -----
+._makeColumnClass(@columnSpan; @columnCount: 12; @screenSize: "") {
+	// ----- Mobile first
+	.create(@columnSpan; @columnCount; @screenSize) when (@screenSize = "") {
+		.Grid-col--@{columnSpan} {
+			&:extend(.Grid-col);
+			/* Mobile first */
+			flex-basis: percentage((@columnSpan / @columnCount));
+			max-width: percentage((@columnSpan / @columnCount));
+		}
 	}
 
-	&.Grid-col--1 {
-		flex-basis: 8.333333333333334%;
-		max-width: 8.333333333333334%;
+	// ----- Specific screensize
+	.create(@columnSpan; @columnCount; @screenSize) when not (@screenSize = "") {
+		.Grid-col--@{columnSpan}--@{screenSize} {
+			&:extend(.Grid-col--@{screenSize});
+			/* Media */
+			flex-basis: percentage((@columnSpan / @columnCount));
+			max-width: percentage((@columnSpan / @columnCount));
+		}
 	}
 
-	&.Grid-col--2 {
-		flex-basis: 16.666666666666668%;
-		max-width: 16.666666666666668%;
+	.create(@columnSpan, @columnCount, @screenSize);
+}
+
+// ----- Offset -----
+._makeOffsetClass(@columnSpan; @columnCount: 12; @screenSize: "") {
+	// ----- Mobile first
+	.create(@columnSpan; @columnCount; @screenSize) when (@screenSize = "") {
+		.Grid-offset--@{columnSpan} {
+			margin-left: percentage((@columnSpan / @columnCount));
+		}
 	}
 
-	&.Grid-col--25,
-	&.Grid-col--3 {
-		flex-basis: 25%;
-		max-width: 25%;
+	// ----- Specific screensize
+	.create(@columnSpan; @columnCount; @screenSize) when not (@screenSize = "") {
+		.Grid-offset--@{columnSpan}--@{screenSize} {
+			margin-left: percentage((@columnSpan / @columnCount));
+		}
 	}
 
-	&.Grid-col--33,
-	&.Grid-col--4 {
-		flex-basis: 33.333333333333336%;
-		max-width: 33.333333333333336%;
+	.create(@columnSpan, @columnCount, @screenSize);
+}
+
+// ----- Loops -----
+// Compile a list of classes that share properties
+._makeSharedColumnClasses(@columnClassName; @columnCount; @screenSize: "") {
+	// ----- Mobile first
+	.create(@columnClassName; @columnCount; @screenSize) when (@screenSize = "") {
+		// First
+		.list(@column) {
+			@item: ~".@{columnClassName}, .@{columnClassName}--@{column}";
+
+			// Call self
+			.list((@column + 1), @item);
+		}
+
+		// The rest
+		.list(@column, @list) when (@column =< @columnCount) {
+			@item: ~".@{columnClassName}--@{column}";
+
+			// Call self
+			.list((@column + 1), ~"@{list}, @{item}");
+		}
+
+		// When the list is compiled we create the class
+		.list(@column, @list) when (@column > @columnCount) {
+			@{list} {
+				.writeColumnProperties();
+			}
+		}
+
+		.list(1); // First iteration
 	}
 
-	&.Grid-col--5 {
-		flex-basis: 41.66666666666667%;
-		max-width: 41.66666666666667%;
+	// ----- Specific screensize
+	.create(@columnClassName; @columnCount; @screenSize) when not (@screenSize = "") {
+		// First
+		.list(@column) {
+			@item: ~".Grid-col, .Grid-col--@{column}--@{screenSize}";
+
+			// Call self
+			.list((@column + 1), @item);
+		}
+
+		// The rest
+		.list(@column, @list) when (@column =< @columnCount) {
+			@item: ~".Grid-col--@{column}--@{screenSize}";
+
+			// Call self
+			.list((@column + 1), ~"@{list}, @{item}");
+		}
+
+		// When the list is compiled we create the class
+		.list(@column, @list) when (@column > @columnCount) {
+			@{list} {
+				.writeColumnProperties();
+			}
+		}
+
+		// First iteration
+		.list(1);
 	}
 
-	&.Grid-col--50,
-	&.Grid-col--6 {
-		flex-basis: 50%;
-		max-width: 50%;
+	// Initial
+	.create(@columnClassName, @columnCount, @screenSize);
+}
+
+// Loop to create all column widths classes
+._makeColumns(@columnCount; @screenSize: "") {
+	.create(@column) when (@column =< @columnCount) {
+		._makeColumnClass(@column, @columnCount, @screenSize);
+
+		// Call self again
+		.create(@column + 1);
 	}
 
-	&.Grid-col--7 {
-		flex-basis: 58.333333333333336%;
-		max-width: 58.333333333333336%;
+	.create(1); // First iteration
+}
+
+// Loop to create all offset classes
+._makeOffsets(@columnCount; @screenSize: "") {
+	.create(@column) when (@column =< @columnCount) {
+		._makeOffsetClass(@column, @columnCount, @screenSize);
+
+		// Call self again
+		.create(@column + 1);
 	}
 
-	&.Grid-col--66,
-	&.Grid-col--8 {
-		flex-basis: 66.66666666666667%;
-		max-width: 66.66666666666667%;
-	}
-
-	&.Grid-col--75,
-	&.Grid-col--9 {
-		flex-basis: 75%;
-		max-width: 75%;
-	}
-
-	&.Grid-col--10 {
-		flex-basis: 83.33333333333334%;
-		max-width: 83.33333333333334%;
-	}
-
-	&.Grid-col--11 {
-		flex-basis: 91.66666666666667%;
-		max-width: 91.66666666666667%;
-	}
-
-	&.Grid-col--100,
-	&.Grid-col--12 {
-		flex-basis: 100%;
-		max-width: 100%;
-	}
-
-	// ---------- Offset ----------
-	&.Grid-offset--1 {
-		margin-left: 8.333333333333334%;
-	}
-
-	&.Grid-offset--2 {
-		margin-left: 16.666666666666668%;
-	}
-
-	&.Grid-offset--25,
-	&.Grid-offset--3 {
-		margin-left: 25%;
-	}
-
-	&.Grid-offset--33,
-	&.Grid-offset--4 {
-		margin-left: 33.333333333333336%;
-	}
-
-	&.Grid-offset--5 {
-		margin-left: 41.66666666666667%;
-	}
-
-	&.Grid-offset--50,
-	&.Grid-offset--6 {
-		margin-left: 50%;
-	}
-
-	&.Grid-offset--7 {
-		margin-left: 58.333333333333336%;
-	}
-
-	&.Grid-offset--66,
-	&.Grid-offset--8 {
-		margin-left: 66.66666666666667%;
-	}
-
-	&.Grid-offset--75,
-	&.Grid-offset--9 {
-		margin-left: 75%;
-	}
-
-	&.Grid-offset--10 {
-		margin-left: 83.33333333333334%;
-	}
-
-	&.Grid-offset--11 {
-		margin-left: 91.66666666666667%;
-	}
+	.create(1); // First iteration
 }
