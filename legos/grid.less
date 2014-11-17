@@ -25,6 +25,9 @@
 // Column gutter
 @grid-gutter: 12px;
 
+// Number of columns
+@grid-columns: 12;
+
 // -------------------- Core LEGO --------------------
 .Grid() {
 	padding-right: @grid-margin;
@@ -97,40 +100,80 @@
 	}
 }
 
-.Grid-col() {
+// Make a column with Legolized defined media queries
+.Grid-col(@columnSpan; @screenSize: "") {
+	.create(@screenSize) when (@screenSize = "") {
+		.makeGridColumn(@columnSpan);
+	}
+
+	.create(@screenSize) when (@screenSize = phablet) {
+		.makeGridColumn(@columnSpan, @base-screen--phablet--above);
+	}
+
+	.create(@screenSize) when (@screenSize = tabletSmall) {
+		.makeGridColumn(@columnSpan, @base-screen--tabletSmall--above);
+	}
+
+	.create(@screenSize) when (@screenSize = tablet) {
+		.makeGridColumn(@columnSpan, @base-screen--tablet--above);
+	}
+
+	.create(@screenSize) when (@screenSize = desktop) {
+		.makeGridColumn(@columnSpan, @base-screen--desktop--above);
+	}
+
+	.create(@screenSize);
 }
 
 // -------------------- Functions --------------------
 // Create columns
-.makeGridColumns(@columnCount: 12; @screenSize: ""; @columnClassName: Grid-col) {
+.makeGridColumns(@screenSize: ""; @columnClassName: Grid-col) {
 	// Call all loops
-	._makeSharedColumnClasses(@columnCount, @screenSize, @columnClassName);
-	._makeColumns(@columnCount, @screenSize, @columnClassName);
+	._makeSharedColumnClasses(@screenSize, @columnClassName);
+	._makeColumns(@screenSize, @columnClassName);
 	._makeExtraColumns(@screenSize, @columnClassName);
-	._makeOffsets(@columnCount, @screenSize);
+	._makeOffsets(@screenSize);
 }
+
+// Make a column for a specific media query
+.makeGridColumn(@columnSpan; @mediaQuery: "") {
+	.create(@mediaQuery) when (@mediaQuery = "") {
+		flex-basis: percentage((@columnSpan / @grid-columns));
+		max-width: percentage((@columnSpan / @grid-columns));
+	}
+
+	.create(@mediaQuery) when not (@mediaQuery = "") {
+		@media @mediaQuery {
+			flex-basis: percentage((@columnSpan / @grid-columns));
+			max-width: percentage((@columnSpan / @grid-columns));
+		}
+	}
+
+	.create(@mediaQuery);
+}
+
 
 // -------------------- Private functions --------------------
 // ----- Width -----
-._makeColumnClass(@columnSpan; @columnCount: 12; @screenSize: ""; @columnClassName: Grid-col) {
+._makeColumnClass(@columnSpan; @screenSize: ""; @columnClassName: Grid-col) {
 	// Main function
-	.create(@columnSpan; @columnCount; @modifier) {
+	.create(@columnSpan; @modifier) {
 		.@{columnClassName}--@{columnSpan}@{modifier} {
-			flex-basis: percentage((@columnSpan / @columnCount));
-			max-width: percentage((@columnSpan / @columnCount));
+			flex-basis: percentage((@columnSpan / @grid-columns));
+			max-width: percentage((@columnSpan / @grid-columns));
 		}
 	}
 
 	// Call create for Mobile first
 	.setModifier(@screenSize) when (@screenSize = "") {
 		@modifier: ~"";
-		.create(@columnSpan, @columnCount, @modifier);
+		.create(@columnSpan, @modifier);
 	}
 
 	// Call create for a specific screen size
 	.setModifier(@screenSize) when not (@screenSize = "") {
 		@modifier: ~"--@{screenSize}";
-		.create(@columnSpan, @columnCount, @modifier);
+		.create(@columnSpan, @modifier);
 	}
 
 	// Initial call
@@ -138,24 +181,24 @@
 }
 
 // ----- Offset -----
-._makeOffsetClass(@columnSpan; @columnCount: 12; @screenSize: "") {
+._makeOffsetClass(@columnSpan; @screenSize: "") {
 	// Main function
-	.create(@columnSpan; @columnCount; @modifier) {
+	.create(@columnSpan; @modifier) {
 		.Grid-offset--@{columnSpan}@{modifier} {
-			margin-left: percentage((@columnSpan / @columnCount));
+			margin-left: percentage((@columnSpan / @grid-columns));
 		}
 	}
 
 	// Call create for Mobile first
 	.setModifier(@screenSize) when (@screenSize = "") {
 		@modifier: ~"";
-		.create(@columnSpan, @columnCount, @modifier);
+		.create(@columnSpan, @modifier);
 	}
 
 	// Call create for a specific screen size
 	.setModifier(@screenSize) when not (@screenSize = "") {
 		@modifier: ~"--@{screenSize}";
-		.create(@columnSpan, @columnCount, @modifier);
+		.create(@columnSpan, @modifier);
 	}
 
 	// Initial call
@@ -253,9 +296,9 @@
 
 // -------------------- Loops --------------------
 // Compile a list of classes that share properties
-._makeSharedColumnClasses(@columnCount; @screenSize: ""; @columnClassName: Grid-col) {
+._makeSharedColumnClasses(@screenSize: ""; @columnClassName: Grid-col) {
 	// Main function
-	.create(@columnClassName; @columnCount; @modifier) {
+	.create(@columnClassName; @modifier) {
 		// First
 		.list(@column) {
 			// ex: .Grid-col--desktop, .Grid-col--1--desktop
@@ -266,7 +309,7 @@
 		}
 
 		// The rest
-		.list(@column, @list) when (@column =< @columnCount) {
+		.list(@column, @list) when (@column =< @grid-columns) {
 			@item: ~".@{columnClassName}--@{column}@{modifier}";
 
 			// Call self
@@ -274,7 +317,7 @@
 		}
 
 		// When the list is compiled we create the class
-		.list(@column, @list) when (@column > @columnCount) {
+		.list(@column, @list) when (@column > @grid-columns) {
 			@{list} {
 				box-sizing: border-box;
 				flex-direction: column;
@@ -292,13 +335,13 @@
 	// Call create for Mobile first
 	.setModifier(@screenSize) when (@screenSize = "") {
 		@modifier: ~"";
-		.create(@columnClassName, @columnCount, @modifier);
+		.create(@columnClassName, @modifier);
 	}
 
 	// Call create for a specific screen size
 	.setModifier(@screenSize) when not (@screenSize = "") {
 		@modifier: ~"--@{screenSize}";
-		.create(@columnClassName, @columnCount, @modifier);
+		.create(@columnClassName, @modifier);
 	}
 
 	// Initial call
@@ -306,9 +349,9 @@
 }
 
 // Loop to create all column widths classes
-._makeColumns(@columnCount; @screenSize: ""; @columnClassName: Grid-col) {
-	.create(@column) when (@column =< @columnCount) {
-		._makeColumnClass(@column, @columnCount, @screenSize, @columnClassName);
+._makeColumns(@screenSize: ""; @columnClassName: Grid-col) {
+	.create(@column) when (@column =< @grid-columns) {
+		._makeColumnClass(@column, @screenSize, @columnClassName);
 
 		// Call self again
 		.create(@column + 1);
@@ -319,9 +362,9 @@
 }
 
 // Loop to create all offset classes
-._makeOffsets(@columnCount; @screenSize: "") {
-	.create(@column) when (@column =< @columnCount) {
-		._makeOffsetClass(@column, @columnCount, @screenSize);
+._makeOffsets(@screenSize: "") {
+	.create(@column) when (@column =< @grid-columns) {
+		._makeOffsetClass(@column, @screenSize);
 
 		// Call self again
 		.create(@column + 1);
