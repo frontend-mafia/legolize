@@ -100,31 +100,6 @@
 	}
 }
 
-// Make a column with Legolized defined media queries
-.Grid-col(@columnSpan; @screenSize: "") {
-	.create(@screenSize) when (@screenSize = "") {
-		.makeGridColumn(@columnSpan);
-	}
-
-	.create(@screenSize) when (@screenSize = phablet) {
-		.makeGridColumn(@columnSpan, @base-screen--phablet--above);
-	}
-
-	.create(@screenSize) when (@screenSize = tabletSmall) {
-		.makeGridColumn(@columnSpan, @base-screen--tabletSmall--above);
-	}
-
-	.create(@screenSize) when (@screenSize = tablet) {
-		.makeGridColumn(@columnSpan, @base-screen--tablet--above);
-	}
-
-	.create(@screenSize) when (@screenSize = desktop) {
-		.makeGridColumn(@columnSpan, @base-screen--desktop--above);
-	}
-
-	.create(@screenSize);
-}
-
 // -------------------- Functions --------------------
 // Create columns
 .makeGridColumns(@screenSize: ""; @columnClassName: Grid-col) {
@@ -135,8 +110,33 @@
 	._makeOffsets(@screenSize);
 }
 
+// Make a column with Legolize defined media queries
+.makeGridColumn(@columnSpan; @screenSize: "") {
+	.create(@screenSize) when (@screenSize = "") {
+		.makeGridColumnMedia(@columnSpan);
+	}
+
+	.create(@screenSize) when (@screenSize = phablet) {
+		.makeGridColumnMedia(@columnSpan, @base-screen--phablet--above);
+	}
+
+	.create(@screenSize) when (@screenSize = tabletSmall) {
+		.makeGridColumnMedia(@columnSpan, @base-screen--tabletSmall--above);
+	}
+
+	.create(@screenSize) when (@screenSize = tablet) {
+		.makeGridColumnMedia(@columnSpan, @base-screen--tablet--above);
+	}
+
+	.create(@screenSize) when (@screenSize = desktop) {
+		.makeGridColumnMedia(@columnSpan, @base-screen--desktop--above);
+	}
+
+	.create(@screenSize);
+}
+
 // Make a column for a specific media query
-.makeGridColumn(@columnSpan; @mediaQuery: "") {
+.makeGridColumnMedia(@columnSpan; @mediaQuery: "") {
 	.create(@mediaQuery) when (@mediaQuery = "") {
 		flex-basis: percentage((@columnSpan / @grid-columns));
 		max-width: percentage((@columnSpan / @grid-columns));
@@ -151,7 +151,6 @@
 
 	.create(@mediaQuery);
 }
-
 
 // -------------------- Private functions --------------------
 // ----- Width -----
