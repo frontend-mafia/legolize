@@ -100,6 +100,15 @@
 	}
 }
 
+.Grid-col() {
+	box-sizing: border-box;
+	flex-direction: column;
+	flex-grow: 0;
+	flex-shrink: 0;
+	padding-right: @grid-gutter / 2;
+	padding-left: @grid-gutter / 2;
+}
+
 // -------------------- Functions --------------------
 // Create columns
 .makeGridColumns(@screenSize: ""; @columnClassName: Grid-col) {
@@ -110,39 +119,47 @@
 	._makeOffsets(@screenSize);
 }
 
-// Make a column with Legolize defined media queries
-.makeGridColumn(@columnSpan; @screenSize: "") {
-	.create(@screenSize) when (@screenSize = "") {
-		.makeGridColumnMedia(@columnSpan);
+// Writes out width for a column
+.gridColumnWidth(@columnSpan; @screenSize: "";) {
+	// ----- Mobile first
+	.create(@mediaQuery) when (@screenSize = "") and (@columnSpan = auto) {
+		flex: auto;
 	}
 
+	.create(@screenSize) when (@screenSize = "") and (isnumber(@columnSpan)) {
+		flex-basis: percentage((@columnSpan / @grid-columns));
+		max-width: percentage((@columnSpan / @grid-columns));
+	}
+
+	// ----- Legolize screen sizes
 	.create(@screenSize) when (@screenSize = phablet) {
-		.makeGridColumnMedia(@columnSpan, @base-screen--phablet--above);
+		.gridColumnWidthForMediaQuery(@columnSpan, @base-screen--phablet--above);
 	}
 
 	.create(@screenSize) when (@screenSize = tabletSmall) {
-		.makeGridColumnMedia(@columnSpan, @base-screen--tabletSmall--above);
+		.gridColumnWidthForMediaQuery(@columnSpan, @base-screen--tabletSmall--above);
 	}
 
 	.create(@screenSize) when (@screenSize = tablet) {
-		.makeGridColumnMedia(@columnSpan, @base-screen--tablet--above);
+		.gridColumnWidthForMediaQuery(@columnSpan, @base-screen--tablet--above);
 	}
 
 	.create(@screenSize) when (@screenSize = desktop) {
-		.makeGridColumnMedia(@columnSpan, @base-screen--desktop--above);
+		.gridColumnWidthForMediaQuery(@columnSpan, @base-screen--desktop--above);
 	}
 
 	.create(@screenSize);
 }
 
-// Make a column for a specific media query
-.makeGridColumnMedia(@columnSpan; @mediaQuery: "") {
-	.create(@mediaQuery) when (@mediaQuery = "") {
-		flex-basis: percentage((@columnSpan / @grid-columns));
-		max-width: percentage((@columnSpan / @grid-columns));
+// Make a column width for a specific media query
+.gridColumnWidthForMediaQuery(@columnSpan; @mediaQuery: "") {
+	.create(@mediaQuery) when (@columnSpan = auto) {
+		@media @mediaQuery {
+			flex: auto;
+		}
 	}
 
-	.create(@mediaQuery) when not (@mediaQuery = "") {
+	.create(@mediaQuery) when (isnumber(@columnSpan)) {
 		@media @mediaQuery {
 			flex-basis: percentage((@columnSpan / @grid-columns));
 			max-width: percentage((@columnSpan / @grid-columns));
@@ -318,12 +335,7 @@
 		// When the list is compiled we create the class
 		.list(@column, @list) when (@column > @grid-columns) {
 			@{list} {
-				box-sizing: border-box;
-				flex-direction: column;
-				flex-grow: 0;
-				flex-shrink: 0;
-				padding-right: @grid-gutter / 2;
-				padding-left: @grid-gutter / 2;
+				.Grid-col();
 			}
 		}
 

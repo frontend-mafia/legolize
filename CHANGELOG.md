@@ -10,17 +10,17 @@ This version has a breaking changes when it comes to Grid system, see below:
 
 ## Grid
 
-See changes in pull Request [ #25 ](https://github.com/frontend-mafia/legolize/pull/25)
+See changes in pull Requests [ #25](https://github.com/frontend-mafia/legolize/pull/25), [ #27](https://github.com/frontend-mafia/legolize/pull/27)
 
 ### New features
 
 - Now possible to generate an entire grid system for each media query using .makeGridColumns() which will loop through and create columns.
-- Now possible to create one column for multiple media queries ex: .makeGridColumn(4) and .makeGridColumn(4, tablet)
+- Now possible to create column width for multiple media queries ex: .gridColumnWidth(4) and .gridColumnWidth(4, tablet)
 - Responsive class names are now supported, Issue: [ #16](https://github.com/frontend-mafia/legolize/issues/16) 
 
 ### Breaking changes
 
-- No longer can we &:extend columns, now we use .makeGridColumn(x) mixin 
+- No longer can we &:extend column modifiers (only .Grid-col), now we use .gridColumnWidth(x) mixin 
 
 # v0.3.5
 
