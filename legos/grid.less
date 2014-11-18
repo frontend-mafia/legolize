@@ -25,6 +25,9 @@
 // Column gutter
 @grid-gutter: 12px;
 
+// Number of columns
+@grid-columns: 12;
+
 // -------------------- Core LEGO --------------------
 .Grid() {
 	padding-right: @grid-margin;
@@ -93,191 +96,278 @@
 	// Reverse order of children
 	&.Grid-row--reverse {
 		flex-direction: row-reverse;
-		flex-wrap: row-reverse;
+		flex-wrap: wrap-reverse;
 	}
 }
 
-.Grid-col() {
+// -------------------- Functions --------------------
+// Create columns
+.makeGridColumns(@screenSize: ""; @columnClassName: Grid-col) {
+	// Call all loops
+	._makeSharedColumnClasses(@screenSize, @columnClassName);
+	._makeColumns(@screenSize, @columnClassName);
+	._makeExtraColumns(@screenSize, @columnClassName);
+	._makeOffsets(@screenSize);
+}
 
-	// -------------------- Modifiers --------------------
+// Make a column with Legolize defined media queries
+.makeGridColumn(@columnSpan; @screenSize: "") {
+	.create(@screenSize) when (@screenSize = "") {
+		.makeGridColumnMedia(@columnSpan);
+	}
 
+	.create(@screenSize) when (@screenSize = phablet) {
+		.makeGridColumnMedia(@columnSpan, @base-screen--phablet--above);
+	}
+
+	.create(@screenSize) when (@screenSize = tabletSmall) {
+		.makeGridColumnMedia(@columnSpan, @base-screen--tabletSmall--above);
+	}
+
+	.create(@screenSize) when (@screenSize = tablet) {
+		.makeGridColumnMedia(@columnSpan, @base-screen--tablet--above);
+	}
+
+	.create(@screenSize) when (@screenSize = desktop) {
+		.makeGridColumnMedia(@columnSpan, @base-screen--desktop--above);
+	}
+
+	.create(@screenSize);
+}
+
+// Make a column for a specific media query
+.makeGridColumnMedia(@columnSpan; @mediaQuery: "") {
+	.create(@mediaQuery) when (@mediaQuery = "") {
+		flex-basis: percentage((@columnSpan / @grid-columns));
+		max-width: percentage((@columnSpan / @grid-columns));
+	}
+
+	.create(@mediaQuery) when not (@mediaQuery = "") {
+		@media @mediaQuery {
+			flex-basis: percentage((@columnSpan / @grid-columns));
+			max-width: percentage((@columnSpan / @grid-columns));
+		}
+	}
+
+	.create(@mediaQuery);
+}
+
+// -------------------- Private functions --------------------
+// ----- Width -----
+._makeColumnClass(@columnSpan; @screenSize: ""; @columnClassName: Grid-col) {
+	// Main function
+	.create(@columnSpan; @modifier) {
+		.@{columnClassName}--@{columnSpan}@{modifier} {
+			flex-basis: percentage((@columnSpan / @grid-columns));
+			max-width: percentage((@columnSpan / @grid-columns));
+		}
+	}
+
+	// Call create for Mobile first
+	.setModifier(@screenSize) when (@screenSize = "") {
+		@modifier: ~"";
+		.create(@columnSpan, @modifier);
+	}
+
+	// Call create for a specific screen size
+	.setModifier(@screenSize) when not (@screenSize = "") {
+		@modifier: ~"--@{screenSize}";
+		.create(@columnSpan, @modifier);
+	}
+
+	// Initial call
+	.setModifier(@screenSize);
+}
+
+// ----- Offset -----
+._makeOffsetClass(@columnSpan; @screenSize: "") {
+	// Main function
+	.create(@columnSpan; @modifier) {
+		.Grid-offset--@{columnSpan}@{modifier} {
+			margin-left: percentage((@columnSpan / @grid-columns));
+		}
+	}
+
+	// Call create for Mobile first
+	.setModifier(@screenSize) when (@screenSize = "") {
+		@modifier: ~"";
+		.create(@columnSpan, @modifier);
+	}
+
+	// Call create for a specific screen size
+	.setModifier(@screenSize) when not (@screenSize = "") {
+		@modifier: ~"--@{screenSize}";
+		.create(@columnSpan, @modifier);
+	}
+
+	// Initial call
+	.setModifier(@screenSize);
+}
+
+// ----- Extra columns like .Grid-col--25 -----
+._makeExtraColumns(@screenSize: ""; @columnClassName: Grid-col) {
+	// Main function
+	.create(@modifier) {
+		.@{columnClassName}--auto@{modifier} {
+			flex: auto;
+		}
+		.@{columnClassName}--25@{modifier} {
+			flex-basis: percentage((3 / 12));
+			max-width: percentage((3 / 12));
+		}
+		.@{columnClassName}--33@{modifier} {
+			flex-basis: percentage((4 / 12));
+			max-width: percentage((4 / 12));
+		}
+		.@{columnClassName}--50@{modifier} {
+			flex-basis: percentage((6 / 12));
+			max-width: percentage((6 / 12));
+		}
+		.@{columnClassName}--66@{modifier} {
+			flex-basis: percentage((8 / 12));
+			max-width: percentage((8 / 12));
+		}
+		.@{columnClassName}--75@{modifier} {
+			flex-basis: percentage((9 / 12));
+			max-width: percentage((9 / 12));
+		}
+		.@{columnClassName}--100@{modifier} {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
+
+		// Offset
+		.Grid-offset--25@{modifier} {
+			margin-left: percentage((3 / 12));
+		}
+		.Grid-offset--33@{modifier} {
+			margin-left: percentage((4 / 12));
+		}
+		.Grid-offset--50@{modifier} {
+			margin-left: percentage((6 / 12));
+		}
+		.Grid-offset--66@{modifier} {
+			margin-left: percentage((8 / 12));
+		}
+		.Grid-offset--75@{modifier} {
+			margin-left: percentage((9 / 12));
+		}
+		.Grid-offset--100@{modifier} {
+			margin-left: 100%;
+		}
+	}
+
+	// Call create for Mobile first
+	.setModifier(@screenSize) when (@screenSize = "") {
+		@modifier: ~"";
+		.create(@modifier);
+	}
+
+	// Call create for a specific screen size
+	.setModifier(@screenSize) when not (@screenSize = "") {
+		@modifier: ~"--@{screenSize}";
+		.create(@modifier);
+	}
+
+	// Initial call
+	.setModifier(@screenSize);
+}
+
+// ----- Modifiers -----
+// TODO: Make them to a higher specificy level (.Grid-col.something)
+._makeColumnModifiers(@columnClassName: Grid-col) {
 	// ---------- Ordering ----------
-	&.Grid-col--reverse {
+	.@{columnClassName}--reverse {
 		flex-direction: column-reverse;
-		flex-wrap: column-reverse;
+		flex-wrap: wrap-reverse;
 	}
 
 	// Make column first in order
-	&.Grid-col--orderFirst {
+	.@{columnClassName}--orderFirst {
 		order: -1;
 	}
 
 	// Make column last in order
-	&.Grid-col--orderLast {
+	.@{columnClassName}--orderLast {
 		order: 1;
 	}
+}
 
-	// ---------- Columns ----------
-	&.Grid-col--1,
-	&.Grid-col--2,
-	&.Grid-col--3,
-	&.Grid-col--4,
-	&.Grid-col--5,
-	&.Grid-col--6,
-	&.Grid-col--7,
-	&.Grid-col--8,
-	&.Grid-col--9,
-	&.Grid-col--10,
-	&.Grid-col--11,
-	&.Grid-col--12,
-	&.Grid-col--25,
-	&.Grid-col--33,
-	&.Grid-col--50,
-	&.Grid-col--66,
-	&.Grid-col--75,
-	&.Grid-col--100,
-	&.Grid-offset--1,
-	&.Grid-offset--2,
-	&.Grid-offset--3,
-	&.Grid-offset--4,
-	&.Grid-offset--5,
-	&.Grid-offset--6,
-	&.Grid-offset--7,
-	&.Grid-offset--8,
-	&.Grid-offset--9,
-	&.Grid-offset--10,
-	&.Grid-offset--25,
-	&.Grid-offset--33,
-	&.Grid-offset--50,
-	&.Grid-offset--66,
-	&.Grid-offset--75,
-	&.Grid-offset--100,
-	&.Grid-col--auto {
-		box-sizing: border-box;
-		flex-direction: column;
-		flex-grow: 0;
-		flex-shrink: 0;
-		padding-right: @grid-gutter / 2;
-		padding-left: @grid-gutter / 2;
+// -------------------- Loops --------------------
+// Compile a list of classes that share properties
+._makeSharedColumnClasses(@screenSize: ""; @columnClassName: Grid-col) {
+	// Main function
+	.create(@columnClassName; @modifier) {
+		// First
+		.list(@column) {
+			// ex: .Grid-col--desktop, .Grid-col--1--desktop
+			@item: ~".@{columnClassName}@{modifier}, .@{columnClassName}--auto@{modifier}, .@{columnClassName}--25@{modifier}, .@{columnClassName}--33@{modifier}, .@{columnClassName}--50@{modifier}, .@{columnClassName}--66@{modifier}, .@{columnClassName}--75@{modifier}, .@{columnClassName}--100@{modifier}, .@{columnClassName}--@{column}@{modifier}";
+
+			// Call self
+			.list((@column + 1), @item);
+		}
+
+		// The rest
+		.list(@column, @list) when (@column =< @grid-columns) {
+			@item: ~".@{columnClassName}--@{column}@{modifier}";
+
+			// Call self
+			.list((@column + 1), ~"@{list}, @{item}");
+		}
+
+		// When the list is compiled we create the class
+		.list(@column, @list) when (@column > @grid-columns) {
+			@{list} {
+				box-sizing: border-box;
+				flex-direction: column;
+				flex-grow: 0;
+				flex-shrink: 0;
+				padding-right: @grid-gutter / 2;
+				padding-left: @grid-gutter / 2;
+			}
+		}
+
+		// First iteration
+		.list(1);
 	}
 
-	&.Grid-col--auto {
-		flex: auto;
+	// Call create for Mobile first
+	.setModifier(@screenSize) when (@screenSize = "") {
+		@modifier: ~"";
+		.create(@columnClassName, @modifier);
 	}
 
-	&.Grid-col--1 {
-		flex-basis: 8.333333333333334%;
-		max-width: 8.333333333333334%;
+	// Call create for a specific screen size
+	.setModifier(@screenSize) when not (@screenSize = "") {
+		@modifier: ~"--@{screenSize}";
+		.create(@columnClassName, @modifier);
 	}
 
-	&.Grid-col--2 {
-		flex-basis: 16.666666666666668%;
-		max-width: 16.666666666666668%;
+	// Initial call
+	.setModifier(@screenSize);
+}
+
+// Loop to create all column widths classes
+._makeColumns(@screenSize: ""; @columnClassName: Grid-col) {
+	.create(@column) when (@column =< @grid-columns) {
+		._makeColumnClass(@column, @screenSize, @columnClassName);
+
+		// Call self again
+		.create(@column + 1);
 	}
 
-	&.Grid-col--25,
-	&.Grid-col--3 {
-		flex-basis: 25%;
-		max-width: 25%;
+	.create(1); // First iteration
+	._makeColumnModifiers();
+}
+
+// Loop to create all offset classes
+._makeOffsets(@screenSize: "") {
+	.create(@column) when (@column =< @grid-columns) {
+		._makeOffsetClass(@column, @screenSize);
+
+		// Call self again
+		.create(@column + 1);
 	}
 
-	&.Grid-col--33,
-	&.Grid-col--4 {
-		flex-basis: 33.333333333333336%;
-		max-width: 33.333333333333336%;
-	}
-
-	&.Grid-col--5 {
-		flex-basis: 41.66666666666667%;
-		max-width: 41.66666666666667%;
-	}
-
-	&.Grid-col--50,
-	&.Grid-col--6 {
-		flex-basis: 50%;
-		max-width: 50%;
-	}
-
-	&.Grid-col--7 {
-		flex-basis: 58.333333333333336%;
-		max-width: 58.333333333333336%;
-	}
-
-	&.Grid-col--66,
-	&.Grid-col--8 {
-		flex-basis: 66.66666666666667%;
-		max-width: 66.66666666666667%;
-	}
-
-	&.Grid-col--75,
-	&.Grid-col--9 {
-		flex-basis: 75%;
-		max-width: 75%;
-	}
-
-	&.Grid-col--10 {
-		flex-basis: 83.33333333333334%;
-		max-width: 83.33333333333334%;
-	}
-
-	&.Grid-col--11 {
-		flex-basis: 91.66666666666667%;
-		max-width: 91.66666666666667%;
-	}
-
-	&.Grid-col--100,
-	&.Grid-col--12 {
-		flex-basis: 100%;
-		max-width: 100%;
-	}
-
-	// ---------- Offset ----------
-	&.Grid-offset--1 {
-		margin-left: 8.333333333333334%;
-	}
-
-	&.Grid-offset--2 {
-		margin-left: 16.666666666666668%;
-	}
-
-	&.Grid-offset--25,
-	&.Grid-offset--3 {
-		margin-left: 25%;
-	}
-
-	&.Grid-offset--33,
-	&.Grid-offset--4 {
-		margin-left: 33.333333333333336%;
-	}
-
-	&.Grid-offset--5 {
-		margin-left: 41.66666666666667%;
-	}
-
-	&.Grid-offset--50,
-	&.Grid-offset--6 {
-		margin-left: 50%;
-	}
-
-	&.Grid-offset--7 {
-		margin-left: 58.333333333333336%;
-	}
-
-	&.Grid-offset--66,
-	&.Grid-offset--8 {
-		margin-left: 66.66666666666667%;
-	}
-
-	&.Grid-offset--75,
-	&.Grid-offset--9 {
-		margin-left: 75%;
-	}
-
-	&.Grid-offset--10 {
-		margin-left: 83.33333333333334%;
-	}
-
-	&.Grid-offset--11 {
-		margin-left: 91.66666666666667%;
-	}
+	.create(1); // First iteration
 }

@@ -3,3 +3,50 @@
 
 @base-lineHeight: 24px;
 @base-fontSize: 14px;
+
+// -------------------- Media Queries variables --------------------
+// Our practice is to write code with "mobile first" in mind whenever possible
+// That's why our first minWidth is "phablet" since we don't need a media query for smaller devices
+
+// iPhone 4/5 = 320px
+// iPhone 6 = 375px
+// iPhone 6 plus = 414px
+
+// phablet
+@base-screen--phablet-minWidth: 414px;
+// small tablet
+@base-screen--tabletSmall-minWidth: 600px;
+// tablet
+@base-screen--tablet-minWidth: 768px;
+// desktop
+@base-screen--desktop-minWidth: 960px;
+// wide desktop
+@base-screen--desktopWide-minWidth: 1200px;
+
+// Max width for each breakpoint
+@base-screen--phone-maxWidth: (@base-screen--phablet-minWidth - 1);
+@base-screen--phablet-maxWidth: (@base-screen--tabletSmall-minWidth - 1);
+@base-screen--tabletSmall-maxWidth: (@base-screen--tablet-minWidth - 1);
+@base-screen--tablet-maxWidth: (@base-screen--desktop-minWidth - 1);
+@base-screen--desktop-maxWidth: (@base-screen--desktopWide-minWidth - 1);
+
+// Below a specific size
+@base-screen--phone--below: ~"only screen and (max-width : @{base-screen--phone-maxWidth})";
+@base-screen--phablet--below: ~"only screen and (max-width : @{base-screen--phablet-maxWidth})";
+@base-screen--tabletSmall--below: ~"only screen and (max-width : @{base-screen--tabletSmall-maxWidth})";
+@base-screen--tablet--below: ~"only screen and (max-width : @{base-screen--tablet-maxWidth})";
+@base-screen--desktop--below: ~"only screen and (max-width : @{base-screen--desktop-maxWidth})";
+
+// Only for a specific size
+@base-screen--phone--only: ~"only screen and (min-width: 0) and (max-width: @{base-screen--phone-maxWidth})";
+@base-screen--phablet--only: ~"only screen and (min-width: @{base-screen--phablet-minWidth}) and (max-width: @{base-screen--phablet-maxWidth})";
+@base-screen--tabletSmall--only: ~"only screen and (min-width: @{base-screen--tabletSmall-minWidth}) and (max-width: @{base-screen--tabletSmall-maxWidth})";
+@base-screen--tablet--only: ~"only screen and (min-width: @{base-screen--tablet-minWidth}) and (max-width: @{base-screen--tablet-maxWidth})";
+@base-screen--desktop--only: ~"only screen and (min-width: @{base-screen--desktop-minWidth}) and (max-width: @{base-screen--desktop-maxWidth})";
+
+// Above a specific size
+@base-screen--phablet--above: ~"only screen and (min-width: @{base-screen--phablet-minWidth})";
+@base-screen--tabletSmall--above: ~"only screen and (min-width: @{base-screen--tabletSmall-minWidth})";
+@base-screen--tablet--above: ~"only screen and (min-width: @{base-screen--tablet-minWidth})";
+@base-screen--desktop--above: ~"only screen and (min-width: @{base-screen--desktop-minWidth})";
+@base-screen--desktopWide--above: ~"only screen and (min-width: @{base-screen--desktopWide-minWidth})";
