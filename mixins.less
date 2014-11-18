@@ -111,15 +111,13 @@
 	}
 }
 
-
-
 // Deprecated
 .lineHeight-calculatedFromFontSize(@fontSize, @baseFontSize: @base-fontSize, @baseLineHeight: @base-lineHeight) {
-	line-height: round(@baseLineHeight * (@fontSize / @baseFontSize)) + 0p;
+	line-height: round(@baseLineHeight * (@fontSize / @baseFontSize)) + 0px;
 }
 
 .height-calculatedFromFontSize(@fontSize, @baseFontSize: @base-fontSize, @baseLineHeight: @base-lineHeight) {
-	height: round(@baseLineHeight * (@fontSize / @baseFontSize)) + 0p;
+	height: round(@baseLineHeight * (@fontSize / @baseFontSize)) + 0px;
 }
 
 //IE6 & 7 support for inline-block
