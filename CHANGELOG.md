@@ -1,5 +1,9 @@
 # v0.3.6
 
+## New features
+
+Media query variables have been added to variables.less
+
 ## Breaking changes
 
 This version has a breaking changes when it comes to Grid system, see below:
