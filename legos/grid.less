@@ -100,6 +100,15 @@
 	}
 }
 
+.Grid-col() {
+	box-sizing: border-box;
+	flex-direction: column;
+	flex-grow: 0;
+	flex-shrink: 0;
+	padding-right: @grid-gutter / 2;
+	padding-left: @grid-gutter / 2;
+}
+
 // -------------------- Functions --------------------
 // Create columns
 .makeGridColumns(@screenSize: ""; @columnClassName: Grid-col) {
@@ -137,12 +146,22 @@
 
 // Make a column for a specific media query
 .makeGridColumnMedia(@columnSpan; @mediaQuery: "") {
-	.create(@mediaQuery) when (@mediaQuery = "") {
+	.create(@mediaQuery) when (@mediaQuery = "") and (@columnSpan = auto) {
+		flex: auto;
+	}
+
+	.create(@mediaQuery) when not (@mediaQuery = "") and (@columnSpan = auto) {
+		@media @mediaQuery {
+			flex: auto;
+		}
+	}
+
+	.create(@mediaQuery) when (@mediaQuery = "") and (isnumber(@columnSpan)) {
 		flex-basis: percentage((@columnSpan / @grid-columns));
 		max-width: percentage((@columnSpan / @grid-columns));
 	}
 
-	.create(@mediaQuery) when not (@mediaQuery = "") {
+	.create(@mediaQuery) when not (@mediaQuery = "") and (isnumber(@columnSpan)) {
 		@media @mediaQuery {
 			flex-basis: percentage((@columnSpan / @grid-columns));
 			max-width: percentage((@columnSpan / @grid-columns));
@@ -318,12 +337,7 @@
 		// When the list is compiled we create the class
 		.list(@column, @list) when (@column > @grid-columns) {
 			@{list} {
-				box-sizing: border-box;
-				flex-direction: column;
-				flex-grow: 0;
-				flex-shrink: 0;
-				padding-right: @grid-gutter / 2;
-				padding-left: @grid-gutter / 2;
+				.Grid-col();
 			}
 		}
 
