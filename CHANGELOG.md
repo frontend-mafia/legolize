@@ -1,3 +1,13 @@
+# v0.3.7 (to be released)
+
+## Breaking changes
+
+No breaking changes
+
+## Bugfixes
+ - fixed .height-calculatedFromFontSize() used in textbox.less;
+ - removed display: none; from .ListGroup-itemBody();
+
 # v0.3.6
 
 ## New features
