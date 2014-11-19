@@ -213,3 +213,12 @@
 .right(@units) when (ispixel(@units)) {
 	right: @baseline * (round(@units / @baseline));
 }
+
+// height and line-height mixins. Deprecated?
+.lineHeight-calculatedFromFontSize(@fontSize, @baseFontSize: @base-fontSize, @baseLineHeight: @base-lineHeight) {
+	line-height: round(@baseLineHeight * (@fontSize / @baseFontSize)) + 0px;
+}
+
+.height-calculatedFromFontSize(@fontSize, @baseFontSize: @base-fontSize, @baseLineHeight: @base-lineHeight) {
+	height: round(@baseLineHeight * (@fontSize / @baseFontSize)) + 0px;
+}
