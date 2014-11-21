@@ -24,4 +24,4 @@ Two quick start options are available:
 
 ---
 
-More info about Legolize in the [documentation](docs/index.md)
+More info about Legolize in the [documentation](docs/)
