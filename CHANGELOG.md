@@ -1,4 +1,4 @@
-# v0.3.7 (to be released)
+# v0.3.7
 
 ## Breaking changes
 
