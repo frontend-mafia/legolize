@@ -43,6 +43,10 @@
 	margin-right: -(@grid-gutter / 2);
 	margin-left: -(@grid-gutter / 2);
 
+	.ltie9 & {
+		.clearfix();
+	}
+
 	// -------------------- Modifiers --------------------
 	// ----- Horizontal alignment -----
 	// Begin column alignment from left
@@ -114,6 +118,7 @@
 .makeGridColumns(@screenSize: ""; @columnClassName: Grid-col) {
 	// Call all loops
 	._makeSharedColumnClasses(@screenSize, @columnClassName);
+	._makeSharedColumnClassesForIE(@screenSize, @columnClassName);
 	._makeColumns(@screenSize, @columnClassName);
 	._makeExtraColumns(@screenSize, @columnClassName);
 	._makeOffsets(@screenSize);
@@ -124,11 +129,19 @@
 	// ----- Mobile first
 	.create(@mediaQuery) when (@screenSize = "") and (@columnSpan = auto) {
 		flex: auto;
+
+		.ltie9 & {
+			width: auto;
+		}
 	}
 
 	.create(@screenSize) when (@screenSize = "") and (isnumber(@columnSpan)) {
 		flex-basis: percentage((@columnSpan / @grid-columns));
 		max-width: percentage((@columnSpan / @grid-columns));
+
+		.ltie9 & {
+			width: percentage((@columnSpan / @grid-columns));
+		}
 	}
 
 	// ----- Legolize screen sizes
@@ -156,6 +169,10 @@
 	.create(@mediaQuery) when (@columnSpan = auto) {
 		@media @mediaQuery {
 			flex: auto;
+
+			.ltie9 & {
+				width: auto;
+			}
 		}
 	}
 
@@ -163,6 +180,10 @@
 		@media @mediaQuery {
 			flex-basis: percentage((@columnSpan / @grid-columns));
 			max-width: percentage((@columnSpan / @grid-columns));
+
+			.ltie9 & {
+				width: percentage((@columnSpan / @grid-columns));
+			}
 		}
 	}
 
@@ -177,6 +198,10 @@
 		.@{columnClassName}--@{columnSpan}@{modifier} {
 			flex-basis: percentage((@columnSpan / @grid-columns));
 			max-width: percentage((@columnSpan / @grid-columns));
+		}
+
+		.ltie9.@{columnClassName}--@{columnSpan}@{modifier} {
+			width: percentage((@columnSpan / @grid-columns));
 		}
 	}
 
@@ -228,29 +253,63 @@
 		.@{columnClassName}--auto@{modifier} {
 			flex: auto;
 		}
+
+		.ltie9.@{columnClassName}--auto@{modifier} {
+			width: auto;
+		}
+
 		.@{columnClassName}--25@{modifier} {
 			flex-basis: percentage((3 / 12));
 			max-width: percentage((3 / 12));
 		}
+
+		.ltie9.@{columnClassName}--25@{modifier} {
+			width: percentage((3 / 12));
+		}
+
 		.@{columnClassName}--33@{modifier} {
 			flex-basis: percentage((4 / 12));
 			max-width: percentage((4 / 12));
 		}
+
+		.ltie9.@{columnClassName}--33@{modifier} {
+			width: percentage((4 / 12));
+		}
+
 		.@{columnClassName}--50@{modifier} {
 			flex-basis: percentage((6 / 12));
 			max-width: percentage((6 / 12));
 		}
+
+		.ltie9.@{columnClassName}--50@{modifier} {
+			width: percentage((6 / 12));
+		}
+
 		.@{columnClassName}--66@{modifier} {
 			flex-basis: percentage((8 / 12));
 			max-width: percentage((8 / 12));
 		}
+
+		.ltie9.@{columnClassName}--66@{modifier} {
+			width: percentage((8 / 12));
+		}
+
 		.@{columnClassName}--75@{modifier} {
 			flex-basis: percentage((9 / 12));
 			max-width: percentage((9 / 12));
 		}
+
+		.ltie9.@{columnClassName}--75@{modifier} {
+			width: percentage((9 / 12));
+		}
+
 		.@{columnClassName}--100@{modifier} {
 			flex-basis: 100%;
 			max-width: 100%;
+		}
+
+		.ltie9.@{columnClassName}--100@{modifier} {
+			width: 100%;
 		}
 
 		// Offset
@@ -336,6 +395,57 @@
 		.list(@column, @list) when (@column > @grid-columns) {
 			@{list} {
 				.Grid-col();
+			}
+		}
+
+		// First iteration
+		.list(1);
+	}
+
+	// Call create for Mobile first
+	.setModifier(@screenSize) when (@screenSize = "") {
+		@modifier: ~"";
+		.create(@columnClassName, @modifier);
+	}
+
+	// Call create for a specific screen size
+	.setModifier(@screenSize) when not (@screenSize = "") {
+		@modifier: ~"--@{screenSize}";
+		.create(@columnClassName, @modifier);
+	}
+
+	// Initial call
+	.setModifier(@screenSize);
+}
+
+// Compile a list of IE classes that share properties
+._makeSharedColumnClassesForIE(@screenSize: ""; @columnClassName: Grid-col) {
+	// Main function
+	.create(@columnClassName; @modifier) {
+		@prefix: ltie9;
+		@columnIEClassName: ~"@{prefix}.@{columnClassName}";
+
+		// First
+		.list(@column) {
+			// ex: .Grid-col--desktop, .Grid-col--1--desktop
+			@item: ~".@{columnIEClassName}@{modifier}, .@{columnIEClassName}--auto@{modifier}, .@{columnIEClassName}--25@{modifier}, .@{columnIEClassName}--33@{modifier}, .@{columnIEClassName}--50@{modifier}, .@{columnIEClassName}--66@{modifier}, .@{columnIEClassName}--75@{modifier}, .@{columnIEClassName}--100@{modifier}, .@{columnIEClassName}--@{column}@{modifier}";
+
+			// Call self
+			.list((@column + 1), @item);
+		}
+
+		// The rest
+		.list(@column, @list) when (@column =< @grid-columns) {
+			@item: ~".@{columnIEClassName}--@{column}@{modifier}";
+
+			// Call self
+			.list((@column + 1), ~"@{list}, @{item}");
+		}
+
+		// When the list is compiled we create the class
+		.list(@column, @list) when (@column > @grid-columns) {
+			@{list} {
+				float: left;
 			}
 		}
 
