@@ -43,7 +43,7 @@
 	margin-right: -(@grid-gutter / 2);
 	margin-left: -(@grid-gutter / 2);
 
-	.ltie9 & {
+	.lte9 & {
 		.clearfix();
 	}
 
@@ -130,7 +130,7 @@
 	.create(@mediaQuery) when (@screenSize = "") and (@columnSpan = auto) {
 		flex: auto;
 
-		.ltie9 & {
+		.lte9 & {
 			width: auto;
 		}
 	}
@@ -139,7 +139,7 @@
 		flex-basis: percentage((@columnSpan / @grid-columns));
 		max-width: percentage((@columnSpan / @grid-columns));
 
-		.ltie9 & {
+		.lte9 & {
 			width: percentage((@columnSpan / @grid-columns));
 		}
 	}
@@ -170,7 +170,7 @@
 		@media @mediaQuery {
 			flex: auto;
 
-			.ltie9 & {
+			.lte9 & {
 				width: auto;
 			}
 		}
@@ -181,7 +181,7 @@
 			flex-basis: percentage((@columnSpan / @grid-columns));
 			max-width: percentage((@columnSpan / @grid-columns));
 
-			.ltie9 & {
+			.lte9 & {
 				width: percentage((@columnSpan / @grid-columns));
 			}
 		}
@@ -200,7 +200,7 @@
 			max-width: percentage((@columnSpan / @grid-columns));
 		}
 
-		.ltie9.@{columnClassName}--@{columnSpan}@{modifier} {
+		.lte9.@{columnClassName}--@{columnSpan}@{modifier} {
 			width: percentage((@columnSpan / @grid-columns));
 		}
 	}
@@ -254,7 +254,7 @@
 			flex: auto;
 		}
 
-		.ltie9.@{columnClassName}--auto@{modifier} {
+		.lte9.@{columnClassName}--auto@{modifier} {
 			width: auto;
 		}
 
@@ -263,7 +263,7 @@
 			max-width: percentage((3 / 12));
 		}
 
-		.ltie9.@{columnClassName}--25@{modifier} {
+		.lte9.@{columnClassName}--25@{modifier} {
 			width: percentage((3 / 12));
 		}
 
@@ -272,7 +272,7 @@
 			max-width: percentage((4 / 12));
 		}
 
-		.ltie9.@{columnClassName}--33@{modifier} {
+		.lte9.@{columnClassName}--33@{modifier} {
 			width: percentage((4 / 12));
 		}
 
@@ -281,7 +281,7 @@
 			max-width: percentage((6 / 12));
 		}
 
-		.ltie9.@{columnClassName}--50@{modifier} {
+		.lte9.@{columnClassName}--50@{modifier} {
 			width: percentage((6 / 12));
 		}
 
@@ -290,7 +290,7 @@
 			max-width: percentage((8 / 12));
 		}
 
-		.ltie9.@{columnClassName}--66@{modifier} {
+		.lte9.@{columnClassName}--66@{modifier} {
 			width: percentage((8 / 12));
 		}
 
@@ -299,7 +299,7 @@
 			max-width: percentage((9 / 12));
 		}
 
-		.ltie9.@{columnClassName}--75@{modifier} {
+		.lte9.@{columnClassName}--75@{modifier} {
 			width: percentage((9 / 12));
 		}
 
@@ -308,7 +308,7 @@
 			max-width: 100%;
 		}
 
-		.ltie9.@{columnClassName}--100@{modifier} {
+		.lte9.@{columnClassName}--100@{modifier} {
 			width: 100%;
 		}
 
@@ -422,7 +422,7 @@
 ._makeSharedColumnClassesForIE(@screenSize: ""; @columnClassName: Grid-col) {
 	// Main function
 	.create(@columnClassName; @modifier) {
-		@prefix: ltie9;
+		@prefix: lte9;
 		@columnIEClassName: ~"@{prefix}.@{columnClassName}";
 
 		// First
