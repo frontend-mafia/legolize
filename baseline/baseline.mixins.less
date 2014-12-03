@@ -219,6 +219,6 @@
 	line-height: round(@baseLineHeight * (@fontSize / @baseFontSize)) + 0px;
 }
 
-.height-calculatedFromFontSize(@fontSize, @baseFontSize: @base-fontSize, @baseLineHeight: @base-lineHeight) {
-	height: round(@baseLineHeight * (@fontSize / @baseFontSize)) + 0px;
+.height-calculatedFromFontSize(@fontSize, @baseFontSize: @base-fontSize, @baseLineHeight: @base-lineHeight, @borderWidth: 0) {
+	height: round(@baseLineHeight * (@fontSize / @baseFontSize)) + 0px + (2 * @borderWidth);
 }
