@@ -44,8 +44,8 @@
 	&:after {
 		position: absolute;
 		line-height: 100%;
-		top: 0;
-		right: 5px;
+		top: 45%;
+		right: 2px;
 		font-family: "Menicon";
 		font-weight: normal;
 		font-size: 16px;
@@ -63,6 +63,14 @@
 	color: @selectbox-fontColor;
 	border: 0;
 	width: 140%;
+
+	//Turn off browser styling in safari
+	-webkit-appearance: button;
+	-webkit-border-radius: 2px;
+	-webkit-box-shadow: none;
+	-webkit-padding-end: 20px;
+	-webkit-padding-start: 2px;
+	-webkit-user-select: none;
 
 	&:focus {
 		outline: none;
@@ -94,6 +102,19 @@
 //Mixin to resize the selectbox
 .selectboxSize(@fontSize) {
 	.lineHeight-calculatedFromFontSize(@fontSize, @selectbox-fontSize, @selectbox-lineHeight);
+	.height-calculatedFromFontSize(@fontSize, @selectbox-fontSize, @selectbox-lineHeight, @selectbox-borderWidth);
+
+	&:after {
+		position: absolute;
+		line-height: 100%;
+		top: 45%;
+		right: 2px;
+		font-family: "Menicon";
+		font-weight: normal;
+		font-size: 16px;
+		content: "\e63C";
+		z-index: 0;
+	}
 
 	.Selectbox-input {
 		font-size: @fontSize;
