@@ -18,21 +18,16 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@label-fontSize: 14px;
-@label-verticalPadding: 0px;
-@label-horizontalPadding: 10px;
-@label-minWidth: 20px;
-@label-lineHeight: 14px;
+@label-fontSize: @base-fontSize;
+@label-lineHeight: @base-lineHeight;
 @label-borderRadius: 3px;
-
+@label-minWidth: 20px;
 @label-border: 1px solid #c8c8c8;
-@label-background: #fff;
-@label-fontColor: #5b5b5b;
+
 
 // -------------------- Core LEGO --------------------
 .Label() {
-	.labelSizeVariant(@label-verticalPadding; @label-horizontalPadding; @label-fontSize; @label-lineHeight; @label-borderRadius);
-
+	.labelSizeVariant(@label-fontSize; @label-borderRadius);
 	display: inline-block;
 	border: @label-border;
 	min-width: @label-minWidth;
@@ -41,19 +36,22 @@
 }
 
 // -------------------- Descendands --------------------
-//label size
-
-.labelSizeVariant(@paddingVertical; @paddingHorizontal; @fontSize; @lineHeight: @label-lineHeight; @borderRadius: @label-borderRadius) {
-	.padding-vertical(@paddingVertical);
-	.padding-horizontal(@paddingHorizontal);
-	.font-size(@fontSize);
-	.line-height(@lineHeight);
+.labelSizeVariant(@fontSize; @borderRadius: 3px) {
+	font-size: @fontSize;
+	.lineHeight-calculatedFromFontSize(@fontSize, @label-fontSize, @label-lineHeight);
 	.borderRadius(@borderRadius);
+	.padding-horizontal(@fontSize / 2);
+	.padding-vertical(0);
+
+	.Icon {
+		.font-size(@fontSize);
+		.line-height(@fontSize); //TODO: review this after meniga icons are fixed
+	}
 }
 
 // Label variants mixin
-.labelTypeVariant(@bgColor, @fontColor, @border: 1px solid @bgColor) {
-	background-color: @bgColor;
-	color: @fontColor;
-	border: @border;
+.labelTypeVariant(@backgroundColor, @textColor, @borderColor: transparent) {
+	background-color: @backgroundColor;
+	color: @textColor;
+	border-color: @borderColor;
 }
