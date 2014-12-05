@@ -1,4 +1,17 @@
-# v0.3.7 (to be released)
+# v0.4.0
+
+## Breaking changes
+ - changed parameters for label size mixin
+ - changed border parameter for label type variant
+
+## Bugfixes
+ - fixed label height
+ 
+# v0.3.8
+
+# v0.3.8
+
+# v0.3.7
 
 ## Breaking changes
 
