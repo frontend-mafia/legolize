@@ -28,6 +28,9 @@
 // Number of columns
 @grid-columns: 12;
 
+// "Less than" IE9 prefix class name
+@grid-ie9-className: lt-ie9;
+
 // -------------------- Core LEGO --------------------
 .Grid() {
 	padding-right: @grid-margin;
@@ -43,7 +46,7 @@
 	margin-right: -(@grid-gutter / 2);
 	margin-left: -(@grid-gutter / 2);
 
-	.lte9 & {
+	.@{grid-ie9-className} & {
 		.clearfix();
 	}
 
@@ -130,7 +133,7 @@
 	.create(@mediaQuery) when (@screenSize = "") and (@columnSpan = auto) {
 		flex: auto;
 
-		.lte9 & {
+		.@{grid-ie9-className} & {
 			width: auto;
 		}
 	}
@@ -139,7 +142,7 @@
 		flex-basis: percentage((@columnSpan / @grid-columns));
 		max-width: percentage((@columnSpan / @grid-columns));
 
-		.lte9 & {
+		.@{grid-ie9-className} & {
 			width: percentage((@columnSpan / @grid-columns));
 		}
 	}
@@ -170,7 +173,7 @@
 		@media @mediaQuery {
 			flex: auto;
 
-			.lte9 & {
+			.@{grid-ie9-className} & {
 				width: auto;
 			}
 		}
@@ -181,7 +184,7 @@
 			flex-basis: percentage((@columnSpan / @grid-columns));
 			max-width: percentage((@columnSpan / @grid-columns));
 
-			.lte9 & {
+			.@{grid-ie9-className} & {
 				width: percentage((@columnSpan / @grid-columns));
 			}
 		}
@@ -200,7 +203,7 @@
 			max-width: percentage((@columnSpan / @grid-columns));
 		}
 
-		.lte9.@{columnClassName}--@{columnSpan}@{modifier} {
+		.@{grid-ie9-className}.@{columnClassName}--@{columnSpan}@{modifier} {
 			width: percentage((@columnSpan / @grid-columns));
 		}
 	}
@@ -254,7 +257,7 @@
 			flex: auto;
 		}
 
-		.lte9.@{columnClassName}--auto@{modifier} {
+		.@{grid-ie9-className}.@{columnClassName}--auto@{modifier} {
 			width: auto;
 		}
 
@@ -263,7 +266,7 @@
 			max-width: percentage((3 / 12));
 		}
 
-		.lte9.@{columnClassName}--25@{modifier} {
+		.@{grid-ie9-className}.@{columnClassName}--25@{modifier} {
 			width: percentage((3 / 12));
 		}
 
@@ -272,7 +275,7 @@
 			max-width: percentage((4 / 12));
 		}
 
-		.lte9.@{columnClassName}--33@{modifier} {
+		.@{grid-ie9-className}.@{columnClassName}--33@{modifier} {
 			width: percentage((4 / 12));
 		}
 
@@ -281,7 +284,7 @@
 			max-width: percentage((6 / 12));
 		}
 
-		.lte9.@{columnClassName}--50@{modifier} {
+		.@{grid-ie9-className}.@{columnClassName}--50@{modifier} {
 			width: percentage((6 / 12));
 		}
 
@@ -290,7 +293,7 @@
 			max-width: percentage((8 / 12));
 		}
 
-		.lte9.@{columnClassName}--66@{modifier} {
+		.@{grid-ie9-className}.@{columnClassName}--66@{modifier} {
 			width: percentage((8 / 12));
 		}
 
@@ -299,7 +302,7 @@
 			max-width: percentage((9 / 12));
 		}
 
-		.lte9.@{columnClassName}--75@{modifier} {
+		.@{grid-ie9-className}.@{columnClassName}--75@{modifier} {
 			width: percentage((9 / 12));
 		}
 
@@ -308,7 +311,7 @@
 			max-width: 100%;
 		}
 
-		.lte9.@{columnClassName}--100@{modifier} {
+		.@{grid-ie9-className}.@{columnClassName}--100@{modifier} {
 			width: 100%;
 		}
 
@@ -422,7 +425,7 @@
 ._makeSharedColumnClassesForIE(@screenSize: ""; @columnClassName: Grid-col) {
 	// Main function
 	.create(@columnClassName; @modifier) {
-		@prefix: lte9;
+		@prefix: @grid-ie9-className;
 		@columnIEClassName: ~"@{prefix}.@{columnClassName}";
 
 		// First
