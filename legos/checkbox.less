@@ -16,7 +16,18 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@checkbox-marginRight: 3px;
+@checkbox-icon-margin: 0 5px 0 0;
+@checkbox-icon-top: -1px;
+@checkbox-icon-width: 14px;
+@checkbox-icon-height: 14px;
+@checkbox-icon-bgColor: #fff;
+@checkbox-icon-borderRadius: 2px;
+@checkbox-icon-borderWidth: 1px;
+@checkbox-icon-borderStyle: solid;
+@checkbox-icon-borderColor: #d8d8d8;
+@checkbox-icon-fontSize: 17px;
+@checkbox-checkIcon-top: -3px;
+@checkbox-checkIcon-left: 0px;
 
 // -------------------- Core LEGO --------------------
 .Checkbox() {
@@ -28,22 +39,20 @@
 
 // -------------------- Descendands --------------------
 .Checkbox-icon() {
-	background: #fff;
-	border: 1px solid #d8d8d8;
-	border-radius: 2px;
-	display: block;
-	float: left;
-	width: 14px;
-	height: 14px;
-	text-indent: -1px;
-	line-height: 12px;
-	margin: 4px 5px 0 0;
+	background: @checkbox-icon-bgColor;
+	border: @checkbox-icon-borderWidth @checkbox-icon-borderStyle @checkbox-icon-borderColor;
+	border-radius: @checkbox-icon-borderRadius;
+	display: inline-block;
+	width: @checkbox-icon-width;
+	height: @checkbox-icon-height;
+	margin: @checkbox-icon-margin;
+	top: @checkbox-icon-top;
 
 	&:before {
 		position: absolute;
-		font-size: 17px;
-		left: 0px;
-		top: -1px;
+		font-size: @checkbox-icon-fontSize;
+		left: @checkbox-checkIcon-left;
+		top: @checkbox-checkIcon-top;
 	}
 }
 
