@@ -1,3 +1,14 @@
+# v0.4.1
+
+## Breaking changes
+ - form-field.less lego removed
+
+## Button
+ - removed .Icon style from the Button
+
+## Label
+ - removed .Icon style from the Label
+ 
 # v0.4.0
 
 ## Breaking changes
