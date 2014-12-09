@@ -47,7 +47,6 @@
 		right: 2px;
 		font-family: "Menicon";
 		font-weight: normal;
-		font-size: 16px;
 		content: "\e63C";
 		z-index: 0;
 	}
@@ -86,7 +85,7 @@
 	}
 	
 	&:after {
-		color: @fontColor
+		color: @fontColor;
 	}
 
 	.Selectbox-input {
@@ -104,6 +103,7 @@
 	.height-calculatedFromFontSize(@fontSize, @selectbox-fontSize, @selectbox-lineHeight, @selectbox-borderWidth);
 
 	&:after {
+		font-size: @fontSize;
 		.lineHeight-calculatedFromFontSize(@fontSize, @selectbox-fontSize, @selectbox-lineHeight);
 	}
 
