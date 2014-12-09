@@ -8,6 +8,10 @@
 
 ## Label
  - removed .Icon style from the Label
+
+## Selectbox 
+ - fixed dropdown size and position for selectbox
+
  
 # v0.3.10
 
