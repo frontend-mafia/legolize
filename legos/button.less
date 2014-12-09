@@ -135,7 +135,6 @@
 // -------------------- Mixins --------------------
 
 .buttonSize(@fontSize; @borderRadius: 3px) {
-	//.font-size(@fontSize);
 	font-size: @fontSize;
 	.lineHeight-calculatedFromFontSize(@fontSize, @button-fontSize, @button-lineHeight);
 	.borderRadius(@borderRadius);
@@ -161,9 +160,13 @@
 
 .buttonLinkVariant(@color) {
 	color: @color;
+	background-color: transparent;
+	border: 0;
 
 	&:hover, &.is-active {
 		color: darken(@color, 8%);
+		background-color: transparent;
+		border: 0;
 	}
 }
 
