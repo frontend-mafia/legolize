@@ -43,33 +43,33 @@
 	position: absolute;
 }
 
-.Caret--top()    { .caretVariant(bottom, left, @caret-default-size); }
-.Caret--right()  { .caretVariant(left,   top,  @caret-default-size); }
-.Caret--bottom() { .caretVariant(top,    left, @caret-default-size); }
-.Caret--left()   { .caretVariant(right,  top,  @caret-default-size); }
+.Caret--top(@caret-border-width: 1px)				{ .caretVariant(bottom, left, @caret-default-size, @caret-border-width); }
+.Caret--right(@caret-border-width: 1px)				{ .caretVariant(left,   top,  @caret-default-size, @caret-border-width); }
+.Caret--bottom(@caret-border-width: 1px)			{ .caretVariant(top,    left, @caret-default-size, @caret-border-width); }
+.Caret--left(@caret-border-width: 1px)				{ .caretVariant(right,  top,  @caret-default-size, @caret-border-width); }
 
-.Caret--top-Caret--xs()    { .caretVariant(bottom, left, @caret--xs-size); }
-.Caret--right-Caret--xs()  { .caretVariant(left,   top,  @caret--xs-size); }
-.Caret--bottom-Caret--xs() { .caretVariant(top,    left, @caret--xs-size); }
-.Caret--left-Caret--xs()   { .caretVariant(right,  top,  @caret--xs-size); }
+.Caret--top-Caret--xs(@caret-border-width: 1px)		{ .caretVariant(bottom, left, @caret--xs-size, @caret-border-width); }
+.Caret--right-Caret--xs(@caret-border-width: 1px)	{ .caretVariant(left,   top,  @caret--xs-size, @caret-border-width); }
+.Caret--bottom-Caret--xs(@caret-border-width: 1px)	{ .caretVariant(top,    left, @caret--xs-size, @caret-border-width); }
+.Caret--left-Caret--xs(@caret-border-width: 1px)	{ .caretVariant(right,  top,  @caret--xs-size, @caret-border-width); }
 
-.Caret--top-Caret--sm()    { .caretVariant(bottom, left, @caret--sm-size); }
-.Caret--right-Caret--sm()  { .caretVariant(left,   top,  @caret--sm-size); }
-.Caret--bottom-Caret--sm() { .caretVariant(top,    left, @caret--sm-size); }
-.Caret--left-Caret--sm()   { .caretVariant(right,  top,  @caret--sm-size); }
+.Caret--top-Caret--sm(@caret-border-width: 1px)		{ .caretVariant(bottom, left, @caret--sm-size, @caret-border-width); }
+.Caret--right-Caret--sm(@caret-border-width: 1px)	{ .caretVariant(left,   top,  @caret--sm-size, @caret-border-width); }
+.Caret--bottom-Caret--sm(@caret-border-width: 1px)	{ .caretVariant(top,    left, @caret--sm-size, @caret-border-width); }
+.Caret--left-Caret--sm(@caret-border-width: 1px)	{ .caretVariant(right,  top,  @caret--sm-size, @caret-border-width); }
 
-.Caret--top-Caret--lg()    { .caretVariant(bottom, left, @caret--lg-size); }
-.Caret--right-Caret--lg()  { .caretVariant(left,   top,  @caret--lg-size); }
-.Caret--bottom-Caret--lg() { .caretVariant(top,    left, @caret--lg-size); }
-.Caret--left-Caret--lg()   { .caretVariant(right,  top,  @caret--lg-size); }
+.Caret--top-Caret--lg(@caret-border-width: 1px)		{ .caretVariant(bottom, left, @caret--lg-size, @caret-border-width); }
+.Caret--right-Caret--lg(@caret-border-width: 1px)	{ .caretVariant(left,   top,  @caret--lg-size, @caret-border-width); }
+.Caret--bottom-Caret--lg(@caret-border-width: 1px)	{ .caretVariant(top,    left, @caret--lg-size, @caret-border-width); }
+.Caret--left-Caret--lg(@caret-border-width: 1px)	{ .caretVariant(right,  top,  @caret--lg-size, @caret-border-width); }
 
-.Caret--top-Caret--xl()    { .caretVariant(bottom, left, @caret--xl-size); }
-.Caret--right-Caret--xl()  { .caretVariant(left,   top,  @caret--xl-size); }
-.Caret--bottom-Caret--xl() { .caretVariant(top,    left, @caret--xl-size); }
-.Caret--left-Caret--xl()   { .caretVariant(right,  top,  @caret--xl-size); }
+.Caret--top-Caret--xl(@caret-border-width: 1px)		{ .caretVariant(bottom, left, @caret--xl-size, @caret-border-width); }
+.Caret--right-Caret--xl(@caret-border-width: 1px)	{ .caretVariant(left,   top,  @caret--xl-size, @caret-border-width); }
+.Caret--bottom-Caret--xl(@caret-border-width: 1px)	{ .caretVariant(top,    left, @caret--xl-size, @caret-border-width); }
+.Caret--left-Caret--xl(@caret-border-width: 1px)	{ .caretVariant(right,  top,  @caret--xl-size, @caret-border-width); }
 
 // ---------------------- Mixins ---------------------
-.caretVariant(@position1, @position2, @caret-size) {
+.caretVariant(@position1, @position2, @caret-size, @border-width) {
 	&:after,
 	&:before {
 		@{position1}: 100%;
@@ -77,8 +77,8 @@
 	}
 	&:before {
 		border-@{position1}-color: @caret-borderColor;
-		margin-@{position2}: -2 * @caret-size;
-		border-width: 2 * @caret-size;
+		margin-@{position2}: -(@caret-size + @border-width);
+		border-width: @caret-size + @border-width;
 	}
 	&:after {
 		border-@{position1}-color: @caret-bgColor;
