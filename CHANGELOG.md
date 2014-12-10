@@ -2,6 +2,7 @@
 
 ## Breaking changes
  - form-field.less lego removed
+ - removed caret code from progress bar lego
 
 ## Button
  - removed .Icon style from the Button
