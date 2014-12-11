@@ -1,3 +1,16 @@
+# v0.3.14
+
+## Breaking changes
+  - no braking changes
+
+#Selectbox
+  - selectbox width modifier changed
+
+# v0.3.13
+
+## Breaking changes
+  - caret mixins were changed
+  
 # v0.3.11
 
 ## Breaking changes
