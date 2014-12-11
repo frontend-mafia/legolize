@@ -29,6 +29,8 @@
 @selectbox-fontColor: #585858;
 @selectbox-bgColor: #fff;
 
+@selectbox-input-extraWidth: 30px;
+
 // -------------------- Core LEGO --------------------
 .Selectbox() {
 	.borderRadius(@selectbox-borderRadius);
@@ -61,6 +63,7 @@
 	color: @selectbox-fontColor;
 	border: 0;
 	width: 140%;
+	padding-right: 40%;
 
 	//Turn off browser styling in safari
 	-webkit-appearance: button;
@@ -77,19 +80,19 @@
 
 // ---------------------- Mixins ---------------------
 .selectboxVariant(@borderColor, @fontColor) {
-	border-color: @borderColor;	
+	border-color: @borderColor;
 
 	&:focus,
 	&.is-focus {
 		box-shadow: inset 0 1px 1px @borderColor;
 	}
-	
+
 	&:after {
 		color: @fontColor;
 	}
 
 	.Selectbox-input {
-		color: @fontColor;	
+		color: @fontColor;
 	}
 
 	.Selectbox-icon {
@@ -112,11 +115,11 @@
 	}
 }
 
-//Mixin to set a fixed width on the selectbox
 .selectboxWidth(@width) {
-	max-width: @width;
+	width: @width;
 
 	.Selectbox-input {
-		padding-right: @width;
+		width: @width + @selectbox-input-extraWidth;
+		padding-right: @selectbox-input-extraWidth;
 	}
 }
