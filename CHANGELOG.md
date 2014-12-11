@@ -1,15 +1,20 @@
-# v0.4.1
+# v0.3.11
 
 ## Breaking changes
  - form-field.less lego removed
+ - removed caret code from progress bar lego
 
 ## Button
  - removed .Icon style from the Button
 
 ## Label
  - removed .Icon style from the Label
+
+## Selectbox 
+ - fixed dropdown size and position for selectbox
+
  
-# v0.4.0
+# v0.3.10
 
 ## Breaking changes
  - changed parameters for label size mixin
