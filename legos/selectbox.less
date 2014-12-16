@@ -20,16 +20,20 @@
 @selectbox-fontSize: @base-fontSize;
 @selectbox-lineHeight: @base-lineHeight;
 @selectbox-paddingVertical: 0px;
-
+@selectbox-paddingLeft: 3px;
 @selectbox-borderWidth: 1px;
 @selectbox-borderStyle: solid;
 @selectbox-borderColor: #585858;
 @selectbox-borderRadius: 3px;
-@selectbox-placeholder-color: #BBBBBB;
 @selectbox-fontColor: #585858;
 @selectbox-bgColor: #fff;
 
-@selectbox-input-extraWidth: 30px;
+@selectbox-icon-width: 18px;
+@selectbox-icon-fontFamily: "Menicon";
+@selectbox-icon-content: "\e63C";
+@selectbox-icon-top: 2px;
+@selectbox-icon-right: 5px;
+@selectbox-icon-fontSize: 10px;
 
 // -------------------- Core LEGO --------------------
 .Selectbox() {
@@ -41,16 +45,22 @@
 	display: inline-block;
 	overflow: hidden;
 	position: relative;
-	vertical-align: middle;
+	vertical-align: middle;	
+	z-index: 0;
 
 	&:after {
 		position: absolute;
-		top:0;
-		right: 2px;
-		font-family: "Menicon";
+		top:@selectbox-icon-top;
+		right: @selectbox-icon-right;
+		font-family: @selectbox-icon-fontFamily;
 		font-weight: normal;
-		content: "\e63C";
+		font-size: @selectbox-icon-fontSize;
+		content: @selectbox-icon-content;
 		z-index: 0;
+
+		.lte9 & {
+			content: '';
+		}
 	}
 
 	.selectboxSize(@selectbox-fontSize);
@@ -59,22 +69,31 @@
 .Selectbox-input() {
 	.font-size(@selectbox-fontSize);
 	.padding-vertical(@selectbox-paddingVertical);
-
+	.padding-right(@selectbox-icon-width); //to account for trigger icon
+	padding-left: @selectbox-paddingLeft;
 	color: @selectbox-fontColor;
 	border: 0;
-	width: 140%;
-	padding-right: 40%;
+	width: 100%;
 
-	//Turn off browser styling in safari
-	-webkit-appearance: button;
-	-webkit-border-radius: 2px;
-	-webkit-box-shadow: none;
-	-webkit-padding-end: 20px;
-	-webkit-padding-start: 2px;
-	-webkit-user-select: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	z-index: 1;
+	position: relative;
 
 	&:focus {
 		outline: none;
+	}
+
+	.lte9 & {
+		border: none;
+		overflow:hidden;
+		padding-right: 0;
+	}
+
+	&::-ms-expand {
+		display: none;
 	}
 }
 
@@ -106,7 +125,6 @@
 	.height-calculatedFromFontSize(@fontSize, @selectbox-fontSize, @selectbox-lineHeight, @selectbox-borderWidth);
 
 	&:after {
-		font-size: @fontSize;
 		line-height: inherit;
 	}
 
@@ -117,9 +135,4 @@
 
 .selectboxWidth(@width) {
 	width: @width;
-
-	.Selectbox-input {
-		width: @width + @selectbox-input-extraWidth;
-		padding-right: @selectbox-input-extraWidth;
-	}
 }
