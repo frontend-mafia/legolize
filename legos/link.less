@@ -17,18 +17,26 @@
 
 // --- Global ---
 // Either use baseline units or pixels for margin/padding/height
-@grid-marginRight: 1%;
-
+@link-marginTop: 0;
+@link-marginBottom: 0;
+@link-marginLeft: 0;
+@link-marginRight: 0;
+@link-textDecoration: none;
 
 // -------------------- Core LEGO --------------------
 .Link() {
 	&:link,
 	&:visited {
-		text-decoration: none;
+		text-decoration: @link-textDecoration;
 	}
-	margin: 0px 5px 0px 0px;
+	
+	.margin-top(@link-marginTop);
+	.margin-bottom(@link-marginBottom);
+	.margin-left(@link-marginLeft);
+	.margin-right(@link-marginRight);
+	
 	display: inline-block;
-	font-size: 13px;
+	font-size: inherit;
 }
 
 // -------------------- Modifiers --------------------
