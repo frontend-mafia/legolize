@@ -91,13 +91,13 @@
 
 // Hover
 @nav--pills-item-hover-color: #fff;
-@nav--pills-item-hover-backgroundColor: #06a3d5;
-@nav--pills-item-hover-borderColor: #06a3d5;
+@nav--pills-item-hover-backgroundColor: rgba(0, 0, 0, .3);
+@nav--pills-item-hover-borderColor: rgba(0, 0, 0, .5);
 
 // Active
 @nav--pills-item-active-color: #fff;
-@nav--pills-item-active-backgroundColor: #06a3d5;
-@nav--pills-item-active-borderColor: #06a3d5;
+@nav--pills-item-active-backgroundColor: rgba(0, 0, 0, .3);
+@nav--pills-item-active-borderColor: rgba(0, 0, 0, .5);
 
 // -------------------- Core LEGO --------------------
 .Nav() {
@@ -181,6 +181,7 @@
 
 		&.is-active {
 			> .Nav-link {
+				color: @nav--vertical-link-active-color;
 				background-color: @nav--vertical-link-active-backgroundColor;
 			}
 		}
@@ -194,6 +195,11 @@
 		&:hover {
 			color: @nav--vertical-link-hover-color;
 			background-color: @nav--vertical-link-hover-backgroundColor;
+		}
+
+		&.is-active {
+			color: @nav--vertical-link-active-color;
+			background-color: @nav--vertical-link-active-backgroundColor;
 		}
 	}
 
