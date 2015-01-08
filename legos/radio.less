@@ -19,6 +19,9 @@
 @radio-marginRight: -3px;
 @radio-top: -4px;
 @radio-iconDiscSize: 24px;
+@radio-focus-borderColor: blue;
+
+@radio-transition: border 500ms ease-out;
 
 // -------------------- Core LEGO --------------------
 .Radio() {
@@ -36,11 +39,21 @@
 	top: @radio-top;
 	margin-right: @radio-marginRight;
 	font-size: @radio-iconDiscSize;
+	.transition(@radio-transition);
 }
 
 .Radio-input() {
-	visibility: hidden;
 	position: absolute;
+
+	//using this instead of visibility:hidden so that the radio can be in focus via keyboard
+	overflow:hidden;
+	width:0px;
+	height:0px;
+	opacity:0;
+	outline:0;
+	margin:0;
+	border:0;
+	padding:0;
 
 	&[type="radio"]:not(:checked)  + .Radio-icon:before {
 		content: "\e631";
@@ -50,6 +63,10 @@
 		content: "\e632";
 		margin-left: -1px;
 		margin-right: 1px;
+	}
+
+	&[type="radio"]:focus + .Radio-icon:before {
+		color: @radio-focus-borderColor;
 	}
 }
 

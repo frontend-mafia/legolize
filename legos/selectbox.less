@@ -27,7 +27,7 @@
 @selectbox-borderRadius: 3px;
 @selectbox-fontColor: #585858;
 @selectbox-bgColor: #fff;
-
+@selectbox-focus-borderColor: blue;
 @selectbox-icon-width: 18px;
 @selectbox-icon-fontFamily: "Menicon";
 @selectbox-icon-content: "\e63C";
@@ -43,7 +43,6 @@
 	background-color: @selectbox-bgColor;
 	max-width: 100%;
 	display: inline-block;
-	overflow: hidden;
 	position: relative;
 	vertical-align: middle;	
 	z-index: 0;
@@ -67,6 +66,7 @@
 }
 
 .Selectbox-input() {
+	.borderRadius(@selectbox-borderRadius);
 	.font-size(@selectbox-fontSize);
 	.padding-vertical(@selectbox-paddingVertical);
 	.padding-right(@selectbox-icon-width); //to account for trigger icon
@@ -102,20 +102,20 @@
 }
 
 // ---------------------- Mixins ---------------------
-.selectboxVariant(@borderColor, @fontColor) {
+.selectboxVariant(@borderColor, @fontColor, @focus-borderColor: @selectbox-focus-borderColor) {
 	border-color: @borderColor;
-
-	&:focus,
-	&.is-focus {
-		box-shadow: inset 0 1px 1px @borderColor;
-	}
-
+	
 	&:after {
 		color: @fontColor;
 	}
 
 	.Selectbox-input {
 		color: @fontColor;
+				
+		&:focus,
+		&.is-focus {
+			box-shadow:inset 0px 0px 0px 1px @focus-borderColor;
+		}
 	}
 
 	.Selectbox-icon {
