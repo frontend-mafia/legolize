@@ -42,6 +42,10 @@
 // Link hover
 @nav--menu-link-hover-color: @nav--menu-link-color;
 
+// Link focus
+@nav--menu-link-focus-borderColor: blue;
+@nav--menu-link-active-focus-borderColor: red;
+
 // ------------ Nav--tab variables ---------------------
 // TODO: Rename all variables to have --tabs instead of --tab
 @nav--tab-border: 1px solid #d8d8d8;
@@ -63,6 +67,8 @@
 @nav--tab-item-active-background: #fff;
 @nav--tab-item-active-fontColor: #06a3d5;
 
+@nav--tab-focus-textDecoration: underline;
+
 // ------------ Nav--vertical variables ---------------------
 @nav--vertical-link-color: rgba(0, 0, 0, .8);
 @nav--vertical-item-borderWidth: 1px;
@@ -78,6 +84,10 @@
 // Active
 @nav--vertical-link-active-color: @nav--vertical-link-color;
 @nav--vertical-link-active-backgroundColor: @nav--vertical-link-hover-backgroundColor;
+
+// Link focus
+@nav--menu-link-focus-borderColor: blue;
+@nav--menu-link-active-focus-borderColor: red;
 
 // ------------ Nav--pills variables ---------------------
 @nav--pills-item-padding: 5px 10px;
@@ -149,6 +159,12 @@
 		&.is-active {
 			background: @nav--menu-item-hover-background;
 			border: @nav--menu-item-hover-border;
+
+			.Nav-link {
+				&:focus {
+					outline:@nav--menu-link-active-focus-borderColor solid 1px;
+				}
+			}
 		}
 	}
 
@@ -163,6 +179,10 @@
 
 		&:hover {
 			color: @nav--menu-link-hover-color;
+		}
+
+		&:focus {
+			outline:@nav--menu-link-focus-borderColor solid 1px;
 		}
 	}
 }
@@ -183,6 +203,10 @@
 			> .Nav-link {
 				color: @nav--vertical-link-active-color;
 				background-color: @nav--vertical-link-active-backgroundColor;
+
+				&:focus {
+					outline:@nav--vertical-link-active-focus-borderColor solid 1px;
+				}
 			}
 		}
 	}
@@ -195,6 +219,10 @@
 		&:hover {
 			color: @nav--vertical-link-hover-color;
 			background-color: @nav--vertical-link-hover-backgroundColor;
+		}
+
+		&:focus {
+			outline:@nav--vertical-link-focus-borderColor solid 1px;
 		}
 
 		&.is-active {
@@ -243,6 +271,10 @@
 		&:hover {
 			border: @nav--tab-border;
 			color: @nav--tab-item-hover-fontColor;
+		}
+
+		&:focus {
+			text-decoration:@nav--tab-focus-textDecoration;
 		}
 	}
 }
