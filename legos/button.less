@@ -28,11 +28,14 @@
 @button-borderStyle: solid;
 @button-borderColor: transparent;
 @button-background: #fff;
-
+@button-focus-borderColor: blue;
 @button-icon-size: 14px;
 
 @button--link-color: inherit;
 @button--link-hover-color: inherit;
+
+@button--icon-focus-borderColor: blue;
+@button-transition: border 500ms ease-out;
 
 // -------------------- Core LEGO --------------------
 .Button() {
@@ -53,6 +56,7 @@
 	text-decoration: none;
 	white-space: nowrap;
 	vertical-align:middle;
+	.transition(@button-transition);
 
 	&[disabled],
 	&.is-disabled {
@@ -92,6 +96,12 @@
 		background: none;
 		color: inherit;
 	}
+
+	&:focus {
+		.Icon {
+			border:1px solid @button--icon-focus-borderColor;
+		}
+	}
 }
 
 .Button--link() {
@@ -128,8 +138,9 @@
 	box-shadow: inset 0 3px 5px rgba(red(@backgroundColor), green(@backgroundColor), blue(@backgroundColor), .125);
 }
 
-.Button-is-focus() {
-	outline: 0;
+.Button-is-focus(@focus-borderColor: @button-focus-borderColor) {
+	border-color: @focus-borderColor;
+	outline:0;
 }
 
 // -------------------- Mixins --------------------
@@ -141,15 +152,20 @@
 	.padding-horizontal(@fontSize / 2);
 }
 
-.buttonVariant(@textColor, @backgroundColor, @borderColor: transparent, @hoverColor: #fff) {
+.buttonVariant(@textColor, @backgroundColor, @borderColor: transparent, @hoverColor: #fff, @focus-borderColor: @button-focus-borderColor) {
 	color: @textColor;
 	background-color: @backgroundColor;
 	border-color: @borderColor;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		background-color: darken(@backgroundColor, 8%);
 		border-color: darken(@borderColor, 8%);
 		color: @hoverColor;
+	}
+
+	&:focus {
+		.Button-is-focus(@focus-borderColor);
 	}
 
 	&:active,
