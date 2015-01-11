@@ -92,14 +92,16 @@
 	min-width:inherit;
 	border:none;
 
-	&:hover {
+	&:hover, &:focus {
 		background: none;
 		color: inherit;
 	}
 
 	&:focus {
+		outline: none;
+
 		.Icon {
-			border:1px solid @button--icon-focus-borderColor;
+			outline: @button--icon-focus-borderColor @base-outline-style @base-outline-width;
 		}
 	}
 }
@@ -109,7 +111,7 @@
 	background: none;
 	color: @button--link-color;
 
-	&:hover {
+	&:hover, &:focus {
 		color: @button--link-hover-color;
 		background: none;
 	}
@@ -139,8 +141,7 @@
 }
 
 .Button-is-focus(@focus-borderColor: @button-focus-borderColor) {
-	border-color: @focus-borderColor;
-	outline:0;
+	outline: @focus-borderColor @base-outline-style @base-outline-width;
 }
 
 // -------------------- Mixins --------------------
