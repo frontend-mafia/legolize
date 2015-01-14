@@ -1,3 +1,9 @@
+# v0.3.18
+
+  - important accessibility improvements (WAI)
+  - fixed link color and margin
+  - fixed focus
+
 # v0.3.14
 
 ## Breaking changes
