@@ -1,5 +1,5 @@
 //********************************************
-//	Pagination Core
+//	Pager Core
 //********************************************/
 
 // When writing Lego's we use BEM naming conventions.
@@ -20,52 +20,46 @@
 @pager-item-padding: 0 3px;
 @pager-separator-padding: 0px 3px;
 @pager-separator-fontColor: #ddd;
-@pager-borderBottom: 1px solid #e4e4e4;
-@paging-active-fontColor: #5B5B5B;
-@paging-disabled-fontColor: #777;
-
+@pager-active-fontColor: #5B5B5B;
+@pager-disabled-fontColor: #777;
+@pager-nav-margin: 0px;
+@pager-nav-padding: 0px;
+@pager-navItem-margin:0 5px 0 0;
 
 // -------------------- Core LEGO --------------------
 .Pager() {
-	text-align: center;
 	padding: @pager-padding;
-	border-bottom: @pager-borderBottom;
-	.clearfix;
 }
 
 // -------------------- Descendands --------------------
 .Pager-item() {
-	text-decoration: none;
-	vertical-align: top;
 	display: inline-block;
 	cursor: pointer;
+	padding: @pager-item-padding;
 }
 
 .Pager-separator() {
 	padding: @pager-separator-padding;
-	color:@pager-separator-fontColor;
+	color: @pager-separator-fontColor;
 }
 
-// -------------------- Modifiers --------------------
+.Pager-nav() {
+	display: inline-block;
+	margin: @pager-nav-margin;
+	padding: @pager-nav-padding;
+	list-style: none;
+}
+
+.Pager-navItem() {
+	float: left;
+	margin: @pager-navItem-margin;
+}
 
 // -------------------- States --------------------
 .Pager-item-is-active() {
-	.pagerItemVariant(@paging-active-fontColor, @paging-active-fontColor);
 	cursor: default;
 }
 
 .Pager-item-is-disabled() {
-	.pagerItemVariant(@paging-disabled-fontColor, @paging-disabled-fontColor);
 	cursor: not-allowed;
 }
-
-// -------------------- Mixins --------------------
-.pagerItemVariant(@fontColor, @hoverFontColor) {
-	color: @fontColor;
-
-	&:hover {
-		color: @hoverFontColor;
-	}
-}
-
-// -------------------- Variants --------------------
