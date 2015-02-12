@@ -28,10 +28,15 @@
 @alert-bgColor: #fff;
 
 @alert-closeButton-fontColor: #d8d8d8;
+@alert-closeButton-top: 1;
+@alert-closeButton-right: 2;
 
 // -------------------- Core LEGO --------------------
 .Alert() {
-	.createAlertVariant(@alert-borderColor, @alert-bgColor);
+	border-width: @alert-borderWidth;
+	border-style: @alert-borderStyle;
+	border-color: @alert-borderColor;
+	background-color: @alert-bgColor;
 	.borderRadius(@alert-borderRadius);
 	.padding(@alert-padding);
 	border-width: @alert-borderWidth;
@@ -41,20 +46,9 @@
 
 // -------------------- Descendants --------------------
 .Alert-closeButton() {
-	.top(1);
-	.right(1);
-	.font-size(3);
-	position: absolute;
+	.top(@alert-closeButton-top);
+	.right(@alert-closeButton-right);
 	color: @alert-closeButton-fontColor;
+	position: absolute;
 	cursor: pointer;
-
-	&:hover {
-		color: darken(@alert-closeButton-fontColor, 10%)
-	}
-}
-
-// -------------------- Mixins --------------------
-.createAlertVariant(@borderColor, @bgColor, @borderWidth: 1px) {
-	border: @borderWidth solid @borderColor;
-	background-color: @bgColor;
 }
