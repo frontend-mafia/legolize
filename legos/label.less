@@ -1,5 +1,3 @@
-@import "../core.less";
-
 //********************************************
 //	Label Core
 //********************************************/
@@ -18,35 +16,16 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@label-fontSize: @base-fontSize;
-@label-lineHeight: @base-lineHeight;
-@label-borderRadius: 3px;
+@label-padding: 0 12px;
 @label-minWidth: 20px;
-@label-border: 1px solid #c8c8c8;
-
+@label-bgColor: #f3f3f3;
 
 // -------------------- Core LEGO --------------------
 .Label() {
-	.labelSizeVariant(@label-fontSize; @label-borderRadius);
 	display: inline-block;
-	border: @label-border;
+	background: @label-bgColor;
 	min-width: @label-minWidth;
 	text-align: center;
 	white-space: nowrap;
-}
-
-// -------------------- Descendands --------------------
-.labelSizeVariant(@fontSize; @borderRadius: 3px) {
-	font-size: @fontSize;
-	.lineHeight-calculatedFromFontSize(@fontSize, @label-fontSize, @label-lineHeight);
-	.borderRadius(@borderRadius);
-	.padding-horizontal(@fontSize / 2);
-	.padding-vertical(0);
-}
-
-// Label variants mixin
-.labelTypeVariant(@backgroundColor, @textColor, @borderColor: transparent) {
-	background-color: @backgroundColor;
-	color: @textColor;
-	border-color: @borderColor;
+	padding: @label-padding;
 }

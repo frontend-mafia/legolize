@@ -1,5 +1,3 @@
-@import "../core.less";
-
 //********************************************
 //	Circle Core
 //********************************************/
@@ -18,10 +16,11 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
+// Either use pixels, percentages or baseline units
 
+@circle-bgColor: #ccc; //default background so that <div class="Circle"></div> does something
 @circle-color: #fff;
 @circle-dimensionUnits: 110px;
-// Either use pixels, percentages or baseline units
 
 // Bordered modifier
 @circle--bordered-borderWidth: 5px;
@@ -29,21 +28,15 @@
 @circle--bordered-borderStyle: solid;
 
 // Filled modifier
-@circle--filled-backgroundColor: #06a3d4;
+@circle--filled-bgColor: @circle-bgColor;
 
 // Inner circle
 @circle-inner-borderColor: #fff;
-@circle-inner-backgroundColor: #06a3d4;
+@circle-inner-bgColor: @circle-bgColor;
 
 // Rectangular fill
-@circle-fill-backgroundColor: #06a3d4;
+@circle-fill-bgColor: @circle-bgColor;
 @circle-fill-zIndex: 10;
-
-// -------------------- Mixins --------------------
-.innerCircle () {
-	width: 100%;
-	height: 100%;
-}
 
 // -------------------- Core LEGO --------------------
 .Circle() {
@@ -51,6 +44,7 @@
 	border-radius: 50%;
 	overflow: hidden;
 	color: @circle-color;
+	background-color: @circle-bgColor;
 	display: flex;
 	align-items: center; // Children vertically in the middle
 	justify-content: center; // Content centered
@@ -76,7 +70,7 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-color: @circle-fill-backgroundColor;
+	background-color: @circle-fill-bgColor;
 	z-index: @circle-fill-zIndex;
 }
 
@@ -90,18 +84,18 @@
 
 // Filled circle with background color
 .Circle--filled() {
-	background-color: @circle--filled-backgroundColor;
+	background-color: @circle--filled-bgColor;
 
 	// Inner circle
 	.Circle {
 		.innerCircle();
 
 		&.Circle--bordered {
-			border-color: @circle-inner-borderColor;
+			border-color: @circle-inner-bgColor;
 		}
 
 		&.Circle--filled {
-			background-color: @circle-inner-backgroundColor;
+			background-color: @circle-inner-bgColor;
 		}
 	}
 }
@@ -119,7 +113,13 @@
 		}
 
 		&.Circle--filled {
-			background-color: @circle-inner-backgroundColor;
+			background-color: @circle-inner-bgColor;
 		}
 	}
+}
+
+// -------------------- Mixins --------------------
+.innerCircle () {
+	width: 100%;
+	height: 100%;
 }
