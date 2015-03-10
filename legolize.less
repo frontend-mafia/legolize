@@ -39,6 +39,14 @@
 
 .normalizeInit () {
 	@import (less) "./vendor/normalize-css/normalize.css";
+
+	body {
+		& * {
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+	}
 }
 
 .baselineInit () {
