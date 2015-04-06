@@ -37,6 +37,64 @@
 	padding-left: @grid-margin;
 }
 
+// -------------------- Modifiers --------------------
+.Grid-modifiers() {
+	// Begin column alignment from left
+	.Grid--alignLeft,
+	.Grid--alignStart {
+		justify-content: flex-start;
+		text-align: start;
+	}
+
+	// Begin column alignment from center
+	.Grid--alignCenter {
+		justify-content: center;
+		text-align: center;
+	}
+
+	// Begin column alignment from right
+	.Grid--alignRight,
+	.Grid--alignEnd {
+		justify-content: flex-end;
+		text-align: end;
+	}
+
+	// ----- Vertical alignment -----
+	// Vertically align items from top
+	.Grid--alignTop {
+		align-items: flex-start;
+	}
+
+	// Vertically align items from middle
+	.Grid--alignMiddle {
+		align-items: center;
+	}
+
+	// Vertically align items from bottom
+	.Grid--alignBottom {
+		align-items: flex-end;
+	}
+
+	// ----- Distribution -----
+	// Items are evenly distributed in the line with equal space around them
+	.Grid--distributeAround {
+		justify-content: space-around;
+	}
+
+	// Items are evenly distributed in the line; first item is on the start line, last item on the end line
+	&.Grid--distributeBetween {
+		justify-content: space-between;
+	}
+
+	// ----- Ordering -----
+	// Reverse order of children
+	&.Grid--reverse {
+		flex-direction: row-reverse;
+		flex-wrap: wrap-reverse;
+	}
+
+}
+
 // -------------------- Descendands --------------------
 .Grid-row() {
 	box-sizing: border-box;
@@ -51,6 +109,7 @@
 	}
 
 	// -------------------- Modifiers --------------------
+	// TODO: Should be deprecated in v0.5 (Should be used on a global level, not only for row, example: .Grid--alignLeft etc)
 	// ----- Horizontal alignment -----
 	// Begin column alignment from left
 	&.Grid-row--alignLeft,
