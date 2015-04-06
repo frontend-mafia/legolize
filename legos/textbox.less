@@ -25,9 +25,10 @@
 @textbox-borderWidth: 1px;
 @textbox-borderStyle: solid;
 
+@textbox-backgroundColor: #fff;
 @textbox-borderColor: #d8d8d8;
 @textbox-color: #585858;
-@textbox-focus-borderColor: blue;
+@textbox-focus-borderColor: darken(@textbox-borderColor, 10%);
 
 @textbox-disabled-borderColor: #cacaca;
 @textbox-disabled-fontColor: #888;
@@ -43,6 +44,7 @@
 	border-radius: @textbox-borderRadius;
 	border-width: @textbox-borderWidth;
 	border-style: @textbox-borderStyle;
+	background-color: @textbox-backgroundColor;
 	.textboxVariant(@textbox-borderColor, @textbox-color);
 	.textboxSize(@textbox-fontSize);
 	.placeholderColor(@textbox-placeholder-color);
