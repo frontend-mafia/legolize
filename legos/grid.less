@@ -184,6 +184,7 @@
 	._makeColumns(@screenSize, @columnClassName);
 	._makeExtraColumns(@screenSize, @columnClassName);
 	._makeOffsets(@screenSize);
+	._makeOrderingClasses(@screenSize);
 }
 
 // Writes out width for a column
@@ -302,6 +303,35 @@
 	.setModifier(@screenSize) when not (@screenSize = "") {
 		@modifier: ~"--@{screenSize}";
 		.create(@columnSpan, @modifier);
+	}
+
+	// Initial call
+	.setModifier(@screenSize);
+}
+
+// ----- Order -----
+._makeOrderingClasses(@screenSize: "";@columnClassName: Grid-col) {
+	// Main function
+	.create(@modifier) {
+		.@{columnClassName}--orderFirst@{modifier} {
+			order: -1;
+		}
+
+		.@{columnClassName}--orderLast@{modifier} {
+			order: 1;
+		}
+	}
+
+	// Call create for Mobile first
+	.setModifier(@screenSize) when (@screenSize = "") {
+		@modifier: ~"";
+		.create(@modifier);
+	}
+
+	// Call create for a specific screen size
+	.setModifier(@screenSize) when not (@screenSize = "") {
+		@modifier: ~"--@{screenSize}";
+		.create(@modifier);
 	}
 
 	// Initial call
