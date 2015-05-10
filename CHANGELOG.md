@@ -1,3 +1,13 @@
+# v0.4.0-beta.1
+
+* Grid alignment and ordering for media queries
+* Textbox backgroundColor variable added
+* Bug fixes
+
+## Breaking changes
+
+* Changing variables names in Heading, Label, Textbox and Circle to fit naming conventions of variables.
+
 # v0.3.18
 
   - important accessibility improvements (WAI)
