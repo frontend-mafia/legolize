@@ -1,0 +1,64 @@
+/********************************************
+	Heading LEGO
+********************************************/
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @legoName--modifier-property ex: @button-borderColor
+// @legoName--modifier-descendant-property ex: @listGroup--primary-itemHeading-fontSize
+
+// -------------------- Variables --------------------
+//@heading--one-fontSize: 32px;
+//@heading--two-fontSize: 30px;
+//@heading--three-fontSize: 24px;
+//@heading--four-fontSize: 21px;
+//@heading--five-fontSize: 18px;
+//@heading--six-fontSize: 16px;
+
+// Either use baseline units or pixels
+//@heading-marginTop: 2;
+//@heading-marginBottom: 2;
+
+// -------------------- Core LEGO --------------------
+.Heading {
+	.Heading();
+}
+
+// -------------------- Descendants --------------------
+
+// -------------------- States --------------------
+
+// -------------------- Modifiers --------------------
+.Heading--one {
+	&:extend(.Heading);
+	.Heading--one();
+}
+
+.Heading--two {
+	&:extend(.Heading);
+	.Heading--two();
+}
+
+.Heading--three {
+	&:extend(.Heading);
+	.Heading--three();
+}
+
+.Heading--four {
+	&:extend(.Heading);
+	.Heading--four();
+}
+
+.Heading--five {
+	&:extend(.Heading);
+	.Heading--five();
+}
+
+.Heading--six {
+	&:extend(.Heading);
+	.Heading--six();
+}

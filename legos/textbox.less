@@ -13,22 +13,22 @@
 // LegoName.is-stateOfLego
 // Variable names:
 // @legoModifier-property ex: @buttonPrimary-borderColor
-// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
+// @legoModifier-descendant-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
 @textbox-fontSize: @base-fontSize;
 @textbox-lineHeight: @base-lineHeight;
 @textbox-paddingVertical: 0px;
-@textbox-marginRight: 3px;
-@textbox-placeholder-color: #BBBBBB;
+@textbox-placeholder-color: #bbbbbb;
 
 @textbox-borderRadius: 3px;
 @textbox-borderWidth: 1px;
 @textbox-borderStyle: solid;
 
-@textbox-default-borderColor: #d8d8d8;
-@textbox-default-fontColor: #585858;
-@textbox-focus-borderColor: blue;
+@textbox-backgroundColor: #fff;
+@textbox-borderColor: #d8d8d8;
+@textbox-color: #585858;
+@textbox-focus-borderColor: darken(@textbox-borderColor, 10%);
 
 @textbox-disabled-borderColor: #cacaca;
 @textbox-disabled-fontColor: #888;
@@ -40,17 +40,19 @@
 	margin: 0;
 	.padding-vertical(@textbox-paddingVertical);
 	outline: none;
-	vertical-align:middle;
+	vertical-align: middle;
 	border-radius: @textbox-borderRadius;
 	border-width: @textbox-borderWidth;
 	border-style: @textbox-borderStyle;
-
-	.textboxVariant(@textbox-default-borderColor, @textbox-default-fontColor);
+	background-color: @textbox-backgroundColor;
+	.textboxVariant(@textbox-borderColor, @textbox-color);
 	.textboxSize(@textbox-fontSize);
 	.placeholderColor(@textbox-placeholder-color);
 	.transition (@textbox-transition);
 
-	&:active, &:focus, &.is-active {
+	&:active,
+	&:focus,
+	&.is-active {
 		border-color: @textbox-focus-borderColor;
 	}
 
