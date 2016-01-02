@@ -52,3 +52,9 @@
 	position: absolute;
 	cursor: pointer;
 }
+
+// -------------------- Mixins --------------------
+.createAlertVariant(@borderColor, @bgColor, @borderWidth: 1px) {
+	border: @borderWidth solid @borderColor;
+	background-color: @bgColor;
+}
