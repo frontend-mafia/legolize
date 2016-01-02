@@ -1,3 +1,7 @@
+# v0.4.0-beta.2
+
+* createAlertVariant mixin added back to Alert lego
+
 # v0.4.0-beta.1
 
 * Grid alignment and ordering for media queries
