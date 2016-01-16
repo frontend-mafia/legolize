@@ -1,0 +1,23 @@
+{
+  "name": "legolize",
+  "version": "0.4.0-beta.1",
+  "description": "Legolize is a LESS framework built up on BEM methodology",
+  "main": "legolize.less",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frontend-mafia/legolize.git"
+  },
+  "author": "Haukur Már Böðvarsson <haukurmar@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frontend-mafia/legolize/issues"
+  },
+  "homepage": "https://github.com/frontend-mafia/legolize#readme"
+}

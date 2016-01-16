@@ -20,6 +20,10 @@ Two quick start options are available:
 - Install with [Bower](http://bower.io): 
     
         $ bower install legolize 
+        
+- Install with [NPM](http://www.npmjs.com): 
+    
+        $ npm install legolize 
 
 
 ---
