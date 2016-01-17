@@ -14,27 +14,26 @@
 // LegoName-descendantName
 // LegoName.is-stateOfLego
 // Variable names:
-// @legoModifier-property ex: @buttonPrimary-borderColor
-// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
+// @legoModifier-property ex: @button--primary-borderColor
+// @legoModifier-descendant-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
 //default style
 @button-fontSize: @base-fontSize;
 @button-lineHeight: @base-lineHeight;
 @button-paddingVertical: 0px;
+@button-minWidth: 30px;
 
 @button-borderRadius: 3px;
 @button-borderWidth: 1px;
 @button-borderStyle: solid;
 @button-borderColor: transparent;
-@button-background: #fff;
+@button-backgroundColor: #fff;
 @button-focus-borderColor: blue;
-@button-icon-size: 14px;
 
 @button--link-color: inherit;
 @button--link-hover-color: inherit;
 
-@button--icon-focus-borderColor: blue;
 @button-transition: border 500ms ease-out;
 
 // -------------------- Core LEGO --------------------
@@ -43,19 +42,18 @@
 	.buttonSize(@button-fontSize; @button-borderRadius);
 	.boxSizing(border-box);
 	.userSelect(none);
-	
 	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-	background-color: @button-background;
+	background-color: @button-backgroundColor;
 	display: inline-block;
 	cursor: pointer;
 	overflow: visible;
-	min-width: 30px;
+	min-width: @button-minWidth;
 	width: auto;
 	border: @button-borderWidth @button-borderStyle @button-borderColor;
 	text-align: center;
 	text-decoration: none;
 	white-space: nowrap;
-	vertical-align:middle;
+	vertical-align: middle;
 	.transition(@button-transition);
 
 	&[disabled],
@@ -65,7 +63,7 @@
 
 	&:active,
 	&.is-active {
-		.Button-is-active(@button-background);
+		.Button-is-active(@button-backgroundColor);
 	}
 
 	&:focus,
@@ -87,10 +85,10 @@
 
 .Button--icon() {
 	background: none;
-	margin:0;
-	padding:0;
-	min-width:inherit;
-	border:none;
+	margin: 0;
+	padding: 0;
+	min-width: inherit;
+	border: none;
 
 	&:hover, &:focus {
 		background: none;
@@ -99,10 +97,6 @@
 
 	&:focus {
 		outline: none;
-
-		.Icon {
-			outline: @button--icon-focus-borderColor @base-outline-style @base-outline-width;
-		}
 	}
 }
 
