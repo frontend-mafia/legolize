@@ -1,3 +1,14 @@
+# v0.4.0-beta.3
+* Button cleanup
+
+## Breaking changes
+
+* @button-background is now named @button-backgroundColor to fit naming conventions of variables
+
+## Other changes
+
+* @button-minWidth variable added
+
 # v0.4.0-beta.2
 
 * createAlertVariant mixin added back to Alert lego
