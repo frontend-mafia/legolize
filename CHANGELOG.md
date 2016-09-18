@@ -1,9 +1,11 @@
 # v0.4.0-beta.3
 * Button cleanup
+* Circle cleanup
 
 ## Breaking changes
 
 * @button-background is now named @button-backgroundColor to fit naming conventions of variables
+* @circle-bgColor is now named @circle-backgroundColor to fit naming conventions of variables
 
 ## Other changes
 
