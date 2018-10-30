@@ -35,8 +35,8 @@
 @nav--menu-link-color: inherit;
 @nav--menu-link-fontSize: inherit;
 @nav--menu-link-fontWeight: bold;
-@nav--menu-link-padding: 0 10px;
-@nav--menu-link-height: 36px;
+@nav--menu-link-padding: 0 0.625rem;
+@nav--menu-link-height: 2.25rem;
 @nav--menu-link-lineHeight: @nav--menu-link-height;
 
 // Link hover
@@ -48,16 +48,16 @@
 
 // ------------ Nav--tab variables ---------------------
 // TODO: Rename all variables to have --tabs instead of --tab
-@nav--tab-border: 1px solid #d8d8d8;
-@nav--tab-marginRight: 3px;
-@nav--tab-borderWeight: 1px;
+@nav--tab-border: 0.0625rem solid #d8d8d8;
+@nav--tab-marginRight: 0.1875rem;
+@nav--tab-borderWeight: 0.0625rem;
 @nav--tab-fontColor: #5b5b5b;
 
 //tab link default
 @nav--tab-item-background: #faf9f9;
 @nav--tab-link-fontSize: inherit;
-@nav--tab-link-padding: 0 15px;
-@nav--tab-link-lineHeight: 30px;
+@nav--tab-link-padding: 0 0.9375rem;
+@nav--tab-link-lineHeight: 1.875rem;
 @nav--tab-link-fontWeight: 700;
 
 //tab hover active
@@ -71,11 +71,11 @@
 
 // ------------ Nav--vertical variables ---------------------
 @nav--vertical-link-color: rgba(0, 0, 0, .8);
-@nav--vertical-item-borderWidth: 1px;
+@nav--vertical-item-borderWidth: 0.0625rem;
 @nav--vertical-item-borderColor: rgba(0, 0, 0, .5);
 @nav--vertical-item-borderStyle: solid;
-@nav--vertical-link-lineHeight: 36px;
-@nav--vertical-link-sidePadding: 20px;
+@nav--vertical-link-lineHeight: 2.25rem;
+@nav--vertical-link-sidePadding: 1.25rem;
 
 // Hover
 @nav--vertical-link-hover-color: #fff;
@@ -92,9 +92,9 @@
 @nav--menu-link-active-focus-borderColor: red;
 
 // ------------ Nav--pills variables ---------------------
-@nav--pills-item-padding: 5px 10px;
-@nav--pills-item-borderRadius: 3px;
-@nav--pills-item-borderWidth: 1px;
+@nav--pills-item-padding: 0.3125rem 0.625rem;
+@nav--pills-item-borderRadius: 0.1875rem;
+@nav--pills-item-borderWidth: 0.0625rem;
 @nav--pills-item-borderStyle: solid;
 @nav--pills-item-borderColor: #999999;
 
@@ -164,7 +164,7 @@
 
 			.Nav-link {
 				&:focus {
-					outline:@nav--menu-link-active-focus-borderColor solid 1px;
+					outline:@nav--menu-link-active-focus-borderColor solid 0.0625rem;
 				}
 			}
 		}
@@ -184,7 +184,7 @@
 		}
 
 		&:focus {
-			outline:@nav--menu-link-focus-borderColor solid 1px;
+			outline:@nav--menu-link-focus-borderColor solid 0.0625rem;
 		}
 	}
 }
@@ -207,7 +207,7 @@
 				background-color: @nav--vertical-link-active-backgroundColor;
 
 				&:focus {
-					outline:@nav--vertical-link-active-focus-borderColor solid 1px;
+					outline:@nav--vertical-link-active-focus-borderColor solid 0.0625rem;
 				}
 			}
 		}
@@ -224,7 +224,7 @@
 		}
 
 		&:focus {
-			outline:@nav--vertical-link-focus-borderColor solid 1px;
+			outline:@nav--vertical-link-focus-borderColor solid 0.0625rem;
 		}
 
 		&.is-active {

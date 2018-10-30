@@ -22,10 +22,10 @@
 @button-fontSize: @base-fontSize;
 @button-lineHeight: @base-lineHeight;
 @button-paddingVertical: 0px;
-@button-minWidth: 30px;
+@button-minWidth: 1.875rem;
 
-@button-borderRadius: 3px;
-@button-borderWidth: 1px;
+@button-borderRadius: 0.1875rem;
+@button-borderWidth: 0.0625rem;
 @button-borderStyle: solid;
 @button-borderColor: transparent;
 @button-backgroundColor: #fff;
@@ -112,12 +112,12 @@
 }
 
 .Button-icon--left() {
-	margin-right: 3px;
+	margin-right: 0.1875rem;
 	float: left;
 }
 
 .Button-icon--right() {
-	margin-left: 3px;
+	margin-left: 0.1875rem;
 	float: right;
 }
 
@@ -131,7 +131,7 @@
 .Button-is-active(@backgroundColor, @borderColor: transparent) {
 	background-color: darken(@backgroundColor, 8%);
 	border-color: darken(@borderColor, 8%);
-	box-shadow: inset 0 3px 5px rgba(red(@backgroundColor), green(@backgroundColor), blue(@backgroundColor), .125);
+	box-shadow: inset 0 0.1875rem 0.3125rem rgba(red(@backgroundColor), green(@backgroundColor), blue(@backgroundColor), .125);
 }
 
 .Button-is-focus(@focus-borderColor: @button-focus-borderColor) {

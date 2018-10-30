@@ -24,13 +24,13 @@
 @panel-color: inherit;
 @panel-backgroundColor: #fff;
 // Border
-@panel-borderWidth: 1px;
+@panel-borderWidth: 0.0625rem;
 @panel-borderStyle: solid;
 @panel-borderColor: black;
-@panel-borderRadius: 8px;
+@panel-borderRadius: 0.5rem;
 
 // ----- Header
-@panel-header-borderWidth : 0 0 1px;
+@panel-header-borderWidth : 0 0 0.0625rem;
 @panel-header-borderStyle: solid;
 @panel-header-borderColor: black;
 
@@ -38,14 +38,14 @@
 @panel-heading-fontFamily: inherit;
 @panel-heading-marginTop: 1;
 @panel-heading-marginBottom: 1;
-@panel-heading-paddingLeft: 10px;
-@panel-heading-paddingRight: 10px;
+@panel-heading-paddingLeft: 0.625rem;
+@panel-heading-paddingRight: 0.625rem;
 @panel-header-backgroundColor: #fff;
 @panel-heading-color: inherit;
 
 // ----- Body
-@panel-body-paddingLeft: 10px;
-@panel-body-paddingRight: 10px;
+@panel-body-paddingLeft: 0.625rem;
+@panel-body-paddingRight: 0.625rem;
 
 // -------------------- Core LEGO --------------------
 .Panel() {
@@ -90,8 +90,8 @@
 .Panel-body--highlight() {
 	.Panel-body();
 	background-color: #e6e6e6;
-	border: 1px solid darken(#e6e6e6, 10%);
-	border-width: 1px 0;
+	border: 0.0625rem solid darken(#e6e6e6, 10%);
+	border-width: 0.0625rem 0;
 
 	&:last-child {
 		border-bottom: none;
