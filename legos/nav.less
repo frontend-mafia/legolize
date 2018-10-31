@@ -74,7 +74,7 @@
 @nav--vertical-item-borderWidth: 0.0625rem;
 @nav--vertical-item-borderColor: rgba(0, 0, 0, .5);
 @nav--vertical-item-borderStyle: solid;
-@nav--vertical-link-lineHeight: 2.25rem;
+@nav--vertical-link-lineHeight: 3.375rem;
 @nav--vertical-link-sidePadding: 1.25rem;
 
 // Hover
@@ -150,11 +150,11 @@
 
 		// Make first and last child have the same top border radius as the container
 		&:first-child {
-			.borderRadius--left (@nav--menu-borderRadius);
+			.borderRadius--left(@nav--menu-borderRadius);
 		}
 
 		&:last-child {
-			.borderRadius--right (@nav--menu-borderRadius);
+			.borderRadius--right(@nav--menu-borderRadius);
 		}
 
 		&:hover,
